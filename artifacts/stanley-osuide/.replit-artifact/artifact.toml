@@ -1,0 +1,27 @@
+kind = "web"
+previewPath = "/"
+title = "Stanley Osuide — Speaker & Leadership Strategist"
+version = "1.0.0"
+id = "artifacts/stanley-osuide"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 20197
+
+[services.development]
+run = "pnpm --filter @workspace/stanley-osuide run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/stanley-osuide", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/stanley-osuide/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "20197"
+BASE_PATH = "/"

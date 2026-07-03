@@ -1,0 +1,622 @@
+You are a Senior Frontend Architect, Senior UI/UX Designer, Senior React Engineer, Motion Designer, and Creative Director.
+
+Your task is to design and develop a world-class, production-ready personal brand website for **Stanley Osuide**.
+
+The final result should feel like a $15,000–$30,000 custom-built executive brand website.
+
+This is NOT a template website.
+
+It must look completely custom, modern, premium, luxurious, cinematic, elegant, interactive, and memorable.
+
+The website should compete with websites from Apple, Stripe, Vercel, Framer, Linear, Notion, and award-winning Awwwards websites.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PROJECT GOAL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Create a premium executive personal brand website for an international speaker, leadership strategist, entrepreneur, and investment leader.
+
+The website must immediately establish authority, trust, professionalism, luxury, and global credibility.
+
+Everything must feel intentional.
+
+Every section should have its own visual identity.
+
+The entire experience should tell a story.
+
+Nothing should look copied or template-based.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+TECH STACK
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Use:
+
+• React
+• Vite
+• TypeScript
+• Tailwind CSS
+• Framer Motion
+• Lenis Smooth Scroll
+• Lucide React
+• React Hook Form
+• Zod
+• clsx
+• tailwind-merge
+
+Use reusable architecture.
+
+No unnecessary libraries.
+
+No code duplication.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PROJECT CONFIGURATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Install and configure:
+
+framer-motion
+
+lucide-react
+
+lenis
+
+clsx
+
+tailwind-merge
+
+react-hook-form
+
+zod
+
+Configure Tailwind theme.
+
+Create custom color palette:
+
+Primary
+#080808
+
+Secondary
+#111111
+
+Card
+#161616
+
+Gold
+#C9A227
+
+Deep Gold
+#8A6D1F
+
+White
+#FFFFFF
+
+Muted
+#B8B8B8
+
+Add custom spacing scale.
+
+Create reusable animation delays.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PROJECT STRUCTURE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Use a scalable folder structure.
+
+Example:
+
+src/
+
+components/
+
+ui/
+
+layout/
+
+sections/
+
+hooks/
+
+lib/
+
+data/
+
+assets/
+
+styles/
+
+animations/
+
+pages/
+
+Create reusable components.
+
+Keep code clean.
+
+Use TypeScript interfaces everywhere.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+DESIGN DIRECTION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Luxury
+
+Executive
+
+Editorial
+
+Modern
+
+Minimal
+
+Bold
+
+Elegant
+
+High-end
+
+Sophisticated
+
+Premium
+
+Custom
+
+Not template-based.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+VISUAL STYLE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Large editorial typography
+
+Luxury spacing
+
+Glassmorphism (subtle only)
+
+Soft gold glow
+
+Layered depth
+
+Minimal gradients
+
+Beautiful shadows
+
+Soft borders
+
+Perfect alignment
+
+Consistent spacing
+
+Smooth interactions
+
+Professional visual hierarchy
+
+High-quality UI
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+TYPOGRAPHY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Use premium fonts.
+
+Editorial heading font.
+
+Modern body font.
+
+Large headings.
+
+Luxury spacing.
+
+Perfect readability.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ANIMATIONS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Use Framer Motion extensively.
+
+Create different animations for every section.
+
+Do NOT repeat the same fade animation.
+
+Use:
+
+Hero reveal
+
+Mask reveal
+
+Text reveal
+
+Letter reveal
+
+Stagger animation
+
+Image reveal
+
+Scale animation
+
+Parallax
+
+Scroll progress
+
+Magnetic buttons
+
+Button shine
+
+Border glow
+
+Hover lift
+
+Floating effects
+
+Mouse parallax
+
+Count-up animation
+
+Luxury page transitions
+
+Section transitions
+
+Smooth scrolling using Lenis.
+
+Animations must feel premium.
+
+Never overwhelming.
+
+Always smooth.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+RESPONSIVE DESIGN
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Must be pixel-perfect on:
+
+360px
+
+390px
+
+430px
+
+768px
+
+1024px
+
+1280px
+
+1440px
+
+No horizontal scrolling.
+
+No layout breaking.
+
+Perfect spacing.
+
+Perfect typography.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+WEBSITE STRUCTURE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1.
+Premium Loader
+
+Luxury loading animation.
+
+2.
+Sticky Glass Navbar
+
+Animated mobile menu.
+
+Scroll state.
+
+CTA button.
+
+3.
+Hero
+
+Full screen.
+
+Premium portrait.
+
+Luxury typography.
+
+Animated background.
+
+Particles.
+
+Gold glow.
+
+Mouse parallax.
+
+Buttons.
+
+Scroll indicator.
+
+4.
+About
+
+Executive storytelling.
+
+Luxury layout.
+
+Animated image reveal.
+
+Background typography.
+
+5.
+Impact
+
+Animated counters.
+
+Interactive cards.
+
+6.
+Speaking Topics
+
+Premium hover cards.
+
+Glow effects.
+
+Luxury animations.
+
+7.
+Ideal Events
+
+Modern card/grid layout.
+
+8.
+Why Book Stanley
+
+Luxury split section.
+
+Animated checklist.
+
+9.
+Featured Organisations
+
+Premium logo wall/cards.
+
+10.
+Booking Form
+
+Professional luxury form.
+
+Validation using Zod.
+
+React Hook Form.
+
+Loading state.
+
+Success state.
+
+Accessible.
+
+11.
+Final CTA
+
+Cinematic ending.
+
+12.
+Footer
+
+Minimal premium footer.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+FORM REQUIREMENTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Full Name
+
+Organisation
+
+Email
+
+Phone
+
+Event Name
+
+Event Date
+
+Event Location
+
+Audience Size
+
+Event Type
+
+Speaking Topic
+
+Budget
+
+Additional Information
+
+Validation
+
+Loading
+
+Success
+
+Error handling
+
+Clean UX
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PERFORMANCE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Fast.
+
+Optimized.
+
+Lazy load where needed.
+
+No console errors.
+
+No warnings.
+
+No unused imports.
+
+Production ready.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ACCESSIBILITY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Semantic HTML
+
+Keyboard navigation
+
+Proper labels
+
+ARIA where appropriate
+
+Accessible color contrast
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+CODE QUALITY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Use reusable components.
+
+Reusable data arrays.
+
+No duplicated code.
+
+No inline magic values.
+
+Proper interfaces.
+
+Clean architecture.
+
+Maintainable.
+
+Professional.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+IMPORTANT CONTENT INSTRUCTION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+I have attached my client's Word document with this prompt.
+
+The attached document is the PRIMARY SOURCE OF TRUTH.
+
+Read the entire document carefully before writing any code.
+
+Use the attached document for:
+
+• Hero content
+• Biography
+• About section
+• Speaking topics
+• Featured organisations
+• Booking information
+• CTA copy
+• Brand messaging
+• All website content
+
+Do NOT generate random content.
+
+Do NOT use Lorem Ipsum.
+
+Do NOT invent information.
+
+Do NOT skip any important content from the attached document.
+
+Organize and present the content beautifully while maintaining a premium executive feel.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+IMPLEMENTATION ORDER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Follow this exact order.
+
+1.
+Project setup
+
+2.
+Dependencies
+
+3.
+Tailwind configuration
+
+4.
+Folder structure
+
+5.
+Global styles
+
+6.
+Lenis setup
+
+7.
+Main Layout
+
+8.
+Navbar
+
+9.
+Hero
+
+10.
+About
+
+11.
+Impact
+
+12.
+Speaking Topics
+
+13.
+Ideal Events
+
+14.
+Featured Organisations
+
+15.
+Booking Form
+
+16.
+CTA
+
+17.
+Footer
+
+18.
+Responsiveness
+
+19.
+Animation polish
+
+20.
+Performance optimization
+
+21.
+Accessibility improvements
+
+22.
+Final testing
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+FINAL TASK
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+After the website is fully completed:
+
+• Create a brand-new GitHub repository.
+• Commit the complete project.
+• Push all code to GitHub.
+• Ensure the repository includes the entire source code.
+• Include a clean README.md with setup instructions.
+• Verify that the project runs successfully using:
+  - npm install
+  - npm run dev
+  - npm run build
+
+Do not stop after generating code.
+
+Complete the entire project from start to finish.
+
+Think like a senior software engineer, senior UI designer, and creative director throughout the entire process.
+
+The final website should be worthy of an Awwwards nomination and should not resemble any existing template.

@@ -1,45 +1,45 @@
-# [Project name]
+# Stanley Osuide — Executive Personal Brand Website
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+A premium, cinematic single-page personal brand site for Stanley Osuide: international speaker, leadership strategist, and investment & legacy builder.
 
 ## Run & Operate
 
-- `pnpm --filter @workspace/api-server run dev` — run the API server (port 5000)
+- `pnpm --filter @workspace/stanley-osuide run dev` — run the frontend (workflow: `artifacts/stanley-osuide: web`)
+- `pnpm --filter @workspace/stanley-osuide run typecheck` — typecheck the frontend
 - `pnpm run typecheck` — full typecheck across all packages
-- `pnpm run build` — typecheck + build all packages
-- `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from the OpenAPI spec
-- `pnpm --filter @workspace/db run push` — push DB schema changes (dev only)
-- Required env: `DATABASE_URL` — Postgres connection string
 
 ## Stack
 
 - pnpm workspaces, Node.js 24, TypeScript 5.9
-- API: Express 5
-- DB: PostgreSQL + Drizzle ORM
-- Validation: Zod (`zod/v4`), `drizzle-zod`
-- API codegen: Orval (from OpenAPI spec)
-- Build: esbuild (CJS bundle)
+- Frontend: React + Vite + Tailwind CSS v4 + Framer Motion + Lenis
+- Fonts: Playfair Display (serif headings) + DM Sans (body) — loaded via Google Fonts CSS import
+- No backend — pure frontend, no API or database needed
 
 ## Where things live
 
-_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
+- Frontend artifact: `artifacts/stanley-osuide/src/`
+  - `components/sections/` — all page sections (Loader, Navbar, Hero, About, Impact, Topics, IdealEvents, WhyBook, Organisations, Booking, CTA, Footer)
+  - `components/ui/` — reusable primitives (MagneticButton, AnimatedText, CountUp, SectionHeader, etc.)
+  - `components/layout/` — Navbar, Footer
+  - `hooks/` — useLenis, useMouseParallax, useMagneticButton, useIntersectionObserver
+  - `data/content.ts` — all real content in typed arrays (single source of truth for copy)
+  - `pages/Home.tsx` — assembles all sections into one scroll page
+- Theme: defined via `@theme inline {}` in `artifacts/stanley-osuide/src/index.css`
 
 ## Architecture decisions
 
-_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
+- Presentation-first, no backend: all content is static; booking form simulates submission (1.5s delay → success state) with no API call
+- Dark-mode-only design: `#080808` primary, `#C9A227` gold accent — no light mode toggle needed
+- Lenis smooth scroll initialised in a `useLenis` hook, called once in `App.tsx`
+- Framer Motion variants typed with `Variants` type and bezier tuples `as [number, number, number, number]` to satisfy strict TS inference
+- `MagneticButton` omits conflicting HTML event props (`onDrag*`, `onAnimationStart`) before spreading into `motion.button`
 
 ## Product
 
-_Describe the high-level user-facing capabilities of this app once they exist._
-
-## User preferences
-
-_Populate as you build — explicit user instructions worth remembering across sessions._
+Single-page executive brand site with: luxury letter-by-letter loader, sticky glass navbar with mobile slide-in menu, cinematic hero with gold glow & parallax, about section with animated text reveal, count-up impact stats, 6 speaking topic cards with hover glow, ideal events grid, animated checklist "Why Book" section, 3 organisation founder cards, fully-validated booking enquiry form, cinematic CTA, and minimal premium footer.
 
 ## Gotchas
 
-_Populate as you build — sharp edges, "always run X before Y" rules._
-
-## Pointers
-
-- See the `pnpm-workspace` skill for workspace structure, TypeScript setup, and package details
+- Lenis must be installed per-artifact: `pnpm --filter @workspace/stanley-osuide add lenis`
+- Tailwind v4 uses `@import 'tailwindcss'` syntax — no `tailwind.config.js` needed; extend theme in CSS via `@theme inline {}`
+- Booking form does NOT submit to a real endpoint — it simulates a 1.5s loading state then shows a success confirmation
