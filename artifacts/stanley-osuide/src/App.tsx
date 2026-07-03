@@ -13,6 +13,10 @@ import Organisations from '@/pages/Organisations';
 import Media from '@/pages/Media';
 import Testimonials from '@/pages/Testimonials';
 import Book from '@/pages/Book';
+import Contact from '@/pages/Contact';
+import PrivacyPolicy from '@/pages/PrivacyPolicy';
+import Terms from '@/pages/Terms';
+import FloatingContactWidget from '@/components/ui/floating-contact-widget';
 
 const queryClient = new QueryClient();
 
@@ -33,6 +37,9 @@ function Router() {
       <Route path="/media" component={Media} />
       <Route path="/testimonials" component={Testimonials} />
       <Route path="/book" component={Book} />
+      <Route path="/contact" component={Contact} />
+      <Route path="/privacy" component={PrivacyPolicy} />
+      <Route path="/terms" component={Terms} />
       <Route component={NotFound} />
     </Switch>
   );
@@ -46,6 +53,7 @@ function App() {
       <TooltipProvider>
         <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, '')}>
           <Router />
+          <FloatingContactWidget />
         </WouterRouter>
         <Toaster />
       </TooltipProvider>

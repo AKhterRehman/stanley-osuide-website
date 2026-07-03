@@ -306,12 +306,114 @@ export const mediaData = {
 
 export const testimonialsData = {
   reviews: [
-    { name: "Dr. Emeka Okonkwo", title: "CEO, Pan-African Development Fund", text: "Stanley Osuide is one of the most compelling leadership voices of our generation. His address at our annual investment forum shifted the entire room. We left not just informed, but transformed. His ability to blend global insight with African passion is rare and powerful.", rating: 5 },
-    { name: "Sarah Mitchell", title: "Director, Global Leadership Network UK", text: "We have hosted hundreds of speakers at our leadership conferences. Stanley stands in a league of his own. He doesn't just speak — he connects, he challenges and he moves people to action. The feedback from our delegates was overwhelmingly positive.", rating: 5 },
-    { name: "Chief Adebayo Adeleke", title: "Former Minister, Federal Republic of Nigeria", text: "Stanley Osuide speaks with the authority of someone who has not just studied leadership — but lived it. His keynote at the Lagos Investment Summit was the highlight of the event. He brought clarity, conviction and challenge in equal measure.", rating: 5 },
-    { name: "Rev. Dr. James Osei", title: "Senior Pastor & Leadership Trainer", text: "Stanley's message on Faith, Purpose and Marketplace Impact was exactly what our leaders needed to hear. He bridges the worlds of faith and business with integrity and wisdom. I have already invited him to speak at two further events.", rating: 5 },
-    { name: "Amanda Clarke", title: "Head of Corporate Learning, FTSE 250 Company", text: "We engaged Stanley for our annual leadership conference and the response was extraordinary. He tailored his message perfectly to our audience and delivered it with energy and precision. Highly professional from start to finish.", rating: 5 },
-    { name: "Toyin Adesanya", title: "Founder, Africa Women Invest Forum", text: "Stanley's keynote on Africa as an investment frontier was masterful. He gave our delegates the confidence, the context and the conviction to act. We saw a significant increase in investor engagement directly following his address.", rating: 5 },
+    { 
+      name: "Dr. Emeka Okonkwo", 
+      title: "CEO, Pan-African Development Fund", 
+      location: "Lagos, Nigeria",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&q=80&auto=format&fit=crop&crop=face",
+      text: "Stanley Osuide is one of the most compelling leadership voices of our generation. His address at our annual investment forum shifted the entire room. We left not just informed, but transformed.", 
+      rating: 5, 
+      event: "Pan-African Investment Forum 2023"
+    },
+    { 
+      name: "Sarah Mitchell", 
+      title: "Director, Global Leadership Network UK", 
+      location: "London, UK",
+      image: "https://images.unsplash.com/photo-1494790108755-2616b612b977?w=150&h=150&q=80&auto=format&fit=crop&crop=face",
+      text: "We have hosted hundreds of speakers at our leadership conferences. Stanley stands in a league of his own. He doesn't just speak — he connects, he challenges and he moves people to action.", 
+      rating: 5, 
+      event: "Global Leadership Summit 2023"
+    },
+    { 
+      name: "Chief Adebayo Adeleke", 
+      title: "Former Minister, Federal Republic of Nigeria", 
+      location: "Abuja, Nigeria",
+      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&q=80&auto=format&fit=crop&crop=face",
+      text: "Stanley Osuide speaks with the authority of someone who has not just studied leadership — but lived it. His keynote at the Lagos Investment Summit was the highlight of the event.", 
+      rating: 5, 
+      event: "Lagos Investment Summit 2022"
+    },
+    { 
+      name: "Rev. Dr. James Osei", 
+      title: "Senior Pastor & Leadership Trainer", 
+      location: "Accra, Ghana",
+      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&q=80&auto=format&fit=crop&crop=face",
+      text: "Stanley's message on Faith, Purpose and Marketplace Impact was exactly what our leaders needed to hear. He bridges the worlds of faith and business with integrity and wisdom.", 
+      rating: 5, 
+      event: "Faith & Marketplace Conference 2023"
+    },
+    { 
+      name: "Amanda Clarke", 
+      title: "Head of Corporate Learning, FTSE 250 Company", 
+      location: "London, UK",
+      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&q=80&auto=format&fit=crop&crop=face",
+      text: "We engaged Stanley for our annual leadership conference and the response was extraordinary. He tailored his message perfectly to our audience and delivered it with energy and precision.", 
+      rating: 5, 
+      event: "Corporate Leadership Day 2023"
+    },
+    { 
+      name: "Toyin Adesanya", 
+      title: "Founder, Africa Women Invest Forum", 
+      location: "London, UK",
+      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&q=80&auto=format&fit=crop&crop=face",
+      text: "Stanley's keynote on Africa as an investment frontier was masterful. He gave our delegates the confidence, the context and the conviction to act. Outstanding speaker.", 
+      rating: 5, 
+      event: "Africa Women Invest Forum 2023"
+    },
+    { 
+      name: "Michael Okonkwo", 
+      title: "President, African Business Council UK", 
+      location: "Birmingham, UK",
+      image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150&h=150&q=80&auto=format&fit=crop&crop=face",
+      text: "Rarely do you encounter a speaker who combines intellectual depth with genuine passion. Stanley's session on Legacy Leadership was one of the most impactful talks at our summit.", 
+      rating: 5, 
+      event: "African Business Summit 2022"
+    },
+    { 
+      name: "Dr. Fatima Hassan", 
+      title: "Director, International Development Institute", 
+      location: "Nairobi, Kenya",
+      image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&h=150&q=80&auto=format&fit=crop&crop=face",
+      text: "Stanley brought a perspective on African investment and leadership that was both data-driven and deeply human. Our delegates were inspired and equipped to take action.", 
+      rating: 5, 
+      event: "East Africa Leadership Forum 2023"
+    },
+    { 
+      name: "James Robertson", 
+      title: "CEO, Robertson Capital Partners", 
+      location: "Edinburgh, UK",
+      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=150&h=150&q=80&auto=format&fit=crop&crop=face",
+      text: "As a result of Stanley's keynote, three of our partners have now opened conversations about African market entry. The ROI on having Stanley at our event has been remarkable.", 
+      rating: 5, 
+      event: "UK-Africa Investment Week 2023"
+    },
+    { 
+      name: "Pastor Grace Mensah", 
+      title: "Senior Leader, Kingdom Business Network", 
+      location: "Manchester, UK",
+      image: "https://images.unsplash.com/photo-1598550874175-4d0ef436c909?w=150&h=150&q=80&auto=format&fit=crop&crop=face",
+      text: "Stanley has a rare gift for making complex ideas simple and making simple truths profound. His message on servant leadership transformed how our leaders see their role.", 
+      rating: 5, 
+      event: "Kingdom Business Conference 2022"
+    },
+    { 
+      name: "Dr. Kwame Asante", 
+      title: "Vice Chancellor, Pan-African University", 
+      location: "Accra, Ghana",
+      image: "https://images.unsplash.com/photo-1463453091185-61582044d556?w=150&h=150&q=80&auto=format&fit=crop&crop=face",
+      text: "Stanley spoke to our graduating leaders and left them with a framework for life, not just a speech for the day. His ability to connect with young audiences is exceptional.", 
+      rating: 5, 
+      event: "University Leadership Graduation 2023"
+    },
+    { 
+      name: "Victoria Osei-Mensah", 
+      title: "Managing Director, Diaspora Investment Group", 
+      location: "Toronto, Canada",
+      image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=150&h=150&q=80&auto=format&fit=crop&crop=face",
+      text: "Stanley brought clarity, conviction and credibility to our diaspora investor event. His insight into Africa's opportunity landscape was eye-opening and action-inspiring.", 
+      rating: 5, 
+      event: "Diaspora Investor Summit 2023"
+    },
   ],
   highlights: [
     { stat: "50+", label: "Events Spoken At" },

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { motion } from "framer-motion";
@@ -6,9 +6,27 @@ import { testimonialsData } from "@/data/content";
 import { fadeInUp, clipReveal, staggerContainer } from "@/lib/animations";
 import { SectionHeader } from "@/components/ui/section-header";
 import { CountUp } from "@/components/ui/count-up";
-import { Star, Quote } from "lucide-react";
+import { Star, ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function Testimonials() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const reviews = testimonialsData.reviews;
+  
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveIndex(prev => (prev + 1) % reviews.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [reviews.length]);
+
+  const handlePrev = () => {
+    setActiveIndex(prev => (prev === 0 ? reviews.length - 1 : prev - 1));
+  };
+
+  const handleNext = () => {
+    setActiveIndex(prev => (prev + 1) % reviews.length);
+  };
+
   return (
     <div className="bg-background min-h-screen text-foreground selection:bg-primary selection:text-black">
       <Navbar />
@@ -33,7 +51,7 @@ export default function Testimonials() {
       </section>
 
       {/* Highlight Stats */}
-      <section className="py-16 bg-card border-y border-white/5">
+      <section className="py-16 bg-[#0a0a0a] w-full border-y border-white/5">
         <div className="container mx-auto px-6 md:px-12">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {testimonialsData.highlights.map((stat, i) => {
@@ -60,40 +78,72 @@ export default function Testimonials() {
         </div>
       </section>
 
-      {/* Reviews */}
-      <section className="py-24 md:py-32 bg-secondary">
+      {/* Reviews Carousel */}
+      <section className="py-24 md:py-32 bg-secondary relative overflow-hidden">
         <div className="container mx-auto px-6 md:px-12">
           <SectionHeader title="What They Say" subtitle="Client Reviews" />
           
-          <motion.div 
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16"
-          >
-            {testimonialsData.reviews.map((review, i) => (
-              <motion.div 
-                key={i} 
-                variants={fadeInUp}
-                className="bg-card border border-white/5 rounded-2xl p-8 md:p-10 relative group hover:border-primary/30 transition-colors flex flex-col h-full"
+          <div className="relative mt-16 max-w-6xl mx-auto">
+            <div className="overflow-hidden">
+              <div 
+                className="flex transition-transform duration-700 ease-out"
+                style={{ transform: `translateX(-${activeIndex * 100}%)` }}
               >
-                <Quote className="absolute top-8 right-8 w-12 h-12 text-primary/10 group-hover:text-primary/20 transition-colors" />
-                <div className="flex gap-1 mb-6">
-                  {[...Array(review.rating)].map((_, idx) => (
-                    <Star key={idx} className="w-4 h-4 fill-primary text-primary" />
-                  ))}
-                </div>
-                <p className="text-lg text-white/80 leading-relaxed mb-8 relative z-10 italic">
-                  "{review.text}"
-                </p>
-                <div className="mt-auto">
-                  <h4 className="text-white font-serif font-bold text-lg">{review.name}</h4>
-                  <p className="text-primary text-sm">{review.title}</p>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
+                {reviews.map((review, i) => (
+                  <div key={i} className="min-w-full md:min-w-[50%] lg:min-w-[33.333%] p-4">
+                    <div className="bg-card border border-white/5 rounded-2xl p-8 flex flex-col h-full group hover:border-primary/30 transition-all duration-500">
+                      {/* Large gold quote mark */}
+                      <div className="text-6xl font-serif text-primary/20 leading-none mb-4">"</div>
+                      {/* Review text */}
+                      <p className="text-white/80 leading-relaxed text-sm flex-1 italic">{review.text}</p>
+                      {/* Stars */}
+                      <div className="flex gap-1 my-4">{Array(5).fill(0).map((_, i) => <Star key={i} className="w-3 h-3 fill-primary text-primary" />)}</div>
+                      {/* Event tag */}
+                      <div className="text-xs text-primary/60 tracking-wider mb-4">{review.event}</div>
+                      {/* Divider */}
+                      <div className="h-px bg-white/5 mb-4" />
+                      {/* Author */}
+                      <div className="flex items-center gap-3">
+                        {review.image && <img src={review.image} alt={review.name} className="w-10 h-10 rounded-full object-cover border border-white/10" />}
+                        <div>
+                          <div className="text-white font-medium text-sm">{review.name}</div>
+                          <div className="text-muted-foreground text-xs">{review.title}</div>
+                          <div className="text-primary/60 text-xs">{review.location}</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Controls */}
+            <div className="flex justify-center items-center gap-6 mt-12">
+              <button 
+                onClick={handlePrev} 
+                className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-white/50 hover:text-primary hover:border-primary/50 transition-colors"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+              
+              <div className="flex gap-2">
+                {reviews.map((_, i) => (
+                  <button 
+                    key={i} 
+                    onClick={() => setActiveIndex(i)}
+                    className={`h-2 rounded-full transition-all duration-300 ${activeIndex === i ? "w-8 bg-primary" : "w-2 bg-white/20"}`}
+                  />
+                ))}
+              </div>
+              
+              <button 
+                onClick={handleNext} 
+                className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-white/50 hover:text-primary hover:border-primary/50 transition-colors"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -102,7 +152,7 @@ export default function Testimonials() {
         <div className="container mx-auto px-6 md:px-12">
           <SectionHeader title="Event Highlights" subtitle="Success Stories" />
           
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-16">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-16">
             {testimonialsData.successStories.map((story, i) => (
               <motion.div 
                 key={i}
@@ -110,13 +160,14 @@ export default function Testimonials() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="bg-card p-8 border-t-2 border-t-primary border-x border-b border-white/5 rounded-b-xl"
+                className="bg-card p-8 border border-white/5 rounded-2xl hover:border-primary/30 transition-all duration-500 group relative overflow-hidden"
               >
-                <span className="inline-block px-3 py-1 bg-white/5 text-[10px] uppercase tracking-widest text-white/50 rounded mb-6">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/20 transition-all duration-500" />
+                <span className="inline-block px-3 py-1 bg-white/5 text-[10px] uppercase tracking-widest text-primary/80 border border-primary/20 rounded-full mb-6">
                   {story.tag}
                 </span>
-                <h3 className="text-2xl font-serif text-white mb-4">{story.title}</h3>
-                <p className="text-muted-foreground leading-relaxed">{story.description}</p>
+                <h3 className="text-2xl font-serif text-white mb-4 relative z-10">{story.title}</h3>
+                <p className="text-muted-foreground leading-relaxed relative z-10">{story.description}</p>
               </motion.div>
             ))}
           </div>
@@ -124,14 +175,19 @@ export default function Testimonials() {
       </section>
 
       {/* Partners / Trusted By */}
-      <section className="py-24 bg-secondary border-t border-white/5 text-center">
-        <div className="container mx-auto px-6 md:px-12">
-          <span className="text-sm uppercase tracking-[0.2em] text-white/40 mb-12 block">Trusted By</span>
-          <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-8 max-w-4xl mx-auto">
+      <section className="py-24 bg-card border-t border-white/5 relative">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-[1px] bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
+        <div className="container mx-auto px-6 md:px-12 text-center">
+          <span className="text-xs uppercase tracking-[0.2em] font-sans font-semibold text-primary/60 mb-12 block">TRUSTED BY</span>
+          <div className="flex flex-wrap justify-center gap-4 max-w-5xl mx-auto">
             {testimonialsData.partners.map((partner, i) => (
-              <div key={i} className="text-xl md:text-2xl font-serif font-bold text-white/20 hover:text-white/60 transition-colors">
-                {partner.name}
-              </div>
+              <motion.div 
+                key={partner.name} 
+                className="px-6 py-3 border border-white/10 rounded-full bg-white/[0.03] hover:border-primary/40 hover:bg-primary/5 transition-all duration-300 cursor-default" 
+                whileHover={{ y: -2 }}
+              >
+                <span className="text-white/60 hover:text-white/90 text-sm font-medium tracking-wide transition-colors">{partner.name}</span>
+              </motion.div>
             ))}
           </div>
         </div>

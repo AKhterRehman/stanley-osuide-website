@@ -10,6 +10,7 @@ const navLinks = [
   { name: "Organisations", href: "/organisations" },
   { name: "Media", href: "/media" },
   { name: "Testimonials", href: "/testimonials" },
+  { name: "Contact", href: "/contact" },
 ];
 
 export function Navbar() {

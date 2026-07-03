@@ -28,10 +28,11 @@ function AboutTeaser() {
           >
             <div className="absolute inset-0 border border-primary/20 rounded-t-full translate-x-4 translate-y-4" />
             <div className="absolute inset-0 bg-card rounded-t-full overflow-hidden flex flex-col justify-end items-center group">
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-primary/10" />
-              <div className="w-3/4 h-[80%] bg-gradient-to-t from-background to-zinc-800 rounded-t-full opacity-80 shadow-[0_0_50px_rgba(201,162,39,0.1)] relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-primary/20 to-transparent opacity-50 mix-blend-overlay" />
-              </div>
+              <img 
+                src="/images/stanley-osuide.jpg" 
+                alt="Stanley Osuide" 
+                className="w-full h-full object-cover object-top rounded-t-full"
+              />
             </div>
             <div className="absolute -left-8 top-1/3 -rotate-90 origin-left text-[10px] tracking-[0.4em] text-primary uppercase">
               Global Presence
