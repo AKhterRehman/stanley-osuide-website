@@ -2,17 +2,22 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link, useLocation } from "wouter";
 
 const navLinks = [
-  { name: "About", href: "#about" },
-  { name: "Topics", href: "#topics" },
-  { name: "Impact", href: "#impact" },
-  { name: "Organisations", href: "#organisations" },
+  { name: "About", href: "/about" },
+  { name: "Speaking", href: "/speaking" },
+  { name: "Organisations", href: "/organisations" },
+  { name: "Media", href: "/media" },
+  { name: "Testimonials", href: "/testimonials" },
 ];
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [location] = useLocation();
+
+  const isActive = (path: string) => location === path;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,35 +38,40 @@ export function Navbar() {
         }`}
       >
         <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
-          <a href="#" className="flex flex-col group">
+          <Link href="/" className="flex flex-col group">
             <span className="font-serif text-xl md:text-2xl font-bold tracking-wider text-white">
               STANLEY
             </span>
             <span className="font-sans text-[10px] tracking-[0.3em] text-primary transition-colors group-hover:text-white">
               OSUIDE
             </span>
-          </a>
+          </Link>
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center space-x-8">
             <div className="flex space-x-6">
               {navLinks.map((link) => (
-                <a
+                <Link
                   key={link.name}
                   href={link.href}
-                  className="text-sm font-medium text-white/70 hover:text-white transition-colors tracking-wide"
+                  className={`text-sm transition-colors tracking-wide ${
+                    isActive(link.href) 
+                      ? "text-primary font-semibold" 
+                      : "text-white/70 font-medium hover:text-white"
+                  }`}
                 >
                   {link.name}
-                </a>
+                </Link>
               ))}
             </div>
-            <Button
-              variant="gold"
-              className="text-xs uppercase tracking-widest px-8"
-              onClick={() => document.getElementById("booking")?.scrollIntoView({ behavior: "smooth" })}
-            >
-              Book Now
-            </Button>
+            <Link href="/book">
+              <Button
+                variant="gold"
+                className="text-xs uppercase tracking-widest px-8"
+              >
+                Book Now
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile Toggle */}
@@ -94,17 +104,19 @@ export function Navbar() {
             
             <div className="flex flex-col items-center space-y-8">
               {navLinks.map((link, i) => (
-                <motion.a
-                  key={link.name}
-                  href={link.href}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.1 * i }}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-3xl font-serif text-white hover:text-primary transition-colors"
-                >
-                  {link.name}
-                </motion.a>
+                <Link key={link.name} href={link.href}>
+                  <motion.span
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.1 * i }}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className={`text-3xl font-serif block transition-colors ${
+                      isActive(link.href) ? "text-primary" : "text-white hover:text-primary"
+                    }`}
+                  >
+                    {link.name}
+                  </motion.span>
+                </Link>
               ))}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -112,17 +124,15 @@ export function Navbar() {
                 transition={{ delay: 0.4 }}
                 className="pt-8"
               >
-                <Button
-                  variant="gold"
-                  size="lg"
-                  className="w-full text-sm uppercase tracking-widest px-12"
-                  onClick={() => {
-                    setIsMobileMenuOpen(false);
-                    document.getElementById("booking")?.scrollIntoView({ behavior: "smooth" });
-                  }}
-                >
-                  Book Stanley
-                </Button>
+                <Link href="/book" onClick={() => setIsMobileMenuOpen(false)}>
+                  <Button
+                    variant="gold"
+                    size="lg"
+                    className="w-full text-sm uppercase tracking-widest px-12"
+                  >
+                    Book Stanley
+                  </Button>
+                </Link>
               </motion.div>
             </div>
           </motion.div>

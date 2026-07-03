@@ -1,5 +1,6 @@
 import React from "react";
 import { siteData } from "@/data/content";
+import { Link } from "wouter";
 
 export function Footer() {
   return (
@@ -10,14 +11,14 @@ export function Footer() {
       <div className="container mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-16">
           <div className="lg:col-span-2">
-            <a href="#" className="flex flex-col group inline-block mb-6">
+            <Link href="/" className="flex flex-col group inline-block mb-6 w-max">
               <span className="font-serif text-3xl font-bold tracking-widest text-white">
                 STANLEY
               </span>
-              <span className="font-sans text-xs tracking-[0.4em] text-primary">
+              <span className="font-sans text-xs tracking-[0.4em] text-primary transition-colors group-hover:text-white">
                 OSUIDE
               </span>
-            </a>
+            </Link>
             <p className="text-muted-foreground max-w-sm mt-6 text-sm leading-relaxed">
               {siteData.hero.tagline}
             </p>
@@ -26,14 +27,21 @@ export function Footer() {
           <div>
             <h4 className="text-white font-serif text-lg mb-6 tracking-wide">Navigation</h4>
             <ul className="space-y-4">
-              {["About", "Topics", "Impact", "Organisations", "Booking"].map((item) => (
-                <li key={item}>
-                  <a 
-                    href={`#${item.toLowerCase()}`} 
-                    className="text-muted-foreground hover:text-primary transition-colors text-sm tracking-wide"
+              {[
+                { name: "About", href: "/about" },
+                { name: "Speaking", href: "/speaking" },
+                { name: "Organisations", href: "/organisations" },
+                { name: "Media", href: "/media" },
+                { name: "Testimonials", href: "/testimonials" },
+                { name: "Book Stanley", href: "/book" },
+              ].map((item) => (
+                <li key={item.name}>
+                  <Link 
+                    href={item.href} 
+                    className="text-muted-foreground hover:text-primary transition-colors text-sm tracking-wide block"
                   >
-                    {item}
-                  </a>
+                    {item.name}
+                  </Link>
                 </li>
               ))}
             </ul>

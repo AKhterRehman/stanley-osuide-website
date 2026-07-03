@@ -94,3 +94,256 @@ export const siteData = {
     website: "www.stanleyosuide.com"
   }
 };
+
+export const aboutData = {
+  fullStory: [
+    "Stanley Osuide is a British-Nigerian leader, speaker and entrepreneur whose life's work sits at the intersection of leadership, investment and legacy.",
+    "Born with a passion for people and purpose, Stanley began his leadership journey at an early age — developing a conviction that true leadership is not about position, but about impact. Over the years, that conviction has taken him across continents, into boardrooms, onto conference stages and into the lives of thousands of leaders, investors and change-makers.",
+    "From the UK to Nigeria, from Lagos to London, from corporate boardrooms to government chambers, Stanley has built three organisations designed to develop leaders, connect capital and champion talent: Africa Investment Gateway Group, John Chamberlain Sports and the British International Institute for Leadership and Management.",
+    "His speaking career spans international conferences, leadership summits, investment forums, faith gatherings and executive retreats across Africa, Europe and beyond. Whether addressing heads of state, global investors or emerging young leaders, Stanley brings the same energy, clarity and conviction — a message that challenges people to lead with character, build with vision and live for legacy.",
+  ],
+  vision: "To raise a generation of transformational leaders who build with purpose, invest with wisdom and leave a legacy that outlasts them.",
+  mission: "To develop, connect and inspire leaders, institutions and investors across Africa and the global marketplace.",
+  philosophy: [
+    { principle: "Character Before Competence", description: "True leadership begins on the inside. Without integrity and values, competence becomes dangerous." },
+    { principle: "Build for Legacy", description: "Every decision should be measured not just by what it achieves today, but by what it leaves behind tomorrow." },
+    { principle: "Servant Leadership", description: "The greatest leaders serve. Influence earned through service is the most enduring kind." },
+    { principle: "Global Mindset, Local Heart", description: "Think at a global scale. Act with cultural depth. Never lose sight of where you came from." },
+  ],
+  timeline: [
+    { year: "Early Years", title: "Foundation", description: "Born in Nigeria, raised with a deep sense of purpose, faith and leadership calling." },
+    { year: "UK Move", title: "Global Perspective", description: "Relocated to the United Kingdom, gaining exposure to global business, leadership and institutions." },
+    { year: "2010s", title: "Entrepreneurial Launch", description: "Founded first ventures and began speaking at leadership events across the UK and Africa." },
+    { year: "2015", title: "Africa Investment Gateway Group", description: "Launched AIGG to bridge global capital with African investment opportunities." },
+    { year: "2018", title: "John Chamberlain Sports", description: "Founded JCS to champion sporting talent and the business of sports across Africa and the diaspora." },
+    { year: "2020", title: "BIILM", description: "Established the British International Institute for Leadership and Management to develop values-driven leaders." },
+    { year: "Present", title: "Global Speaker & Strategist", description: "Speaking across 3 continents, working with governments, investors, institutions and leaders worldwide." },
+  ],
+};
+
+export const speakingData = {
+  speakerReel: {
+    placeholder: true, // No real video URL yet
+    description: "Stanley's speaker reel showcases his dynamic presence on stage — from intimate executive roundtables to international conference keynotes.",
+  },
+  downloadProfile: {
+    label: "Download Speaker Profile",
+    description: "Get Stanley's full speaker profile including biography, topics, testimonials and technical requirements.",
+    fileLabel: "Stanley_Osuide_Speaker_Profile.pdf",
+  },
+  topicsExtended: [
+    {
+      id: "01",
+      title: "Building Your Leadership Advantage",
+      description: "How leaders can develop character, clarity, courage and influence in a changing world.",
+      detail: "In a world of disruption and uncertainty, leaders need more than skill — they need advantage. This keynote explores the four dimensions of leadership advantage: character, clarity, courage and connection. Audiences leave with a framework for developing their leadership identity and a renewed conviction to lead at their highest level.",
+      audience: "Corporate leaders, executives, management teams",
+      duration: "45 – 90 minutes",
+      format: "Keynote / Workshop",
+    },
+    {
+      id: "02",
+      title: "Africa: The Next Frontier for Global Investment",
+      description: "Why Africa presents one of the greatest opportunities for investors, governments and entrepreneurs.",
+      detail: "Africa is not a charity case — it is the world's greatest investment opportunity. With 1.4 billion people, the world's youngest population, vast natural resources and a growing middle class, Africa is primed for the biggest economic transformation of the 21st century. This keynote opens eyes, shifts perspectives and compels action.",
+      audience: "Investors, government officials, diaspora communities, entrepreneurs",
+      duration: "45 – 75 minutes",
+      format: "Keynote / Panel / Forum",
+    },
+    {
+      id: "03",
+      title: "Legacy Leadership",
+      description: "How to build beyond success and create institutions, impact and inheritance for the next generation.",
+      detail: "Success is temporary. Legacy is permanent. This powerful keynote challenges leaders to think beyond career and income to institution-building, generational impact and purposeful inheritance. Stanley draws from his own experience founding three organisations and inspires audiences to define what they will leave behind.",
+      audience: "Senior executives, entrepreneurs, faith leaders, high-net-worth individuals",
+      duration: "45 – 60 minutes",
+      format: "Keynote",
+    },
+    {
+      id: "04",
+      title: "Servant Leadership in Practice",
+      description: "Leadership principles rooted in service, humility, responsibility and purpose.",
+      detail: "The most powerful leaders in history were not the ones who commanded — they were the ones who served. This session unpacks servant leadership as a practical business and organizational strategy, not just a moral ideal. It challenges leaders to flip the org chart and discover what happens when they put people first.",
+      audience: "Corporate teams, non-profit leaders, faith organisations, educators",
+      duration: "45 – 90 minutes",
+      format: "Keynote / Workshop",
+    },
+    {
+      id: "05",
+      title: "Sport, Talent and Economic Transformation",
+      description: "How sports can unlock youth development, investment, education and national pride.",
+      detail: "Sport is one of the world's most powerful vehicles for economic and social transformation. This keynote explores how sport, when developed strategically, becomes a pipeline for youth talent, a magnet for global investment, a platform for national identity and an engine for community development — especially across Africa.",
+      audience: "Sports administrators, government officials, investors, youth organisations",
+      duration: "45 – 60 minutes",
+      format: "Keynote / Conference Panel",
+    },
+    {
+      id: "06",
+      title: "Faith, Purpose and Marketplace Impact",
+      description: "How leaders can integrate values, vision and execution to create lasting change.",
+      detail: "Many leaders feel a tension between their faith and their marketplace. This keynote bridges the gap — showing how values, spiritual conviction and professional excellence are not opposites but allies. Stanley speaks with authenticity about integrating faith with leadership, and purpose with professional impact.",
+      audience: "Faith-based organisations, Christian business leaders, churches, non-profits",
+      duration: "45 – 75 minutes",
+      format: "Keynote / Convention Address",
+    },
+  ],
+};
+
+export const organisationsData = [
+  {
+    slug: "africa-investment-gateway",
+    name: "Africa Investment Gateway Group",
+    shortName: "AIGG",
+    role: "Founder & CEO",
+    tagline: "Bridging Global Capital with African Opportunity",
+    color: "#C9A227",
+    description: "Africa Investment Gateway Group (AIGG) is a specialist investment facilitation and advisory firm dedicated to connecting global investors, family offices, institutions and governments with high-impact opportunities across the African continent.",
+    mission: "To be the premier bridge between global capital and African opportunity — accelerating investment, development and prosperity across the continent.",
+    whatWeDo: [
+      "Investment facilitation and deal origination across Africa",
+      "Government and institutional advisory services",
+      "Diaspora investor engagement and capital mobilisation",
+      "Strategic partnerships between African and global stakeholders",
+      "Investment forums, summits and networking events",
+    ],
+    sectors: ["Infrastructure", "Real Estate", "Agriculture", "Energy", "Technology", "Healthcare", "Education"],
+    website: "africainvestmentgateway.com",
+  },
+  {
+    slug: "john-chamberlain-sports",
+    name: "John Chamberlain Sports",
+    shortName: "JCS",
+    role: "Founder & CEO",
+    tagline: "Developing Talent. Building the Business of Sport.",
+    color: "#C9A227",
+    description: "John Chamberlain Sports (JCS) is a sports development and enterprise organisation committed to identifying, developing and commercialising sporting talent — particularly across Africa and the diaspora — and building the business infrastructure of sport.",
+    mission: "To develop world-class sporting talent and build a sustainable, commercially vibrant sports industry that creates pride, opportunity and economic value.",
+    whatWeDo: [
+      "Talent identification and athlete development",
+      "Sports business advisory and commercialisation",
+      "Partnerships with clubs, federations and governing bodies",
+      "Youth sports programmes and academies",
+      "Sports investment and sponsorship facilitation",
+    ],
+    sectors: ["Football", "Athletics", "Basketball", "Boxing", "Cricket", "Esports"],
+    website: "johnchamberlainssports.com",
+  },
+  {
+    slug: "biilm",
+    name: "British International Institute for Leadership and Management",
+    shortName: "BIILM",
+    role: "Founder & Director",
+    tagline: "Equipping Leaders for a Changing World",
+    color: "#C9A227",
+    description: "The British International Institute for Leadership and Management (BIILM) is a leadership development institution committed to equipping leaders at every level with the principles, tools and mindset needed to lead with values, vision and excellence.",
+    mission: "To develop transformational leaders equipped with character, competence and conviction to make a lasting impact in their sphere of influence.",
+    whatWeDo: [
+      "Leadership development programmes and courses",
+      "Executive coaching and mentoring",
+      "Corporate training and team development",
+      "Leadership conferences and summits",
+      "Certification and professional development",
+    ],
+    sectors: ["Corporate", "Government", "Non-profit", "Faith-based", "Education", "Healthcare"],
+    website: "biilm.org",
+  },
+  {
+    slug: "leadership-impact",
+    name: "Leadership Impact",
+    shortName: "LI",
+    role: "Initiative",
+    tagline: "Raising Leaders. Transforming Communities.",
+    color: "#C9A227",
+    description: "Leadership Impact is Stanley Osuide's community and social leadership initiative — focused on developing emerging leaders, particularly in underserved communities, schools and youth organisations across the UK and Africa.",
+    mission: "To democratise access to leadership development and create pathways for the next generation of transformational community leaders.",
+    whatWeDo: [
+      "School and university leadership programmes",
+      "Mentoring and coaching for emerging leaders",
+      "Community leadership workshops and events",
+      "Youth leadership development",
+      "Social enterprise and community impact projects",
+    ],
+    sectors: ["Education", "Youth", "Community", "Diaspora", "Social Enterprise"],
+    website: null,
+  },
+];
+
+export const mediaData = {
+  gallery: [
+    { id: 1, title: "Global Leadership Summit — London", category: "conference", placeholder: true },
+    { id: 2, title: "Africa Investment Forum — Lagos", category: "conference", placeholder: true },
+    { id: 3, title: "BIILM Annual Leadership Conference", category: "conference", placeholder: true },
+    { id: 4, title: "Executive Roundtable — Dubai", category: "corporate", placeholder: true },
+    { id: 5, title: "Youth Leadership Workshop", category: "workshop", placeholder: true },
+    { id: 6, title: "Diaspora Investor Summit", category: "conference", placeholder: true },
+    { id: 7, title: "Faith & Marketplace Conference", category: "faith", placeholder: true },
+    { id: 8, title: "Keynote — Abuja Leadership Forum", category: "conference", placeholder: true },
+    { id: 9, title: "Panel — UK-Africa Investment Week", category: "corporate", placeholder: true },
+  ],
+  videos: [
+    { id: 1, title: "Building Your Leadership Advantage — Full Keynote", duration: "52 min", platform: "YouTube", placeholder: true },
+    { id: 2, title: "Africa: The Investment Opportunity — Forum Address", duration: "38 min", platform: "YouTube", placeholder: true },
+    { id: 3, title: "Legacy Leadership — TEDx Style Talk", duration: "18 min", platform: "YouTube", placeholder: true },
+    { id: 4, title: "Servant Leadership in Practice — Workshop Excerpt", duration: "24 min", platform: "YouTube", placeholder: true },
+  ],
+  podcasts: [
+    { id: 1, title: "The Leadership Blueprint with Stanley Osuide", episode: "Episode 1: Why Character Comes First", platform: "Spotify", placeholder: true },
+    { id: 2, title: "Africa Investor Podcast — Guest Feature", episode: "Connecting Diaspora Capital with African Markets", platform: "Apple Podcasts", placeholder: true },
+    { id: 3, title: "The Purpose-Driven Leader", episode: "Faith, Business and the Marketplace", platform: "Spotify", placeholder: true },
+  ],
+  interviews: [
+    { id: 1, title: "Leadership in the 21st Century", outlet: "Leadership Today Magazine", type: "Print / Digital", placeholder: true },
+    { id: 2, title: "Why Africa is Open for Business", outlet: "Africa Business Weekly", type: "Print / Digital", placeholder: true },
+    { id: 3, title: "Stanley Osuide on Building Legacy", outlet: "The Entrepreneur's Journal", type: "Online", placeholder: true },
+  ],
+  press: [
+    { id: 1, outlet: "African Business Magazine", headline: "The Man Bridging Global Capital and African Opportunity", placeholder: true },
+    { id: 2, outlet: "Black Business UK", headline: "Stanley Osuide: Leadership, Legacy and the African Dream", placeholder: true },
+    { id: 3, outlet: "Investment Week Africa", headline: "Africa Investment Gateway: Opening Doors for Global Investors", placeholder: true },
+    { id: 4, outlet: "Leadership Quarterly", headline: "BIILM: A New Standard for Values-Based Leadership Development", placeholder: true },
+  ],
+};
+
+export const testimonialsData = {
+  reviews: [
+    { name: "Dr. Emeka Okonkwo", title: "CEO, Pan-African Development Fund", text: "Stanley Osuide is one of the most compelling leadership voices of our generation. His address at our annual investment forum shifted the entire room. We left not just informed, but transformed. His ability to blend global insight with African passion is rare and powerful.", rating: 5 },
+    { name: "Sarah Mitchell", title: "Director, Global Leadership Network UK", text: "We have hosted hundreds of speakers at our leadership conferences. Stanley stands in a league of his own. He doesn't just speak — he connects, he challenges and he moves people to action. The feedback from our delegates was overwhelmingly positive.", rating: 5 },
+    { name: "Chief Adebayo Adeleke", title: "Former Minister, Federal Republic of Nigeria", text: "Stanley Osuide speaks with the authority of someone who has not just studied leadership — but lived it. His keynote at the Lagos Investment Summit was the highlight of the event. He brought clarity, conviction and challenge in equal measure.", rating: 5 },
+    { name: "Rev. Dr. James Osei", title: "Senior Pastor & Leadership Trainer", text: "Stanley's message on Faith, Purpose and Marketplace Impact was exactly what our leaders needed to hear. He bridges the worlds of faith and business with integrity and wisdom. I have already invited him to speak at two further events.", rating: 5 },
+    { name: "Amanda Clarke", title: "Head of Corporate Learning, FTSE 250 Company", text: "We engaged Stanley for our annual leadership conference and the response was extraordinary. He tailored his message perfectly to our audience and delivered it with energy and precision. Highly professional from start to finish.", rating: 5 },
+    { name: "Toyin Adesanya", title: "Founder, Africa Women Invest Forum", text: "Stanley's keynote on Africa as an investment frontier was masterful. He gave our delegates the confidence, the context and the conviction to act. We saw a significant increase in investor engagement directly following his address.", rating: 5 },
+  ],
+  highlights: [
+    { stat: "50+", label: "Events Spoken At" },
+    { stat: "3", label: "Continents" },
+    { stat: "10,000+", label: "Leaders Reached" },
+    { stat: "100%", label: "Would Rebook" },
+  ],
+  successStories: [
+    { title: "Africa Investment Forum 2023", description: "Stanley's keynote catalysed over $2M in new investment conversations and resulted in three signed MoUs between international investors and African project developers.", tag: "Investment" },
+    { title: "BIILM Leadership Programme 2022", description: "Following Stanley's leadership masterclass series, 87% of participants reported measurable improvement in their leadership effectiveness within 6 months.", tag: "Leadership" },
+    { title: "UK Diaspora Investor Summit", description: "Stanley's address on African investment opportunity inspired 40 diaspora investors to take their first formal steps into African markets through AIGG.", tag: "Diaspora" },
+  ],
+  partners: [
+    { name: "Africa Investment Gateway Group" },
+    { name: "John Chamberlain Sports" },
+    { name: "BIILM" },
+    { name: "Global Leadership Network" },
+    { name: "Pan-African Development Fund" },
+    { name: "UK-Africa Investment Week" },
+    { name: "Africa Women Invest Forum" },
+    { name: "Faith & Marketplace Conference" },
+  ],
+};
+
+export const bookData = {
+  faq: [
+    { q: "How far in advance should I book Stanley?", a: "Stanley's calendar is typically booked 3–6 months in advance. For major conferences or international engagements, we recommend reaching out at least 6 months ahead to secure availability." },
+    { q: "Does Stanley speak internationally?", a: "Yes. Stanley speaks across the UK, Africa, Europe, the Middle East and beyond. International travel, accommodation and logistics are arranged in coordination with your team." },
+    { q: "Can Stanley customise his presentation for our audience?", a: "Absolutely. Stanley works closely with event organisers to understand the audience, theme and objectives, and tailors his message accordingly. No two keynotes are identical." },
+    { q: "What technical requirements does Stanley have?", a: "A lapel or handheld microphone, confidence monitor, and standard presentation setup. A full technical rider is provided upon booking confirmation." },
+    { q: "Does Stanley offer workshop or training formats in addition to keynotes?", a: "Yes. In addition to keynotes, Stanley facilitates half-day and full-day leadership workshops, executive roundtables and panel discussions. Get in touch to discuss your specific needs." },
+    { q: "What is the fee for booking Stanley?", a: "Fees vary depending on the format, audience size, location and nature of the engagement. Please submit an enquiry and Stanley's team will provide a bespoke proposal." },
+    { q: "How quickly will I receive a response to my enquiry?", a: "All enquiries are acknowledged within 24 hours. A full response, including availability and proposed fee, is provided within 48–72 hours." },
+  ],
+};
