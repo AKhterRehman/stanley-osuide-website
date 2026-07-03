@@ -24,7 +24,7 @@ export default function Organisations() {
             ORGANISATIONS
           </motion.h1>
           <motion.p variants={fadeInUp} initial="hidden" animate="visible" className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-            Three Organisations. One Vision. Transformational Impact.
+            Four Ventures. One Vision. Transformational Impact.
           </motion.p>
         </div>
       </section>
