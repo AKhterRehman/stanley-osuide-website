@@ -1,11 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { Mail, MessageSquare, Phone, X } from "lucide-react";
 
 export default function FloatingContactWidget() {
   const [contactMenuOpen, setContactMenuOpen] = useState(false);
+  const [isCoarsePointer, setIsCoarsePointer] = useState(false);
   const shouldReduceMotion = useReducedMotion();
+  const shouldLimitMotion = shouldReduceMotion || isCoarsePointer;
   const refreshContactMenu = () => setContactMenuOpen(false);
+
+  useEffect(() => {
+    const query = window.matchMedia("(pointer: coarse)");
+    const update = () => setIsCoarsePointer(query.matches);
+
+    update();
+    query.addEventListener("change", update);
+
+    return () => query.removeEventListener("change", update);
+  }, []);
 
   return (
     <>
@@ -56,20 +68,20 @@ export default function FloatingContactWidget() {
               ? "bg-card border-2 border-border"
               : "bg-primary border-2 border-primary/20 text-white"
           }`}
-          animate={contactMenuOpen || shouldReduceMotion ? { scale: 1, x: 0 } : { scale: [1, 1.05, 1], x: [0, -1, 1, 0] }}
-          transition={contactMenuOpen || shouldReduceMotion ? { duration: 0.2 } : { duration: 1.45, repeat: Infinity, repeatDelay: 0.35, ease: "easeInOut" }}
+          animate={contactMenuOpen || shouldLimitMotion ? { scale: 1, x: 0 } : { scale: [1, 1.05, 1], x: [0, -1, 1, 0] }}
+          transition={contactMenuOpen || shouldLimitMotion ? { duration: 0.2 } : { duration: 1.45, repeat: Infinity, repeatDelay: 0.35, ease: "easeInOut" }}
           whileHover={{ scale: 1.06 }}
           whileTap={{ scale: 0.94 }}
         >
-          {!contactMenuOpen && !shouldReduceMotion && (
+          {!contactMenuOpen && !shouldLimitMotion && (
             <>
               <motion.span className="pointer-events-none absolute -inset-2.5 rounded-full border-2 border-sky-500 bg-sky-500/15" animate={{ opacity: [0.95, 0], scale: [1, 1.55] }} transition={{ duration: 1.05, repeat: Infinity, ease: "easeOut" }} />
               <motion.span className="pointer-events-none absolute -inset-4 rounded-full border border-sky-500/40 bg-sky-500/8" animate={{ opacity: [0.7, 0], scale: [1, 1.85] }} transition={{ duration: 1.05, repeat: Infinity, delay: 0.32, ease: "easeOut" }} />
             </>
           )}
           <motion.div
-            animate={contactMenuOpen ? { rotate: 90 } : shouldReduceMotion ? { rotate: 0 } : { rotate: [0, -16, 16, -14, 14, -10, 10, -6, 6, 0] }}
-            transition={contactMenuOpen || shouldReduceMotion ? { duration: 0.2 } : { duration: 0.95, repeat: Infinity, repeatDelay: 0.25, ease: "easeInOut" }}
+            animate={contactMenuOpen ? { rotate: 90 } : shouldLimitMotion ? { rotate: 0 } : { rotate: [0, -16, 16, -14, 14, -10, 10, -6, 6, 0] }}
+            transition={contactMenuOpen || shouldLimitMotion ? { duration: 0.2 } : { duration: 0.95, repeat: Infinity, repeatDelay: 0.25, ease: "easeInOut" }}
             className="relative z-10 flex items-center justify-center"
           >
             {contactMenuOpen

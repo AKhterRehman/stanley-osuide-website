@@ -3,21 +3,32 @@ import Lenis from "lenis";
 
 export function useLenis() {
   useEffect(() => {
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const isCoarsePointer = window.matchMedia("(pointer: coarse)").matches;
+    const isAppleTouchDevice =
+      /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+      (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+
+    if (prefersReducedMotion || isCoarsePointer || isAppleTouchDevice) {
+      return;
+    }
+
     const lenis = new Lenis({
-      duration: 1.2,
+      duration: 0.85,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // smooth easeOutQuint
       orientation: "vertical",
       gestureOrientation: "vertical",
       smoothWheel: true,
-      touchMultiplier: 2,
     });
+
+    let frameId = 0;
 
     function raf(time: number) {
       lenis.raf(time);
-      requestAnimationFrame(raf);
+      frameId = requestAnimationFrame(raf);
     }
 
-    requestAnimationFrame(raf);
+    frameId = requestAnimationFrame(raf);
 
     // Setup anchor clicks to use Lenis
     const handleAnchorClick = (e: MouseEvent) => {
@@ -37,6 +48,7 @@ export function useLenis() {
     document.addEventListener("click", handleAnchorClick);
 
     return () => {
+      cancelAnimationFrame(frameId);
       lenis.destroy();
       document.removeEventListener("click", handleAnchorClick);
     };
