@@ -11,7 +11,7 @@ export default function FloatingContactWidget() {
     <>
       {contactMenuOpen && (
         <div
-          className="fixed inset-0 z-40 bg-black/10 backdrop-blur-[2px] transition-all duration-300"
+          className="fixed inset-0 z-40 bg-foreground/5 backdrop-blur-[2px] transition-all duration-300"
           onClick={() => setContactMenuOpen(false)}
         />
       )}
@@ -22,7 +22,7 @@ export default function FloatingContactWidget() {
               {[
                 { icon: <MessageSquare className="h-5 w-5 text-white" />, label: "WhatsApp", href: "https://wa.me/447752536750", bg: "bg-[#25D366]", shadow: "shadow-[0_4px_16px_rgba(37,211,102,0.35)]" },
                 { icon: <Phone className="h-5 w-5 text-white" />, label: "Call Us", href: "tel:+447752536750", bg: "bg-[#3b82f6]", shadow: "shadow-[0_4px_16px_rgba(59,130,246,0.35)]" },
-                { icon: <Mail className="h-5 w-5 text-white" />, label: "Email Us", href: "mailto:speaker@stanleyosuide.com", bg: "bg-[#C9A227]", shadow: "shadow-[0_4px_16px_rgba(201,162,39,0.35)]" },
+                { icon: <Mail className="h-5 w-5 text-white" />, label: "Email Us", href: "mailto:speaker@stanleyosuide.com", bg: "bg-primary", shadow: "shadow-[0_4px_16px_hsla(215,68%,28%,0.35)]" },
               ].map((act, i) => (
                 <motion.a
                   key={act.label}
@@ -34,11 +34,11 @@ export default function FloatingContactWidget() {
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: 15, scale: 0.85 }}
                   transition={{ duration: 0.2, delay: i * 0.04 }}
-                  className="flex cursor-pointer items-center gap-3 rounded-full border border-white/10 bg-[#111111] p-1 pr-4 shadow-[0_8px_30px_rgba(0,0,0,0.3)] transition-all hover:shadow-[0_12px_36px_rgba(201,162,39,0.2)]"
+                  className="flex cursor-pointer items-center gap-3 rounded-full border border-border bg-card p-1 pr-4 shadow-[0_8px_30px_hsla(215,68%,28%,0.12)] transition-all hover:shadow-[0_12px_36px_hsla(215,68%,28%,0.18)] hover:border-primary/20"
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <span className="select-none pl-3 text-[12px] font-bold text-white/80">{act.label}</span>
+                  <span className="select-none pl-3 text-[12px] font-bold text-foreground/70">{act.label}</span>
                   <div className={`flex h-10 w-10 items-center justify-center rounded-full ${act.bg} ${act.shadow}`}>{act.icon}</div>
                 </motion.a>
               ))}
@@ -46,11 +46,16 @@ export default function FloatingContactWidget() {
           )}
         </AnimatePresence>
 
+        {/* Main FAB button */}
         <motion.button
           type="button"
           aria-label={contactMenuOpen ? "Close contact options" : "Open contact options"}
           onClick={() => setContactMenuOpen(!contactMenuOpen)}
-          className={`relative flex h-14 w-14 items-center justify-center rounded-full shadow-[0_10px_30px_rgba(0,0,0,0.4)] ring-2 ring-primary/30 transition-all duration-300 will-change-transform ${contactMenuOpen ? "bg-[#111]" : "bg-[#C9A227]"}`}
+          className={`relative flex h-14 w-14 items-center justify-center rounded-full shadow-[0_8px_24px_hsla(215,68%,28%,0.28)] transition-all duration-300 will-change-transform ${
+            contactMenuOpen
+              ? "bg-card border-2 border-border"
+              : "bg-primary border-2 border-primary/20 text-white"
+          }`}
           animate={contactMenuOpen || shouldReduceMotion ? { scale: 1, x: 0 } : { scale: [1, 1.05, 1], x: [0, -1, 1, 0] }}
           transition={contactMenuOpen || shouldReduceMotion ? { duration: 0.2 } : { duration: 1.45, repeat: Infinity, repeatDelay: 0.35, ease: "easeInOut" }}
           whileHover={{ scale: 1.06 }}
@@ -58,8 +63,8 @@ export default function FloatingContactWidget() {
         >
           {!contactMenuOpen && !shouldReduceMotion && (
             <>
-              <motion.span className="pointer-events-none absolute -inset-2.5 rounded-full border-2 border-primary bg-primary/20" animate={{ opacity: [0.95, 0], scale: [1, 1.55] }} transition={{ duration: 1.05, repeat: Infinity, ease: "easeOut" }} />
-              <motion.span className="pointer-events-none absolute -inset-4 rounded-full border border-primary/50 bg-primary/10" animate={{ opacity: [0.7, 0], scale: [1, 1.85] }} transition={{ duration: 1.05, repeat: Infinity, delay: 0.32, ease: "easeOut" }} />
+              <motion.span className="pointer-events-none absolute -inset-2.5 rounded-full border-2 border-primary bg-primary/15" animate={{ opacity: [0.95, 0], scale: [1, 1.55] }} transition={{ duration: 1.05, repeat: Infinity, ease: "easeOut" }} />
+              <motion.span className="pointer-events-none absolute -inset-4 rounded-full border border-primary/40 bg-primary/8" animate={{ opacity: [0.7, 0], scale: [1, 1.85] }} transition={{ duration: 1.05, repeat: Infinity, delay: 0.32, ease: "easeOut" }} />
             </>
           )}
           <motion.div
@@ -67,7 +72,10 @@ export default function FloatingContactWidget() {
             transition={contactMenuOpen || shouldReduceMotion ? { duration: 0.2 } : { duration: 0.95, repeat: Infinity, repeatDelay: 0.25, ease: "easeInOut" }}
             className="relative z-10 flex items-center justify-center"
           >
-            {contactMenuOpen ? <X className="h-6 w-6 text-white" /> : <Phone className="h-6 w-6 text-black" />}
+            {contactMenuOpen
+              ? <X className="h-6 w-6 text-foreground" />
+              : <Phone className="h-6 w-6 text-white" />
+            }
           </motion.div>
         </motion.button>
       </div>

@@ -102,16 +102,19 @@ export default function Book() {
       <Navbar />
       
       {/* Hero */}
-      <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden bg-background pt-24">
+      <section
+        className="relative min-h-[50vh] flex items-center justify-center overflow-hidden pt-32 pb-20 premium-page-hero"
+        style={{ backgroundImage: 'linear-gradient(120deg, hsl(210 22% 98% / 0.94), hsl(210 20% 95% / 0.84)), url("https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1800&q=85")' }}
+      >
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-primary/10 rounded-full blur-[150px]" />
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden">
-          <span className="text-[20vw] font-serif font-bold text-white/[0.02] leading-none tracking-tighter whitespace-nowrap">BOOKING</span>
+          <span className="text-[20vw] font-serif font-bold text-foreground/[0.03] leading-none tracking-tighter whitespace-nowrap">BOOKING</span>
         </div>
         <div className="container relative z-10 mx-auto px-6 md:px-12 text-center">
           <motion.span variants={fadeInUp} initial="hidden" animate="visible" className="text-primary tracking-[0.2em] text-sm uppercase font-semibold mb-4 block">
             Secure a Date
           </motion.span>
-          <motion.h1 variants={clipReveal} initial="hidden" animate="visible" className="text-5xl md:text-7xl lg:text-8xl font-serif text-white tracking-tighter leading-none mb-6">
+          <motion.h1 variants={clipReveal} initial="hidden" animate="visible" className="text-5xl md:text-7xl lg:text-8xl font-serif text-foreground tracking-tighter leading-none mb-6">
             BOOK STANLEY
           </motion.h1>
           <motion.p variants={fadeInUp} initial="hidden" animate="visible" className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -128,13 +131,13 @@ export default function Book() {
             <motion.div 
               initial={{ opacity: 0, scale: 0.95 }} 
               animate={{ opacity: 1, scale: 1 }}
-              className="text-center py-20 bg-card border border-white/10 rounded-2xl p-10"
+              className="text-center py-20 bg-card border border-border rounded-2xl p-10"
             >
               <motion.div className="w-24 h-24 rounded-full bg-primary/10 border border-primary/30 flex items-center justify-center mx-auto mb-8"
                 initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ type: "spring", bounce: 0.4 }}>
                 <CheckCircle2 className="w-12 h-12 text-primary" />
               </motion.div>
-              <h3 className="text-4xl font-serif text-white mb-4">Request Received</h3>
+              <h3 className="text-4xl font-serif text-foreground mb-4">Request Received</h3>
               <p className="text-muted-foreground max-w-lg mx-auto mb-2">
                 Thank you, {formData.fullName}. Stanley's team will review your engagement request and respond within 48 hours.
               </p>
@@ -142,32 +145,32 @@ export default function Book() {
               
               <div className="inline-block border border-primary/20 rounded-lg px-6 py-3 mb-8 bg-primary/5">
                 <span className="text-primary/60 text-xs tracking-widest uppercase">Reference</span>
-                <div className="text-white font-mono text-lg mt-1">SO-{Math.random().toString(36).slice(2,8).toUpperCase()}</div>
+                <div className="text-foreground font-mono text-lg mt-1">SO-{Math.random().toString(36).slice(2,8).toUpperCase()}</div>
               </div>
               
               <div>
-                <Button variant="outline" onClick={resetForm} className="border-white/20 hover:bg-white/5">
+                <Button variant="outline" onClick={resetForm} className="border-border hover:bg-muted">
                   Submit Another Request
                 </Button>
               </div>
             </motion.div>
           ) : (
-            <div className="bg-card border border-white/5 rounded-2xl p-8 md:p-12 shadow-2xl">
+            <div className="bg-card border border-border rounded-2xl p-8 md:p-12 shadow-sm">
               {/* Progress Indicator */}
               <div className="mb-12 relative">
-                <div className="absolute top-1/2 left-0 right-0 h-[1px] bg-white/10 -translate-y-1/2 z-0" />
+                <div className="absolute top-1/2 left-0 right-0 h-[1px] bg-border -translate-y-1/2 z-0" />
                 <div className="absolute top-1/2 left-0 h-[1px] bg-primary transition-all duration-500 ease-in-out z-0" style={{ width: `${(step - 1) * 50}%` }} />
                 
                 <div className="relative z-10 flex justify-between">
                   {[1, 2, 3].map((num) => (
                     <div key={num} className="flex flex-col items-center">
                       <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold transition-colors duration-300 ${
-                        step >= num ? 'bg-primary text-black' : 'bg-secondary border border-white/20 text-white/40'
+                        step >= num ? 'bg-primary text-primary-foreground' : 'bg-secondary border border-border text-muted-foreground'
                       }`}>
                         {step > num ? <CheckCircle2 className="w-6 h-6" /> : num}
                       </div>
                       <span className={`text-xs mt-3 font-medium uppercase tracking-wider hidden md:block ${
-                        step >= num ? 'text-primary' : 'text-white/40'
+                        step >= num ? 'text-primary' : 'text-muted-foreground/50'
                       }`}>
                         {num === 1 ? 'Contact Details' : num === 2 ? 'Event Details' : 'Review & Submit'}
                       </span>
@@ -186,35 +189,35 @@ export default function Book() {
                   onSubmit={handleSubmitStep1(onNextStep1)} 
                   className="space-y-6"
                 >
-                  <h3 className="text-2xl font-serif text-white mb-6">Contact Details</h3>
+                  <h3 className="text-2xl font-serif text-foreground mb-6">Contact Details</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <label className="block text-sm font-medium text-white/70 mb-2">Full Name *</label>
-                      <input {...registerStep1("fullName")} className="w-full bg-background border border-white/10 rounded-lg px-4 py-3 text-white focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" />
+                      <label className="block text-sm font-medium text-muted-foreground mb-2">Full Name *</label>
+                      <input {...registerStep1("fullName")} className="w-full bg-background border border-border rounded-lg px-4 py-3 text-foreground focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" />
                       {errorsStep1.fullName && <span className="text-red-500 text-xs mt-1">{errorsStep1.fullName.message}</span>}
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-white/70 mb-2">Organisation *</label>
-                      <input {...registerStep1("organisation")} className="w-full bg-background border border-white/10 rounded-lg px-4 py-3 text-white focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" />
+                      <label className="block text-sm font-medium text-muted-foreground mb-2">Organisation *</label>
+                      <input {...registerStep1("organisation")} className="w-full bg-background border border-border rounded-lg px-4 py-3 text-foreground focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" />
                       {errorsStep1.organisation && <span className="text-red-500 text-xs mt-1">{errorsStep1.organisation.message}</span>}
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-white/70 mb-2">Email Address *</label>
-                      <input type="email" {...registerStep1("email")} className="w-full bg-background border border-white/10 rounded-lg px-4 py-3 text-white focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" />
+                      <label className="block text-sm font-medium text-muted-foreground mb-2">Email Address *</label>
+                      <input type="email" {...registerStep1("email")} className="w-full bg-background border border-border rounded-lg px-4 py-3 text-foreground focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" />
                       {errorsStep1.email && <span className="text-red-500 text-xs mt-1">{errorsStep1.email.message}</span>}
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-white/70 mb-2">Phone Number *</label>
-                      <input {...registerStep1("phone")} className="w-full bg-background border border-white/10 rounded-lg px-4 py-3 text-white focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" />
+                      <label className="block text-sm font-medium text-muted-foreground mb-2">Phone Number *</label>
+                      <input {...registerStep1("phone")} className="w-full bg-background border border-border rounded-lg px-4 py-3 text-foreground focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" />
                       {errorsStep1.phone && <span className="text-red-500 text-xs mt-1">{errorsStep1.phone.message}</span>}
                     </div>
                     <div className="md:col-span-2">
-                      <label className="block text-sm font-medium text-white/70 mb-2">Role / Title (Optional)</label>
-                      <input {...registerStep1("role")} className="w-full bg-background border border-white/10 rounded-lg px-4 py-3 text-white focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" />
+                      <label className="block text-sm font-medium text-muted-foreground mb-2">Role / Title (Optional)</label>
+                      <input {...registerStep1("role")} className="w-full bg-background border border-border rounded-lg px-4 py-3 text-foreground focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" />
                     </div>
                   </div>
                   <div className="pt-6 flex justify-end">
-                    <Button type="submit" className="bg-primary text-black hover:bg-primary/90 px-8 py-6 text-sm uppercase tracking-widest font-bold">
+                    <Button type="submit" className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-6 text-sm uppercase tracking-widest font-bold">
                       Next Step <span className="ml-2">→</span>
                     </Button>
                   </div>
@@ -231,27 +234,27 @@ export default function Book() {
                   onSubmit={handleSubmitStep2(onNextStep2)} 
                   className="space-y-6"
                 >
-                  <h3 className="text-2xl font-serif text-white mb-6">Event Details</h3>
+                  <h3 className="text-2xl font-serif text-foreground mb-6">Event Details</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="md:col-span-2">
-                      <label className="block text-sm font-medium text-white/70 mb-2">Event Name *</label>
-                      <input {...registerStep2("eventName")} className="w-full bg-background border border-white/10 rounded-lg px-4 py-3 text-white focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" />
+                      <label className="block text-sm font-medium text-muted-foreground mb-2">Event Name *</label>
+                      <input {...registerStep2("eventName")} className="w-full bg-background border border-border rounded-lg px-4 py-3 text-foreground focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" />
                       {errorsStep2.eventName && <span className="text-red-500 text-xs mt-1">{errorsStep2.eventName.message}</span>}
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-white/70 mb-2">Event Date *</label>
-                      <input type="date" {...registerStep2("eventDate")} className="w-full bg-background border border-white/10 rounded-lg px-4 py-3 text-white focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" />
+                      <label className="block text-sm font-medium text-muted-foreground mb-2">Event Date *</label>
+                      <input type="date" {...registerStep2("eventDate")} className="w-full bg-background border border-border rounded-lg px-4 py-3 text-foreground focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" />
                       {errorsStep2.eventDate && <span className="text-red-500 text-xs mt-1">{errorsStep2.eventDate.message}</span>}
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-white/70 mb-2">Location *</label>
-                      <input {...registerStep2("location")} className="w-full bg-background border border-white/10 rounded-lg px-4 py-3 text-white focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" placeholder="City, Country or Virtual" />
+                      <label className="block text-sm font-medium text-muted-foreground mb-2">Location *</label>
+                      <input {...registerStep2("location")} className="w-full bg-background border border-border rounded-lg px-4 py-3 text-foreground focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" placeholder="City, Country or Virtual" />
                       {errorsStep2.location && <span className="text-red-500 text-xs mt-1">{errorsStep2.location.message}</span>}
                     </div>
                     
                     <div>
-                      <label className="block text-sm font-medium text-white/70 mb-2">Audience Size *</label>
-                      <select {...registerStep2("audienceSize")} className="w-full bg-background border border-white/10 rounded-lg px-4 py-3 text-white focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all appearance-none">
+                      <label className="block text-sm font-medium text-muted-foreground mb-2">Audience Size *</label>
+                      <select {...registerStep2("audienceSize")} className="w-full bg-background border border-border rounded-lg px-4 py-3 text-foreground focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all appearance-none">
                         <option value="">Select size...</option>
                         <option value="1-50">1 - 50</option>
                         <option value="51-200">51 - 200</option>
@@ -261,8 +264,8 @@ export default function Book() {
                       {errorsStep2.audienceSize && <span className="text-red-500 text-xs mt-1">{errorsStep2.audienceSize.message}</span>}
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-white/70 mb-2">Type of Event *</label>
-                      <select {...registerStep2("eventType")} className="w-full bg-background border border-white/10 rounded-lg px-4 py-3 text-white focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all appearance-none">
+                      <label className="block text-sm font-medium text-muted-foreground mb-2">Type of Event *</label>
+                      <select {...registerStep2("eventType")} className="w-full bg-background border border-border rounded-lg px-4 py-3 text-foreground focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all appearance-none">
                         <option value="">Select type...</option>
                         <option value="Conference Keynote">Conference Keynote</option>
                         <option value="Corporate Workshop">Corporate Workshop</option>
@@ -273,8 +276,8 @@ export default function Book() {
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-white/70 mb-2">Speaking Topic *</label>
-                      <select {...registerStep2("speakingTopic")} className="w-full bg-background border border-white/10 rounded-lg px-4 py-3 text-white focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all appearance-none">
+                      <label className="block text-sm font-medium text-muted-foreground mb-2">Speaking Topic *</label>
+                      <select {...registerStep2("speakingTopic")} className="w-full bg-background border border-border rounded-lg px-4 py-3 text-foreground focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all appearance-none">
                         <option value="">Select topic...</option>
                         <option value="Leadership & Legacy">Leadership & Legacy</option>
                         <option value="Africa Investment Landscape">Africa Investment Landscape</option>
@@ -285,8 +288,8 @@ export default function Book() {
                       {errorsStep2.speakingTopic && <span className="text-red-500 text-xs mt-1">{errorsStep2.speakingTopic.message}</span>}
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-white/70 mb-2">Budget Range *</label>
-                      <select {...registerStep2("budgetRange")} className="w-full bg-background border border-white/10 rounded-lg px-4 py-3 text-white focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all appearance-none">
+                      <label className="block text-sm font-medium text-muted-foreground mb-2">Budget Range *</label>
+                      <select {...registerStep2("budgetRange")} className="w-full bg-background border border-border rounded-lg px-4 py-3 text-foreground focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all appearance-none">
                         <option value="">Select range...</option>
                         <option value="Under £5,000">Under £5,000</option>
                         <option value="£5,000 - £10,000">£5,000 - £10,000</option>
@@ -297,26 +300,26 @@ export default function Book() {
                     </div>
 
                     <div className="md:col-span-2">
-                      <label className="block text-sm font-medium text-white/70 mb-2">Attach Event Brief / Agenda (Optional)</label>
-                      <label className="border-2 border-dashed border-white/20 hover:border-primary/50 rounded-xl p-8 flex flex-col items-center cursor-pointer transition-colors group">
+                      <label className="block text-sm font-medium text-muted-foreground mb-2">Attach Event Brief / Agenda (Optional)</label>
+                      <label className="border-2 border-dashed border-border hover:border-primary/50 rounded-xl p-8 flex flex-col items-center cursor-pointer transition-colors group">
                         <Upload className="w-8 h-8 text-primary/60 group-hover:text-primary mb-3 transition-colors" />
-                        <span className="text-white/60 text-sm">Drop your event brief here or click to browse</span>
-                        <span className="text-white/30 text-xs mt-1">PDF, DOC, DOCX up to 10MB</span>
+                        <span className="text-muted-foreground text-sm">Drop your event brief here or click to browse</span>
+                        <span className="text-muted-foreground/50 text-xs mt-1">PDF, DOC, DOCX up to 10MB</span>
                         <input type="file" accept=".pdf,.doc,.docx" className="hidden" onChange={handleFileChange} />
                       </label>
                       {uploadedFile && <div className="text-sm text-primary mt-2 flex items-center gap-2">File selected: {uploadedFile.name}</div>}
                     </div>
 
                     <div className="md:col-span-2">
-                      <label className="block text-sm font-medium text-white/70 mb-2">Additional Information (Optional)</label>
-                      <textarea {...registerStep2("additionalInfo")} rows={4} className="w-full bg-background border border-white/10 rounded-lg px-4 py-3 text-white focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all resize-none"></textarea>
+                      <label className="block text-sm font-medium text-muted-foreground mb-2">Additional Information (Optional)</label>
+                      <textarea {...registerStep2("additionalInfo")} rows={4} className="w-full bg-background border border-border rounded-lg px-4 py-3 text-foreground focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all resize-none"></textarea>
                     </div>
                   </div>
                   <div className="pt-6 flex justify-between">
-                    <Button type="button" variant="outline" onClick={() => setStep(1)} className="border-white/20 text-white hover:bg-white/5 px-8">
+                    <Button type="button" variant="outline" onClick={() => setStep(1)} className="border-border text-foreground hover:bg-muted px-8">
                       <span className="mr-2">←</span> Back
                     </Button>
-                    <Button type="submit" className="bg-primary text-black hover:bg-primary/90 px-8 py-6 text-sm uppercase tracking-widest font-bold">
+                    <Button type="submit" className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-6 text-sm uppercase tracking-widest font-bold">
                       Review Request <span className="ml-2">→</span>
                     </Button>
                   </div>
@@ -331,39 +334,39 @@ export default function Book() {
                   animate={{ opacity: 1, x: 0 }}
                   className="space-y-8"
                 >
-                  <h3 className="text-2xl font-serif text-white mb-6">Review & Submit</h3>
+                  <h3 className="text-2xl font-serif text-foreground mb-6">Review & Submit</h3>
                   
-                  <div className="bg-background rounded-xl p-6 border border-white/5 mb-8">
+                  <div className="bg-secondary rounded-xl p-6 border border-border mb-8">
                     <h4 className="text-primary text-sm uppercase tracking-widest font-bold mb-4">Contact Details</h4>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-8 mb-8 text-sm">
-                      <div><span className="text-white/50 block mb-1">Name</span><span className="text-white">{formData.fullName}</span></div>
-                      <div><span className="text-white/50 block mb-1">Organisation</span><span className="text-white">{formData.organisation}</span></div>
-                      <div><span className="text-white/50 block mb-1">Email</span><span className="text-white">{formData.email}</span></div>
-                      <div><span className="text-white/50 block mb-1">Phone</span><span className="text-white">{formData.phone}</span></div>
+                      <div><span className="text-muted-foreground/60 block mb-1">Name</span><span className="text-foreground font-medium">{formData.fullName}</span></div>
+                      <div><span className="text-muted-foreground/60 block mb-1">Organisation</span><span className="text-foreground font-medium">{formData.organisation}</span></div>
+                      <div><span className="text-muted-foreground/60 block mb-1">Email</span><span className="text-foreground font-medium">{formData.email}</span></div>
+                      <div><span className="text-muted-foreground/60 block mb-1">Phone</span><span className="text-foreground font-medium">{formData.phone}</span></div>
                     </div>
 
-                    <div className="h-px bg-white/10 w-full mb-8" />
+                    <div className="h-px bg-border w-full mb-8" />
 
                     <h4 className="text-primary text-sm uppercase tracking-widest font-bold mb-4">Event Details</h4>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-8 text-sm">
-                      <div><span className="text-white/50 block mb-1">Event Name</span><span className="text-white">{formData.eventName}</span></div>
-                      <div><span className="text-white/50 block mb-1">Date</span><span className="text-white">{formData.eventDate}</span></div>
-                      <div><span className="text-white/50 block mb-1">Location</span><span className="text-white">{formData.location}</span></div>
-                      <div><span className="text-white/50 block mb-1">Audience Size</span><span className="text-white">{formData.audienceSize}</span></div>
-                      <div><span className="text-white/50 block mb-1">Event Type</span><span className="text-white">{formData.eventType}</span></div>
-                      <div><span className="text-white/50 block mb-1">Speaking Topic</span><span className="text-white">{formData.speakingTopic}</span></div>
-                      <div><span className="text-white/50 block mb-1">Budget Range</span><span className="text-white">{formData.budgetRange}</span></div>
-                      {uploadedFile && <div><span className="text-white/50 block mb-1">Attached File</span><span className="text-white">{uploadedFile.name}</span></div>}
+                      <div><span className="text-muted-foreground/60 block mb-1">Event Name</span><span className="text-foreground font-medium">{formData.eventName}</span></div>
+                      <div><span className="text-muted-foreground/60 block mb-1">Date</span><span className="text-foreground font-medium">{formData.eventDate}</span></div>
+                      <div><span className="text-muted-foreground/60 block mb-1">Location</span><span className="text-foreground font-medium">{formData.location}</span></div>
+                      <div><span className="text-muted-foreground/60 block mb-1">Audience Size</span><span className="text-foreground font-medium">{formData.audienceSize}</span></div>
+                      <div><span className="text-muted-foreground/60 block mb-1">Event Type</span><span className="text-foreground font-medium">{formData.eventType}</span></div>
+                      <div><span className="text-muted-foreground/60 block mb-1">Speaking Topic</span><span className="text-foreground font-medium">{formData.speakingTopic}</span></div>
+                      <div><span className="text-muted-foreground/60 block mb-1">Budget Range</span><span className="text-foreground font-medium">{formData.budgetRange}</span></div>
+                      {uploadedFile && <div><span className="text-muted-foreground/60 block mb-1">Attached File</span><span className="text-foreground font-medium">{uploadedFile.name}</span></div>}
                     </div>
                   </div>
 
                   <div className="pt-2 flex justify-between items-center">
-                    <Button type="button" variant="outline" onClick={() => setStep(2)} className="border-white/20 text-white hover:bg-white/5 px-8">
+                    <Button type="button" variant="outline" onClick={() => setStep(2)} className="border-border text-foreground hover:bg-muted px-8">
                       <span className="mr-2">←</span> Edit Details
                     </Button>
                     <MagneticButton 
                       onClick={onSubmitFinal}
-                      className="bg-primary text-black hover:bg-primary/90 px-8 py-4 text-sm uppercase tracking-widest font-bold"
+                      className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-4 text-sm uppercase tracking-widest font-bold"
                     >
                       Submit Booking Request
                     </MagneticButton>
@@ -375,10 +378,10 @@ export default function Book() {
 
           {/* Booking Process Steps */}
           {!isSuccess && (
-            <div className="mt-20 pt-16 border-t border-white/10">
-              <h4 className="text-center text-white/50 font-serif text-xl mb-12">How It Works</h4>
+            <div className="mt-20 pt-16 border-t border-border">
+              <h4 className="text-center text-muted-foreground font-serif text-xl mb-12">How It Works</h4>
               <div className="flex flex-col md:flex-row justify-between gap-8 relative">
-                <div className="hidden md:block absolute top-6 left-[10%] right-[10%] h-[1px] bg-white/10 -z-10" />
+                <div className="hidden md:block absolute top-6 left-[10%] right-[10%] h-[1px] bg-border -z-10" />
                 
                 {[
                   { title: "Submit Request", desc: "Fill out the form with your event details" },
@@ -386,10 +389,10 @@ export default function Book() {
                   { title: "Confirmation", desc: "Sign contract and secure the date" }
                 ].map((step, i) => (
                   <div key={i} className="flex flex-col items-center text-center relative z-10 w-full md:w-1/3">
-                    <div className="w-12 h-12 rounded-full bg-background border-2 border-primary flex items-center justify-center text-primary font-bold mb-4 shadow-[0_0_15px_rgba(201,162,39,0.2)]">
+                    <div className="w-12 h-12 rounded-full bg-background border-2 border-primary flex items-center justify-center text-primary font-bold mb-4 shadow-[0_0_15px_hsla(215,68%,28%,0.15)]">
                       {i + 1}
                     </div>
-                    <h5 className="text-white font-medium mb-2">{step.title}</h5>
+                    <h5 className="text-foreground font-medium mb-2">{step.title}</h5>
                     <p className="text-muted-foreground text-sm max-w-[200px]">{step.desc}</p>
                   </div>
                 ))}
@@ -401,17 +404,17 @@ export default function Book() {
       </div>
 
       {/* Contact Info */}
-      <section className="py-24 bg-background border-t border-white/5">
+      <section className="py-24 bg-background border-t border-border">
         <div className="container mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="bg-card border border-white/5 p-8 rounded-xl flex flex-col items-center text-center hover:border-primary/30 transition-colors"
+              className="bg-card border border-border p-8 rounded-xl flex flex-col items-center text-center hover:border-primary/30 transition-colors"
             >
               <Mail className="w-8 h-8 text-primary mb-4" />
-              <h4 className="text-white font-medium mb-2">Email</h4>
+              <h4 className="text-foreground font-medium mb-2">Email</h4>
               <a href={`mailto:${siteData.contact.email}`} className="text-muted-foreground hover:text-primary transition-colors text-sm">{siteData.contact.email}</a>
             </motion.div>
             
@@ -420,10 +423,10 @@ export default function Book() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="bg-card border border-white/5 p-8 rounded-xl flex flex-col items-center text-center hover:border-primary/30 transition-colors"
+              className="bg-card border border-border p-8 rounded-xl flex flex-col items-center text-center hover:border-primary/30 transition-colors"
             >
               <Phone className="w-8 h-8 text-primary mb-4" />
-              <h4 className="text-white font-medium mb-2">Phone</h4>
+              <h4 className="text-foreground font-medium mb-2">Phone</h4>
               <a href={`tel:${siteData.contact.phone.replace(/[^0-9+]/g, '')}`} className="text-muted-foreground hover:text-primary transition-colors text-sm">{siteData.contact.phone}</a>
             </motion.div>
             
@@ -432,10 +435,10 @@ export default function Book() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="bg-card border border-white/5 p-8 rounded-xl flex flex-col items-center text-center hover:border-primary/30 transition-colors"
+              className="bg-card border border-border p-8 rounded-xl flex flex-col items-center text-center hover:border-primary/30 transition-colors"
             >
               <MapPin className="w-8 h-8 text-primary mb-4" />
-              <h4 className="text-white font-medium mb-2">Location</h4>
+              <h4 className="text-foreground font-medium mb-2">Location</h4>
               <span className="text-muted-foreground text-sm">London | Lagos | Global</span>
             </motion.div>
           </div>
@@ -450,8 +453,8 @@ export default function Book() {
           <div className="mt-16">
             <Accordion type="single" collapsible className="w-full">
               {bookData.faq.map((item, i) => (
-                <AccordionItem key={i} value={`item-${i}`} className="border-white/10 data-[state=open]:border-primary transition-colors">
-                  <AccordionTrigger className="text-left text-white hover:text-primary hover:no-underline font-serif text-lg py-6">
+                <AccordionItem key={i} value={`item-${i}`} className="border-border data-[state=open]:border-primary transition-colors">
+                  <AccordionTrigger className="text-left text-foreground hover:text-primary hover:no-underline font-serif text-lg py-6">
                     {item.q}
                   </AccordionTrigger>
                   <AccordionContent className="text-muted-foreground text-base leading-relaxed pb-6">
@@ -464,16 +467,16 @@ export default function Book() {
         </div>
       </section>
 
-      {/* Final CTA */}
-      <section className="py-32 bg-primary relative overflow-hidden flex items-center justify-center text-center">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiPgo8cmVjdCB3aWR0aD0iOCIgaGVpZ2h0PSI4IiBmaWxsPSIjQzlBMjI3Ij48L3JlY3Q+CjxwYXRoIGQ9Ik0wIDBMOCA4Wk04IDBMMCA4WiIgc3Ryb2tlPSIjMDAwMDAwIiBzdHJva2Utb3BhY2l0eT0iMC4wNSIgc3Ryb2tlLXdpZHRoPSIxIj48L3BhdGg+Cjwvc3ZnPg==')] opacity-20 pointer-events-none" />
+      <section className="py-32 bg-secondary border-t border-border relative overflow-hidden flex items-center justify-center text-center">
+        {/* Subtle radial glow */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,hsla(215,68%,28%,0.04)_0%,transparent_70%)] pointer-events-none" />
         <div className="container mx-auto px-6 relative z-10">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}>
-            <h2 className="text-4xl md:text-6xl font-serif text-black mb-10 leading-tight">
-              Ready to Inspire Your Audience?
+            <h2 className="text-4xl md:text-6xl font-serif text-foreground mb-10 leading-tight">
+              Ready to Inspire <span className="text-primary text-glow">Your Audience?</span>
             </h2>
             <MagneticButton 
-              className="bg-black text-white px-10 py-5 text-sm tracking-widest uppercase font-bold hover:bg-black/90 transition-all shadow-2xl"
+              className="bg-primary text-primary-foreground px-10 py-5 text-sm tracking-widest uppercase font-bold hover:bg-primary/90 transition-all shadow-[0_4px_20px_hsla(215,68%,28%,0.25)]"
               onClick={() => {
                 document.getElementById("booking-form")?.scrollIntoView({ behavior: "smooth" });
                 setStep(1);

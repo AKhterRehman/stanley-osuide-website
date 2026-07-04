@@ -9,16 +9,18 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90",
+        default: "bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm",
         destructive:
           "bg-destructive text-destructive-foreground hover:bg-destructive/90",
         outline:
-          "border border-border bg-transparent hover:bg-accent/10 hover:border-primary hover:text-primary",
+          "border-2 border-border bg-transparent hover:bg-primary/5 hover:border-primary hover:text-primary text-foreground",
         secondary:
-          "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        ghost: "hover:bg-accent/10 hover:text-accent-foreground",
+          "bg-secondary text-secondary-foreground hover:bg-secondary/80 border border-border",
+        ghost: "hover:bg-muted hover:text-foreground text-foreground/60",
         link: "text-primary underline-offset-4 hover:underline",
-        gold: "bg-gradient-to-r from-primary to-accent text-black border border-primary/50 shadow-[0_0_15px_rgba(201,162,39,0.3)] hover:shadow-[0_0_25px_rgba(201,162,39,0.5)] transition-all duration-300",
+        // Navy style — replaces old gold variant
+        gold: "bg-primary text-primary-foreground border border-primary/20 shadow-[0_4px_20px_hsla(215,68%,28%,0.20)] hover:shadow-[0_6px_28px_hsla(215,68%,28%,0.30)] hover:bg-primary/90 transition-all duration-300",
+        navy: "bg-accent text-accent-foreground hover:bg-accent/90 shadow-sm",
       },
       size: {
         default: "h-11 px-6 py-2",
@@ -52,7 +54,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       >
         <span className="relative z-10 flex items-center justify-center gap-2">{children}</span>
         {withShine && (
-          <div className="absolute inset-0 -translate-x-[150%] bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:animate-[shine_1.5s_ease-in-out]" />
+          <div className="absolute inset-0 -translate-x-[150%] bg-gradient-to-r from-transparent via-white/15 to-transparent group-hover:animate-[shine_1.5s_ease-in-out]" />
         )}
       </Comp>
     )

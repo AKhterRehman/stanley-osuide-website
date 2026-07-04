@@ -9,12 +9,12 @@ export function Topics() {
   return (
     <section id="topics" className="py-24 md:py-40 bg-background relative">
       <div className="container mx-auto px-6 md:px-12">
-        <SectionHeader 
-          title="Signature Speaking Topics" 
-          subtitle="What He Speaks About" 
+        <SectionHeader
+          title="Signature Speaking Topics"
+          subtitle="What He Speaks About"
         />
 
-        <motion.div 
+        <motion.div
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
           variants={staggerContainer}
           initial="hidden"
@@ -25,24 +25,24 @@ export function Topics() {
             <motion.div
               key={topic.id}
               variants={fadeInUp}
-              className="group relative bg-card p-8 md:p-10 rounded-xl border border-white/5 hover:border-primary/50 transition-all duration-500 flex flex-col h-full overflow-hidden hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(201,162,39,0.15)]"
+              className="group relative bg-card p-8 md:p-10 rounded-xl border border-border hover:border-primary/40 transition-all duration-500 flex flex-col h-full overflow-hidden hover:-translate-y-2 hover:shadow-[0_20px_50px_hsla(215,68%,28%,0.10)]"
             >
-              {/* Background gradient shift on hover */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              
+              {/* Background tint on hover */}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/4 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl" />
+
               <div className="flex justify-between items-start mb-8 relative z-10">
-                <span className="text-3xl font-serif text-primary/40 group-hover:text-primary transition-colors duration-300">
+                <span className="text-3xl font-serif text-primary/25 group-hover:text-primary/60 transition-colors duration-300">
                   {topic.id}
                 </span>
-                <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-primary group-hover:text-black group-hover:border-primary transition-all duration-300">
-                  <ArrowUpRight className="w-5 h-5 opacity-50 group-hover:opacity-100" />
+                <div className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-foreground/40 group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary transition-all duration-300">
+                  <ArrowUpRight className="w-5 h-5" />
                 </div>
               </div>
-              
-              <h3 className="text-2xl font-serif text-white mb-4 leading-snug group-hover:text-primary transition-colors duration-300 relative z-10">
+
+              <h3 className="text-xl font-serif text-foreground mb-4 leading-snug group-hover:text-primary transition-colors duration-300 relative z-10">
                 {topic.title}
               </h3>
-              
+
               <p className="text-muted-foreground text-sm leading-relaxed mt-auto relative z-10">
                 {topic.description}
               </p>

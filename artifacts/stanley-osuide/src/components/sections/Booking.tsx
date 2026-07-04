@@ -337,7 +337,7 @@ export function Booking() {
                     <MagneticButton 
                       type="submit" 
                       disabled={isSubmitting}
-                      className="bg-primary text-black font-bold uppercase tracking-widest px-10 py-4 w-full md:w-auto min-w-[200px]"
+                      className="bg-primary text-primary-foreground font-bold uppercase tracking-widest px-10 py-4 w-full md:w-auto min-w-[200px]"
                     >
                       {isSubmitting ? (
                         <Loader2 className="w-5 h-5 animate-spin mx-auto" />

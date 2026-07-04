@@ -34,7 +34,6 @@ export function useLenis() {
       }
     };
 
-    document.documentElement.classList.add("dark"); // Ensure dark mode is strictly forced
     document.addEventListener("click", handleAnchorClick);
 
     return () => {

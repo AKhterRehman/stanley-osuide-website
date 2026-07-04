@@ -51,16 +51,17 @@ export default function Contact() {
       <Navbar />
 
       {/* Hero */}
-      <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden bg-background pt-24">
+      <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden pt-32 pb-20 premium-page-hero"
+        style={{ backgroundImage: 'linear-gradient(120deg, hsl(210 22% 98% / 0.94), hsl(210 20% 95% / 0.84)), url("https://images.unsplash.com/photo-1534536281715-e28d76689b4d?auto=format&fit=crop&w=1800&q=85")' }}>
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-primary/10 rounded-full blur-[150px]" />
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden">
-          <span className="text-[20vw] font-serif font-bold text-white/[0.02] leading-none tracking-tighter whitespace-nowrap">CONTACT</span>
+          <span className="text-[20vw] font-serif font-bold text-foreground/[0.02] leading-none tracking-tighter whitespace-nowrap">CONTACT</span>
         </div>
         <div className="container relative z-10 mx-auto px-6 md:px-12 text-center">
           <motion.span variants={fadeInUp} initial="hidden" animate="visible" className="text-primary tracking-[0.2em] text-sm uppercase font-semibold mb-4 block">
             Let's Start a Conversation
           </motion.span>
-          <motion.h1 variants={clipReveal} initial="hidden" animate="visible" className="text-5xl md:text-7xl lg:text-8xl font-serif text-white tracking-tighter leading-none mb-6">
+          <motion.h1 variants={clipReveal} initial="hidden" animate="visible" className="text-5xl md:text-7xl lg:text-8xl font-serif text-foreground tracking-tighter leading-none mb-6">
             CONTACT
           </motion.h1>
         </div>

@@ -9,21 +9,24 @@ import { Play, Download, CheckCircle2, Clock, Users, BookOpen } from "lucide-rea
 import { Button } from "@/components/ui/button";
 
 export default function Speaking() {
+  const [isPlayingReel, setIsPlayingReel] = React.useState(false);
+
   return (
-    <div className="bg-background min-h-screen text-foreground selection:bg-primary selection:text-black">
+    <div className="bg-background min-h-screen text-foreground">
       <Navbar />
       
       {/* Hero */}
-      <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden bg-background pt-24">
+      <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden pt-32 pb-20 premium-page-hero"
+        style={{ backgroundImage: 'linear-gradient(120deg, hsl(210 22% 98% / 0.94), hsl(210 20% 95% / 0.84)), url("https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=1800&q=85")' }}>
         <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-primary/8 rounded-full blur-[120px]" />
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden">
-          <span className="text-[25vw] font-serif font-bold text-white/[0.02] leading-none tracking-tighter">SPEAKING</span>
+          <span className="text-[25vw] font-serif font-bold text-foreground/[0.03] leading-none tracking-tighter">SPEAKING</span>
         </div>
         <div className="container relative z-10 mx-auto px-6 md:px-12 text-center">
           <motion.span variants={fadeInUp} initial="hidden" animate="visible" className="text-primary tracking-[0.2em] text-sm uppercase font-semibold mb-4 block">
             The Voice
           </motion.span>
-          <motion.h1 variants={clipReveal} initial="hidden" animate="visible" className="text-5xl md:text-7xl lg:text-8xl font-serif text-white tracking-tighter leading-none mb-6">
+          <motion.h1 variants={clipReveal} initial="hidden" animate="visible" className="text-5xl md:text-7xl lg:text-8xl font-serif text-foreground tracking-tighter leading-none mb-6">
             SPEAKING
           </motion.h1>
           <motion.p variants={fadeInUp} initial="hidden" animate="visible" className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -44,27 +47,27 @@ export default function Speaking() {
                 whileInView="visible"
                 viewport={{ once: true }}
                 variants={fadeInUp}
-                className="bg-card border border-white/5 rounded-xl p-8 md:p-10 hover:border-primary/30 transition-all duration-500 group flex flex-col"
+                className="bg-card border border-border rounded-xl p-8 md:p-10 hover:border-primary/30 hover:shadow-[0_12px_40px_hsla(215,68%,28%,0.08)] transition-all duration-500 group flex flex-col"
               >
                 <div className="flex justify-between items-start mb-6">
                   <span className="text-4xl font-serif text-primary/30 group-hover:text-primary transition-colors">{topic.id}</span>
-                  <div className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-white/70 flex items-center gap-2">
+                  <div className="px-3 py-1 rounded-full bg-muted border border-border text-xs text-muted-foreground flex items-center gap-2">
                     <BookOpen className="w-3 h-3" />
                     {topic.format}
                   </div>
                 </div>
-                <h3 className="text-2xl font-serif text-white mb-4">{topic.title}</h3>
+                <h3 className="text-2xl font-serif text-foreground mb-4">{topic.title}</h3>
                 <p className="text-muted-foreground font-medium mb-4">{topic.description}</p>
                 <p className="text-muted-foreground/70 text-sm leading-relaxed mb-8 hidden md:block">{topic.detail}</p>
                 
-                <div className="mt-auto grid grid-cols-2 gap-4 pt-6 border-t border-white/5">
+                <div className="mt-auto grid grid-cols-2 gap-4 pt-6 border-t border-border">
                   <div>
-                    <div className="text-xs text-white/40 uppercase tracking-wider mb-1 flex items-center gap-2"><Users className="w-3 h-3" /> Audience</div>
-                    <div className="text-sm text-white/80">{topic.audience}</div>
+                    <div className="text-xs text-muted-foreground uppercase tracking-wider mb-1 flex items-center gap-2"><Users className="w-3 h-3" /> Audience</div>
+                    <div className="text-sm text-foreground/80">{topic.audience}</div>
                   </div>
                   <div>
-                    <div className="text-xs text-white/40 uppercase tracking-wider mb-1 flex items-center gap-2"><Clock className="w-3 h-3" /> Duration</div>
-                    <div className="text-sm text-white/80">{topic.duration}</div>
+                    <div className="text-xs text-muted-foreground uppercase tracking-wider mb-1 flex items-center gap-2"><Clock className="w-3 h-3" /> Duration</div>
+                    <div className="text-sm text-foreground/80">{topic.duration}</div>
                   </div>
                 </div>
               </motion.div>
@@ -89,7 +92,7 @@ export default function Speaking() {
               <motion.div
                 key={i}
                 variants={fadeInUp}
-                className="px-6 py-3 rounded-full border border-white/10 bg-card text-white/80 text-sm hover:border-primary/50 hover:text-primary transition-colors cursor-default"
+                className="px-6 py-3 rounded-full border border-border bg-card text-foreground/70 text-sm hover:border-primary/40 hover:text-primary hover:bg-primary/5 transition-colors cursor-default"
               >
                 {event}
               </motion.div>
@@ -110,9 +113,9 @@ export default function Speaking() {
             className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-16"
           >
             {siteData.whyBook.map((reason, i) => (
-              <motion.div key={i} variants={fadeInUp} className="flex items-start gap-4 p-6 bg-background rounded-xl border border-white/5">
+              <motion.div key={i} variants={fadeInUp} className="flex items-start gap-4 p-6 bg-card rounded-xl border border-border">
                 <CheckCircle2 className="w-6 h-6 text-primary shrink-0" />
-                <span className="text-white/90 font-medium">{reason}</span>
+                <span className="text-foreground font-medium">{reason}</span>
               </motion.div>
             ))}
           </motion.div>
@@ -123,7 +126,7 @@ export default function Speaking() {
       <section className="py-32 bg-background relative">
         <div className="container mx-auto px-6 md:px-12">
           <div className="max-w-4xl mx-auto text-center mb-12">
-            <h2 className="text-3xl md:text-5xl font-serif text-white mb-6">Speaker Reel</h2>
+            <h2 className="text-3xl md:text-5xl font-serif text-foreground mb-6">Speaker Reel</h2>
             <p className="text-muted-foreground">{speakingData.speakerReel.description}</p>
           </div>
           <motion.div 
@@ -131,34 +134,58 @@ export default function Speaking() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="aspect-video w-full max-w-5xl mx-auto bg-card border border-white/10 rounded-2xl flex flex-col items-center justify-center relative overflow-hidden group cursor-pointer"
+            className="aspect-video w-full max-w-5xl mx-auto bg-card border border-border rounded-2xl flex flex-col items-center justify-center relative overflow-hidden group shadow-[0_24px_80px_hsla(215,68%,28%,0.10)]"
           >
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10" />
-            <div className="w-20 h-20 rounded-full bg-primary/20 border border-primary text-primary flex items-center justify-center z-20 group-hover:bg-primary group-hover:text-black group-hover:scale-110 transition-all duration-500">
-              <Play className="w-8 h-8 ml-1" />
-            </div>
-            <div className="absolute bottom-10 z-20 text-center">
-              <p className="text-white/60 text-sm tracking-widest uppercase mb-2">Watch Highlights</p>
-              <p className="text-white text-xs">Reel available on request — contact us to view</p>
-            </div>
+            {isPlayingReel ? (
+              <iframe
+                src="https://www.youtube.com/embed/qp0HIF3SfI4?autoplay=1"
+                className="w-full h-full absolute inset-0 z-20 border-0"
+                allow="autoplay; fullscreen; picture-in-picture"
+                allowFullScreen
+                title="Stanley Osuide - Speaker Reel"
+              />
+            ) : (
+              <>
+                <img 
+                  src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&q=80&auto=format&fit=crop" 
+                  alt="Stanley Osuide Keynote" 
+                  className="w-full h-full object-cover absolute inset-0 transition-transform duration-700 group-hover:scale-105" 
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10" />
+                <button 
+                  onClick={() => setIsPlayingReel(true)}
+                  className="w-20 h-20 rounded-full bg-primary hover:bg-primary/90 border-2 border-white/30 text-white flex items-center justify-center z-20 group-hover:scale-110 transition-all duration-500 shadow-[0_0_40px_hsla(215,68%,28%,0.35)]"
+                >
+                  <Play className="w-8 h-8 ml-1 text-white fill-white" />
+                </button>
+                <div className="absolute bottom-10 z-20 text-center pointer-events-none">
+                  <p className="text-white/80 text-sm tracking-widest uppercase font-bold mb-2">Watch Keynote Highlights</p>
+                  <p className="text-white text-xs font-semibold">Click to play speaker video (2 min)</p>
+                </div>
+              </>
+            )}
           </motion.div>
         </div>
       </section>
 
       {/* Download Profile Strip */}
-      <section className="py-24 bg-primary text-black text-center px-6">
-        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} className="max-w-2xl mx-auto flex flex-col items-center">
-          <h2 className="text-3xl md:text-4xl font-serif mb-4">Download Speaker Profile</h2>
-          <p className="text-black/70 font-medium mb-10">{speakingData.downloadProfile.description}</p>
-          <Button 
-            variant="outline" 
-            className="bg-transparent border-black text-black hover:bg-black hover:text-white px-8 py-6 rounded-none uppercase tracking-widest text-xs font-bold gap-3 transition-colors"
-            onClick={() => window.alert("Speaker profile will be available for download shortly. Please contact us directly.")}
+      <section className="bg-secondary py-24 border-y border-border relative overflow-hidden text-center px-6">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,hsla(215,68%,28%,0.04)_0%,transparent_70%)] pointer-events-none" />
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} className="max-w-2xl mx-auto flex flex-col items-center relative z-10">
+          <h2 className="text-3xl md:text-4xl font-serif mb-4 text-foreground">Download <span className="text-primary">Speaker Profile</span></h2>
+          <p className="text-muted-foreground font-medium mb-10">{speakingData.downloadProfile.description}</p>
+          <a 
+            href={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/Stanley-Osuide-Speaker-Profile.pdf`} 
+            download="Stanley-Osuide-Speaker-Profile.pdf"
           >
-            <Download className="w-4 h-4" />
-            {speakingData.downloadProfile.label}
-          </Button>
-          <p className="mt-4 text-xs text-black/50 font-medium">{speakingData.downloadProfile.fileLabel}</p>
+            <Button 
+              className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-6 rounded-md uppercase tracking-widest text-xs font-bold gap-3 transition-colors shadow-[0_4px_20px_hsla(215,68%,28%,0.15)]"
+            >
+              <Download className="w-4 h-4" />
+              {speakingData.downloadProfile.label}
+            </Button>
+          </a>
+          <p className="mt-4 text-xs font-medium text-muted-foreground/60">{speakingData.downloadProfile.fileLabel}</p>
         </motion.div>
       </section>
 

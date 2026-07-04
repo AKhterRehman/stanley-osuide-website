@@ -13,16 +13,16 @@ export default function About() {
       <Navbar />
       
       {/* Hero */}
-      <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden bg-background pt-24">
+      <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden pt-32 pb-20 premium-page-hero">
         <div className="absolute top-1/3 left-1/4 w-96 h-96 bg-primary/8 rounded-full blur-[120px]" />
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden">
-          <span className="text-[25vw] font-serif font-bold text-white/[0.02] leading-none tracking-tighter">ABOUT</span>
+          <span className="text-[25vw] font-serif font-bold text-foreground/[0.02] leading-none tracking-tighter">ABOUT</span>
         </div>
         <div className="container relative z-10 mx-auto px-6 md:px-12 text-center">
           <motion.span variants={fadeInUp} initial="hidden" animate="visible" className="text-primary tracking-[0.2em] text-sm uppercase font-semibold mb-4 block">
             Stanley Osuide
           </motion.span>
-          <motion.h1 variants={clipReveal} initial="hidden" animate="visible" className="text-5xl md:text-7xl lg:text-8xl font-serif text-white tracking-tighter leading-none mb-6">
+          <motion.h1 variants={clipReveal} initial="hidden" animate="visible" className="text-5xl md:text-7xl lg:text-8xl font-serif text-foreground tracking-tighter leading-none mb-6">
             ABOUT
           </motion.h1>
           <motion.p variants={fadeInUp} initial="hidden" animate="visible" className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -120,11 +120,11 @@ export default function About() {
                 variants={fadeInUp}
                 className={`relative flex flex-col md:flex-row items-start mb-16 ${i % 2 === 0 ? 'md:flex-row-reverse' : ''}`}
               >
-                <div className="absolute left-4 md:left-1/2 w-4 h-4 rounded-full bg-primary -translate-x-1/2 shadow-[0_0_15px_rgba(201,162,39,0.5)] mt-1.5" />
+                <div className="absolute left-4 md:left-1/2 w-4 h-4 rounded-full bg-primary -translate-x-1/2 shadow-[0_0_15px_hsla(215,68%,28%,0.35)] mt-1.5" />
                 
                 <div className={`ml-12 md:ml-0 md:w-1/2 ${i % 2 === 0 ? 'md:pl-16' : 'md:pr-16 md:text-right'}`}>
                   <div className="text-primary font-serif text-xl md:text-2xl mb-2">{item.year}</div>
-                  <h3 className="text-white font-bold text-lg uppercase tracking-wide mb-3">{item.title}</h3>
+                  <h3 className="text-foreground font-bold text-lg uppercase tracking-wide mb-3">{item.title}</h3>
                   <p className="text-muted-foreground text-sm leading-relaxed">{item.description}</p>
                 </div>
               </motion.div>

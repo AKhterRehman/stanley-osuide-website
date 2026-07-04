@@ -34,16 +34,20 @@ export function Navbar() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.8, ease: [0.21, 0.47, 0.32, 0.98] }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled ? "py-4 glass shadow-lg" : "py-6 bg-transparent"
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "py-3" : "py-5"}`}
       >
-        <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
+        <div className="container mx-auto px-6 md:px-12">
+        <div className={`flex items-center justify-between rounded-full border px-5 md:px-7 py-3 transition-all duration-300 ${
+          isScrolled
+            ? "border-border bg-white/90 shadow-[0_14px_45px_rgba(40,34,24,0.10)] backdrop-blur-xl"
+            : "border-white/60 bg-white/65 backdrop-blur-md"
+        }`}>
+          {/* Logo */}
           <Link href="/" className="flex flex-col group">
-            <span className="font-serif text-xl md:text-2xl font-bold tracking-wider text-white">
+            <span className="font-serif text-xl md:text-2xl font-bold tracking-wider text-foreground">
               STANLEY
             </span>
-            <span className="font-sans text-[10px] tracking-[0.3em] text-primary transition-colors group-hover:text-white">
+            <span className="font-sans text-[10px] tracking-[0.3em] text-primary transition-colors group-hover:text-foreground/60">
               OSUIDE
             </span>
           </Link>
@@ -55,10 +59,10 @@ export function Navbar() {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className={`text-sm transition-colors tracking-wide ${
-                    isActive(link.href) 
-                      ? "text-primary font-semibold" 
-                      : "text-white/70 font-medium hover:text-white"
+                  className={`text-sm transition-colors tracking-wide font-medium ${
+                    isActive(link.href)
+                      ? "text-primary font-semibold"
+                      : "text-foreground/60 hover:text-foreground"
                   }`}
                 >
                   {link.name}
@@ -67,8 +71,8 @@ export function Navbar() {
             </div>
             <Link href="/book">
               <Button
-                variant="gold"
-                className="text-xs uppercase tracking-widest px-8"
+                variant="default"
+                className="text-xs uppercase tracking-widest px-8 bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm"
               >
                 Book Now
               </Button>
@@ -78,11 +82,12 @@ export function Navbar() {
           {/* Mobile Toggle */}
           <button
             aria-label="Open navigation menu"
-            className="md:hidden text-white hover:text-primary transition-colors"
+            className="md:hidden text-foreground hover:text-primary transition-colors"
             onClick={() => setIsMobileMenuOpen(true)}
           >
-            <Menu size={28} />
+            <Menu size={26} />
           </button>
+        </div>
         </div>
       </motion.nav>
 
@@ -93,26 +98,31 @@ export function Navbar() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] bg-background/95 backdrop-blur-xl flex flex-col justify-center items-center"
+            className="fixed inset-0 z-[100] bg-background/98 backdrop-blur-xl flex flex-col justify-center items-center"
           >
             <button
               aria-label="Close navigation menu"
-              className="absolute top-6 right-6 text-white hover:text-primary transition-colors p-2"
+              className="absolute top-6 right-6 text-foreground/60 hover:text-primary transition-colors p-2"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              <X size={32} />
+              <X size={28} />
             </button>
-            
+
+            {/* Decorative accent line */}
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
+
             <div className="flex flex-col items-center space-y-8">
               {navLinks.map((link, i) => (
                 <Link key={link.name} href={link.href}>
                   <motion.span
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.1 * i }}
+                    transition={{ delay: 0.08 * i }}
                     onClick={() => setIsMobileMenuOpen(false)}
                     className={`text-3xl font-serif block transition-colors ${
-                      isActive(link.href) ? "text-primary" : "text-white hover:text-primary"
+                      isActive(link.href)
+                        ? "text-primary"
+                        : "text-foreground hover:text-primary"
                     }`}
                   >
                     {link.name}
@@ -127,9 +137,8 @@ export function Navbar() {
               >
                 <Link href="/book" onClick={() => setIsMobileMenuOpen(false)}>
                   <Button
-                    variant="gold"
                     size="lg"
-                    className="w-full text-sm uppercase tracking-widest px-12"
+                    className="w-full text-sm uppercase tracking-widest px-12 bg-primary text-primary-foreground hover:bg-primary/90"
                   >
                     Book Stanley
                   </Button>

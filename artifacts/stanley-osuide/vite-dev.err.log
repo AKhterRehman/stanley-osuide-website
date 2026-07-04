@@ -1,0 +1,14 @@
+[33mYou are using Node.js 18.8.0. Vite requires Node.js version 20.19+ or 22.12+. Please upgrade your Node.js version.[39m
+[31mfailed to load config from C:\laragon\www\stanley-osuide-website\artifacts\stanley-osuide\vite.config.ts[39m
+[31merror when starting dev server:
+Error: PORT environment variable is required but was not provided.
+    at file:///C:/laragon/www/stanley-osuide-website/artifacts/stanley-osuide/node_modules/.vite-temp/vite.config.ts.timestamp-1783110627886-471e74d83fa16.mjs:10:9
+    at ModuleJob.run (node:internal/modules/esm/module_job:193:25)
+    at async Promise.all (index 0)
+    at async ESMLoader.import (node:internal/modules/esm/loader:528:24)
+    at async loadConfigFromBundledFile (file:///C:/laragon/www/stanley-osuide-website/node_modules/.pnpm/vite@7.3.5_@types+node@25.9_9fd212c37a75cb66ba3e15514cba1f93/node_modules/vite/dist/node/chunks/config.js:35996:12)
+    at async bundleAndLoadConfigFile (file:///C:/laragon/www/stanley-osuide-website/node_modules/.pnpm/vite@7.3.5_@types+node@25.9_9fd212c37a75cb66ba3e15514cba1f93/node_modules/vite/dist/node/chunks/config.js:35884:17)
+    at async loadConfigFromFile (file:///C:/laragon/www/stanley-osuide-website/node_modules/.pnpm/vite@7.3.5_@types+node@25.9_9fd212c37a75cb66ba3e15514cba1f93/node_modules/vite/dist/node/chunks/config.js:35851:42)
+    at async resolveConfig (file:///C:/laragon/www/stanley-osuide-website/node_modules/.pnpm/vite@7.3.5_@types+node@25.9_9fd212c37a75cb66ba3e15514cba1f93/node_modules/vite/dist/node/chunks/config.js:35500:22)
+    at async _createServer (file:///C:/laragon/www/stanley-osuide-website/node_modules/.pnpm/vite@7.3.5_@types+node@25.9_9fd212c37a75cb66ba3e15514cba1f93/node_modules/vite/dist/node/chunks/config.js:25441:67)
+    at async CAC.<anonymous> (file:///C:/laragon/www/stanley-osuide-website/node_modules/.pnpm/vite@7.3.5_@types+node@25.9_9fd212c37a75cb66ba3e15514cba1f93/node_modules/vite/dist/node/cli.js:572:18)[39m

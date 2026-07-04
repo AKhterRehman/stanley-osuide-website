@@ -21,9 +21,12 @@ export default function PrivacyPolicy() {
       <Navbar />
 
       {/* Hero */}
-      <section className="relative pt-32 pb-16 md:pt-48 md:pb-24 overflow-hidden bg-background">
-        <div className="container mx-auto px-6 md:px-12 text-center">
-          <motion.h1 variants={clipReveal} initial="hidden" animate="visible" className="text-4xl md:text-6xl font-serif text-white mb-6">
+      <section
+        className="relative pt-32 pb-16 md:pt-48 md:pb-24 overflow-hidden premium-page-hero"
+        style={{ backgroundImage: 'linear-gradient(120deg, hsl(210 22% 98% / 0.94), hsl(210 20% 95% / 0.84)), url("https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1800&q=85")' }}
+      >
+        <div className="container relative z-10 mx-auto px-6 md:px-12 text-center">
+          <motion.h1 variants={clipReveal} initial="hidden" animate="visible" className="text-4xl md:text-6xl font-serif text-foreground mb-6">
             PRIVACY POLICY
           </motion.h1>
           <motion.p variants={fadeInUp} initial="hidden" animate="visible" className="text-muted-foreground text-sm uppercase tracking-widest">

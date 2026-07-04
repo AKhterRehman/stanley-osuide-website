@@ -196,7 +196,7 @@ export const organisationsData = [
     shortName: "AIGG",
     role: "Founder & CEO",
     tagline: "Bridging Global Capital with African Opportunity",
-    color: "#C9A227",
+    color: "#1e3a8a",
     description: "Africa Investment Gateway Group (AIGG) is a specialist investment facilitation and advisory firm dedicated to connecting global investors, family offices, institutions and governments with high-impact opportunities across the African continent.",
     mission: "To be the premier bridge between global capital and African opportunity — accelerating investment, development and prosperity across the continent.",
     whatWeDo: [
@@ -215,7 +215,7 @@ export const organisationsData = [
     shortName: "JCS",
     role: "Founder & CEO",
     tagline: "Developing Talent. Building the Business of Sport.",
-    color: "#C9A227",
+    color: "#0f766e",
     description: "John Chamberlain Sports (JCS) is a sports development and enterprise organisation committed to identifying, developing and commercialising sporting talent — particularly across Africa and the diaspora — and building the business infrastructure of sport.",
     mission: "To develop world-class sporting talent and build a sustainable, commercially vibrant sports industry that creates pride, opportunity and economic value.",
     whatWeDo: [
@@ -234,7 +234,7 @@ export const organisationsData = [
     shortName: "BIILM",
     role: "Founder & Director",
     tagline: "Equipping Leaders for a Changing World",
-    color: "#C9A227",
+    color: "#0369a1",
     description: "The British International Institute for Leadership and Management (BIILM) is a leadership development institution committed to equipping leaders at every level with the principles, tools and mindset needed to lead with values, vision and excellence.",
     mission: "To develop transformational leaders equipped with character, competence and conviction to make a lasting impact in their sphere of influence.",
     whatWeDo: [
@@ -253,7 +253,7 @@ export const organisationsData = [
     shortName: "LI",
     role: "Initiative",
     tagline: "Raising Leaders. Transforming Communities.",
-    color: "#C9A227",
+    color: "#4338ca",
     description: "Leadership Impact is Stanley Osuide's community and social leadership initiative — focused on developing emerging leaders, particularly in underserved communities, schools and youth organisations across the UK and Africa.",
     mission: "To democratise access to leadership development and create pathways for the next generation of transformational community leaders.",
     whatWeDo: [

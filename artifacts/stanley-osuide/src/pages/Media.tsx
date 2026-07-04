@@ -26,6 +26,13 @@ const videos = [
   { id: 4, title: "Building Your Leadership Legacy", youtubeId: "VnPiVhVkm-4", duration: "16 min" },
 ];
 
+const tedxVideos = [
+  { id: 1, title: "Start With Why: How Great Leaders Inspire Action", youtubeId: "u4ZoJKF_VuA", duration: "TEDx Talk", image: "https://img.youtube.com/vi/u4ZoJKF_VuA/hqdefault.jpg" },
+  { id: 2, title: "Rethinking Startup Investment In Africa", youtubeId: "aeD0gZCWosw", duration: "TEDx Talk", image: "https://img.youtube.com/vi/aeD0gZCWosw/hqdefault.jpg" },
+  { id: 3, title: "Using Entrepreneurship to Rewrite the Story of Africa", youtubeId: "FfunEvuuNDM", duration: "TEDx Talk", image: "https://img.youtube.com/vi/FfunEvuuNDM/hqdefault.jpg" },
+  { id: 4, title: "What is Legacy to You?", youtubeId: "C2gC_R56nQs", duration: "TEDx Talk", image: "https://img.youtube.com/vi/C2gC_R56nQs/hqdefault.jpg" },
+];
+
 export default function Media() {
   const [activeCategory, setActiveCategory] = useState("all");
   const [playingId, setPlayingId] = useState<number | null>(null);
@@ -41,16 +48,17 @@ export default function Media() {
       <Navbar />
       
       {/* Hero */}
-      <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden bg-background pt-24">
+      <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden pt-32 pb-20 premium-page-hero"
+        style={{ backgroundImage: 'linear-gradient(120deg, hsl(210 22% 98% / 0.94), hsl(210 20% 95% / 0.84)), url("https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&w=1800&q=85")' }}>
         <div className="absolute top-1/4 right-1/3 w-64 h-64 bg-primary/10 rounded-full blur-[100px]" />
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden">
-          <span className="text-[25vw] font-serif font-bold text-white/[0.02] leading-none tracking-tighter">MEDIA</span>
+          <span className="text-[25vw] font-serif font-bold text-foreground/[0.02] leading-none tracking-tighter">MEDIA</span>
         </div>
         <div className="container relative z-10 mx-auto px-6 md:px-12 text-center">
           <motion.span variants={fadeInUp} initial="hidden" animate="visible" className="text-primary tracking-[0.2em] text-sm uppercase font-semibold mb-4 block">
             Gallery & Press
           </motion.span>
-          <motion.h1 variants={clipReveal} initial="hidden" animate="visible" className="text-5xl md:text-7xl lg:text-8xl font-serif text-white tracking-tighter leading-none mb-6">
+          <motion.h1 variants={clipReveal} initial="hidden" animate="visible" className="text-5xl md:text-7xl lg:text-8xl font-serif text-foreground tracking-tighter leading-none mb-6">
             MEDIA
           </motion.h1>
           <motion.p variants={fadeInUp} initial="hidden" animate="visible" className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -104,23 +112,24 @@ export default function Media() {
           <SectionHeader title="Featured Talks" subtitle="Video" />
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16">
-            {videos.map((video) => (
-              <div key={video.id} className="group relative rounded-xl overflow-hidden aspect-video bg-card border border-white/10 hover:border-primary/30 transition-all duration-500">
+            {tedxVideos.map((video) => (
+              <div key={video.id} className="group relative rounded-xl overflow-hidden aspect-video bg-card border border-border hover:border-primary/30 transition-all duration-500">
                 {playingId === video.id ? (
                   <iframe
-                    src={`https://www.youtube.com/embed/${video.youtubeId}?autoplay=1`}
+                    src={`https://www.youtube.com/embed/${video.youtubeId}?autoplay=1&rel=0&modestbranding=1`}
                     className="w-full h-full"
-                    allow="autoplay; fullscreen"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
+                    referrerPolicy="strict-origin-when-cross-origin"
                     allowFullScreen
                     title={video.title}
                   />
                 ) : (
                   <>
-                    <img src={`https://img.youtube.com/vi/${video.youtubeId}/maxresdefault.jpg`} alt={video.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                    <img src={video.image} alt={video.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                     <div className="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-colors" />
                     <button onClick={() => setPlayingId(video.id)} className="absolute inset-0 flex items-center justify-center w-full h-full">
                       <div className="w-16 h-16 rounded-full bg-primary/90 flex items-center justify-center group-hover:scale-110 transition-transform shadow-[0_0_30px_rgba(201,162,39,0.4)]">
-                        <Play className="w-6 h-6 text-black ml-1 fill-black" />
+                        <Play className="w-6 h-6 text-primary-foreground ml-1 fill-primary-foreground" />
                       </div>
                     </button>
                     <div className="absolute bottom-4 left-4 right-4">
