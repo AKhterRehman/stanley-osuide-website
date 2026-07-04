@@ -16,65 +16,129 @@ export default function Speaking() {
       <Navbar />
       
       {/* Hero */}
-      <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden pt-32 pb-20 premium-page-hero"
-        style={{ backgroundImage: 'linear-gradient(120deg, hsl(210 22% 98% / 0.94), hsl(210 20% 95% / 0.84)), url("https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=1800&q=85")' }}>
-        <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-primary/8 rounded-full blur-[120px]" />
+      <section className="relative min-h-[58vh] sm:min-h-[60vh] flex items-center justify-center overflow-hidden pt-32 pb-20 md:pt-36 md:pb-24 bg-gradient-to-br from-white via-slate-50 to-blue-50/40">
+        <div className="absolute inset-0 opacity-[0.28] pointer-events-none" style={{ backgroundImage: 'linear-gradient(120deg, rgba(255,255,255,0.94), rgba(248,250,252,0.88)), url("https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=1800&q=85")', backgroundSize: "cover", backgroundPosition: "center" }} />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(30,58,120,0.12)_0%,transparent_65%)] pointer-events-none" />
+        <div className="absolute inset-0 opacity-[0.05] pointer-events-none" style={{ backgroundImage: "radial-gradient(rgba(15,23,42,0.7) 1px, transparent 1px)", backgroundSize: "34px 34px" }} />
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
+        <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden">
-          <span className="text-[25vw] font-serif font-bold text-foreground/[0.03] leading-none tracking-tighter">SPEAKING</span>
+          <span className="text-[14vw] sm:text-[12vw] lg:text-[10vw] font-serif font-black text-primary/[0.035] leading-none tracking-[-0.08em] whitespace-nowrap">SPEAKING</span>
         </div>
         <div className="container relative z-10 mx-auto px-6 md:px-12 text-center">
-          <motion.span variants={fadeInUp} initial="hidden" animate="visible" className="text-primary tracking-[0.2em] text-sm uppercase font-semibold mb-4 block">
-            The Voice
-          </motion.span>
-          <motion.h1 variants={clipReveal} initial="hidden" animate="visible" className="text-5xl md:text-7xl lg:text-8xl font-serif text-foreground tracking-tighter leading-none mb-6">
+          <motion.div variants={fadeInUp} initial="hidden" animate="visible" className="flex items-center justify-center gap-3 mb-6">
+            <div className="w-10 h-px bg-primary/30 rounded-full" />
+            <span className="text-primary tracking-[0.28em] text-xs sm:text-sm uppercase font-bold">The Voice</span>
+            <div className="w-10 h-px bg-primary/30 rounded-full" />
+          </motion.div>
+          <motion.h1 variants={clipReveal} initial="hidden" animate="visible" className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-serif text-slate-950 tracking-[-0.06em] leading-[0.92] mb-6">
             SPEAKING
           </motion.h1>
-          <motion.p variants={fadeInUp} initial="hidden" animate="visible" className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
+          <motion.p variants={fadeInUp} initial="hidden" animate="visible" className="text-base sm:text-lg md:text-xl text-slate-600 max-w-2xl mx-auto font-medium leading-relaxed">
             Inspiring Leaders, Investors and Institutions Across the World
           </motion.p>
+          <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: 0.45, duration: 0.8, ease: "easeOut" }} className="h-px w-24 bg-primary/50 mx-auto mt-10 origin-center" />
         </div>
       </section>
 
       {/* Signature Topics - Extended */}
-      <section className="py-24 md:py-32 bg-secondary">
-        <div className="container mx-auto px-6 md:px-12">
-          <SectionHeader title="Signature Topics" subtitle="What He Speaks About" />
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-16">
-            {speakingData.topicsExtended.map((topic) => (
-              <motion.div
-                key={topic.id}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeInUp}
-                className="bg-card border border-border rounded-xl p-8 md:p-10 hover:border-primary/30 hover:shadow-[0_12px_40px_hsla(215,68%,28%,0.08)] transition-all duration-500 group flex flex-col"
-              >
-                <div className="flex justify-between items-start mb-6">
-                  <span className="text-4xl font-serif text-primary/30 group-hover:text-primary transition-colors">{topic.id}</span>
-                  <div className="px-3 py-1 rounded-full bg-muted border border-border text-xs text-muted-foreground flex items-center gap-2">
-                    <BookOpen className="w-3 h-3" />
-                    {topic.format}
+      {/* Signature Topics */}
+<section className="py-20 md:py-24 bg-secondary relative overflow-hidden">
+  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,hsla(215,68%,28%,0.05),transparent_70%)] pointer-events-none" />
+
+  <div className="container mx-auto px-6 md:px-12 relative z-10">
+    <SectionHeader
+      title="Signature Topics"
+      subtitle="What He Speaks About"
+    />
+
+    <motion.div
+      variants={staggerContainer}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-80px" }}
+      className="grid grid-cols-1 lg:grid-cols-2 gap-5 md:gap-6 mt-12 md:mt-14"
+    >
+      {speakingData.topicsExtended.map((topic) => (
+        <motion.div
+          key={topic.id}
+          variants={fadeInUp}
+          whileHover={{
+            y: -8,
+            scale: 1.015,
+            transition: {
+              duration: 0.22,
+              ease: "easeOut",
+            },
+          }}
+          whileTap={{ scale: 0.99 }}
+          className="group relative overflow-hidden rounded-3xl border border-border/70 bg-card p-6 sm:p-8 md:p-10 flex flex-col break-words transition-all duration-300 ease-out shadow-[0_10px_35px_rgba(15,23,42,0.04)] hover:border-primary/35 hover:shadow-[0_24px_60px_rgba(30,58,120,0.10)]"
+        >
+          {/* Premium Background Glow */}
+          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br from-primary/[0.06] via-transparent to-transparent" />
+
+          <div className="absolute -top-16 -right-16 w-44 h-44 rounded-full bg-primary/5 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+          <div className="relative z-10 flex flex-col h-full">
+            {/* Header */}
+            <div className="flex justify-between items-start mb-7">
+              <span className="font-serif text-5xl md:text-6xl text-primary/20 group-hover:text-primary/70 group-hover:translate-x-1 transition-all duration-300">
+                {topic.id}
+              </span>
+
+              <div className="inline-flex items-center gap-2 rounded-full border border-border bg-background/80 backdrop-blur-md px-3 py-1.5 text-xs font-medium text-muted-foreground transition-all duration-300 group-hover:border-primary/25 group-hover:text-primary">
+                <BookOpen className="w-3.5 h-3.5" />
+                {topic.format}
+              </div>
+            </div>
+
+            {/* Title */}
+            <h3 className="font-serif text-[1.75rem] leading-tight text-foreground mb-4 transition-colors duration-300 group-hover:text-primary">
+              {topic.title}
+            </h3>
+
+            {/* Description */}
+            <p className="text-muted-foreground leading-7 mb-5 font-medium transition-colors duration-300 group-hover:text-foreground/80">
+              {topic.description}
+            </p>
+
+            {/* Details */}
+            <p className="hidden md:block text-sm leading-7 text-muted-foreground/70 mb-8 transition-colors duration-300 group-hover:text-muted-foreground">
+              {topic.detail}
+            </p>
+
+            {/* Footer */}
+            <div className="mt-auto pt-6 border-t border-border/70 group-hover:border-primary/20 transition-colors duration-300">
+              <div className="grid grid-cols-2 gap-5">
+                <div>
+                  <div className="flex items-center gap-2 text-[11px] uppercase tracking-[0.18em] text-muted-foreground mb-2">
+                    <Users className="w-3.5 h-3.5 text-primary" />
+                    Audience
                   </div>
+
+                  <p className="text-sm font-semibold text-foreground/80 leading-relaxed">
+                    {topic.audience}
+                  </p>
                 </div>
-                <h3 className="text-2xl font-serif text-foreground mb-4">{topic.title}</h3>
-                <p className="text-muted-foreground font-medium mb-4">{topic.description}</p>
-                <p className="text-muted-foreground/70 text-sm leading-relaxed mb-8 hidden md:block">{topic.detail}</p>
-                
-                <div className="mt-auto grid grid-cols-2 gap-4 pt-6 border-t border-border">
-                  <div>
-                    <div className="text-xs text-muted-foreground uppercase tracking-wider mb-1 flex items-center gap-2"><Users className="w-3 h-3" /> Audience</div>
-                    <div className="text-sm text-foreground/80">{topic.audience}</div>
+
+                <div>
+                  <div className="flex items-center gap-2 text-[11px] uppercase tracking-[0.18em] text-muted-foreground mb-2">
+                    <Clock className="w-3.5 h-3.5 text-primary" />
+                    Duration
                   </div>
-                  <div>
-                    <div className="text-xs text-muted-foreground uppercase tracking-wider mb-1 flex items-center gap-2"><Clock className="w-3 h-3" /> Duration</div>
-                    <div className="text-sm text-foreground/80">{topic.duration}</div>
-                  </div>
+
+                  <p className="text-sm font-semibold text-foreground/80 leading-relaxed">
+                    {topic.duration}
+                  </p>
                 </div>
-              </motion.div>
-            ))}
+              </div>
+            </div>
           </div>
-        </div>
-      </section>
+        </motion.div>
+      ))}
+    </motion.div>
+  </div>
+</section>
 
       {/* Events / Ideal Events */}
       <section className="py-24 bg-background relative">
@@ -169,25 +233,103 @@ export default function Speaking() {
       </section>
 
       {/* Download Profile Strip */}
-      <section className="bg-secondary py-24 border-y border-border relative overflow-hidden text-center px-6">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,hsla(215,68%,28%,0.04)_0%,transparent_70%)] pointer-events-none" />
-        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} className="max-w-2xl mx-auto flex flex-col items-center relative z-10">
-          <h2 className="text-3xl md:text-4xl font-serif mb-4 text-foreground">Download <span className="text-primary">Speaker Profile</span></h2>
-          <p className="text-muted-foreground font-medium mb-10">{speakingData.downloadProfile.description}</p>
-          <a 
-            href={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/Stanley-Osuide-Speaker-Profile.pdf`} 
-            download="Stanley-Osuide-Speaker-Profile.pdf"
-          >
-            <Button 
-              className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-6 rounded-md uppercase tracking-widest text-xs font-bold gap-3 transition-colors shadow-[0_4px_20px_hsla(215,68%,28%,0.15)]"
-            >
-              <Download className="w-4 h-4" />
-              {speakingData.downloadProfile.label}
-            </Button>
-          </a>
-          <p className="mt-4 text-xs font-medium text-muted-foreground/60">{speakingData.downloadProfile.fileLabel}</p>
-        </motion.div>
-      </section>
+      {/* Download Profile CTA */}
+<section className="relative overflow-hidden py-20 sm:py-24 md:py-32 flex items-center justify-center text-center bg-accent text-accent-foreground">
+  {/* Background Glow */}
+  <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,hsla(210,80%,72%,0.18)_0%,transparent_65%)] pointer-events-none" />
+
+  {/* Premium Grid */}
+  <div
+    className="absolute inset-0 opacity-[0.06] pointer-events-none"
+    style={{
+      backgroundImage:
+        "radial-gradient(rgba(255,255,255,0.85) 1px, transparent 1px)",
+      backgroundSize: "32px 32px",
+    }}
+  />
+
+  <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+  <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+
+  <motion.div
+    variants={fadeInUp}
+    initial="hidden"
+    whileInView="visible"
+    viewport={{ once: true, margin: "-100px" }}
+    className="container mx-auto px-6 relative z-10"
+  >
+    {/* Small Heading */}
+    <div className="flex items-center justify-center gap-3 mb-8">
+      <div className="w-10 h-px bg-white/30 rounded-full" />
+
+      <span className="text-accent-foreground/70 text-xs tracking-[0.3em] uppercase font-semibold">
+        Speaker Profile
+      </span>
+
+      <div className="w-10 h-px bg-white/30 rounded-full" />
+    </div>
+
+    {/* Main Heading */}
+    <h2 className="text-4xl sm:text-5xl md:text-7xl font-serif leading-tight mb-6 md:mb-8 text-accent-foreground">
+      Download Speaker
+      <br />
+      <span className="text-accent-foreground/75">
+        Profile
+      </span>
+    </h2>
+
+    {/* Description */}
+    <p className="text-base sm:text-lg md:text-xl max-w-2xl mx-auto mb-10 md:mb-12 font-medium leading-relaxed text-accent-foreground/70">
+      {speakingData.downloadProfile.description}
+    </p>
+
+    {/* Download Button */}
+    <a
+      href={`${import.meta.env.BASE_URL.replace(
+        /\/$/,
+        ""
+      )}/Stanley-Osuide-Speaker-Profile.pdf`}
+      download="Stanley-Osuide-Speaker-Profile.pdf"
+      className="inline-flex"
+    >
+      <Button
+        className="
+          group
+          w-full sm:w-auto
+          bg-white
+          text-accent
+          px-8 sm:px-10
+          py-6
+          text-xs sm:text-sm
+          tracking-[0.18em]
+          uppercase
+          font-bold
+          rounded-lg
+          transition-all
+          duration-300
+          hover:bg-white/95
+          hover:-translate-y-1
+          hover:scale-[1.02]
+          shadow-[0_16px_40px_rgba(0,0,0,0.22)]
+          hover:shadow-[0_24px_60px_rgba(255,255,255,0.16)]
+          flex
+          items-center
+          justify-center
+          gap-3
+        "
+      >
+        <Download className="w-4 h-4 transition-transform duration-300 group-hover:-translate-y-0.5" />
+
+        {speakingData.downloadProfile.label}
+      </Button>
+    </a>
+
+    {/* File Label */}
+    <p className="mt-6 text-[11px] sm:text-xs font-semibold tracking-wide break-words text-accent-foreground/45">
+      {speakingData.downloadProfile.fileLabel}
+    </p>
+  </motion.div>
+</section>
 
       <Footer />
     </div>

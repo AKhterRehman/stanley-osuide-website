@@ -63,8 +63,8 @@ export default function FloatingContactWidget() {
         >
           {!contactMenuOpen && !shouldReduceMotion && (
             <>
-              <motion.span className="pointer-events-none absolute -inset-2.5 rounded-full border-2 border-primary bg-primary/15" animate={{ opacity: [0.95, 0], scale: [1, 1.55] }} transition={{ duration: 1.05, repeat: Infinity, ease: "easeOut" }} />
-              <motion.span className="pointer-events-none absolute -inset-4 rounded-full border border-primary/40 bg-primary/8" animate={{ opacity: [0.7, 0], scale: [1, 1.85] }} transition={{ duration: 1.05, repeat: Infinity, delay: 0.32, ease: "easeOut" }} />
+              <motion.span className="pointer-events-none absolute -inset-2.5 rounded-full border-2 border-sky-500 bg-sky-500/15" animate={{ opacity: [0.95, 0], scale: [1, 1.55] }} transition={{ duration: 1.05, repeat: Infinity, ease: "easeOut" }} />
+              <motion.span className="pointer-events-none absolute -inset-4 rounded-full border border-sky-500/40 bg-sky-500/8" animate={{ opacity: [0.7, 0], scale: [1, 1.85] }} transition={{ duration: 1.05, repeat: Infinity, delay: 0.32, ease: "easeOut" }} />
             </>
           )}
           <motion.div
@@ -74,7 +74,7 @@ export default function FloatingContactWidget() {
           >
             {contactMenuOpen
               ? <X className="h-6 w-6 text-foreground" />
-              : <Phone className="h-6 w-6 text-white" />
+              : <Phone className="h-6 w-6 text-sky-200 fill-sky-200/10" strokeWidth={2.2} />
             }
           </motion.div>
         </motion.button>

@@ -18,105 +18,256 @@ export default function Organisations() {
       <Navbar />
       
       {/* Hero */}
-      <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden pt-32 pb-20 premium-page-hero"
-        style={{ backgroundImage: 'linear-gradient(120deg, hsl(210 22% 98% / 0.94), hsl(210 20% 95% / 0.84)), url("https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1800&q=85")' }}>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[150px]" />
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden">
-          <span className="text-[15vw] md:text-[20vw] font-serif font-bold text-foreground/[0.02] leading-none tracking-tighter whitespace-nowrap">VENTURES</span>
-        </div>
-        <div className="container relative z-10 mx-auto px-6 md:px-12 text-center">
-          <motion.span variants={fadeInUp} initial="hidden" animate="visible" className="text-primary tracking-[0.2em] text-sm uppercase font-semibold mb-4 block">
-            Impact in Action
-          </motion.span>
-          <motion.h1 variants={clipReveal} initial="hidden" animate="visible" className="text-5xl md:text-7xl lg:text-8xl font-serif text-foreground tracking-tighter leading-none mb-6">
-            ORGANISATIONS
-          </motion.h1>
-          <motion.p variants={fadeInUp} initial="hidden" animate="visible" className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-            Four Ventures. One Vision. Transformational Impact.
-          </motion.p>
-        </div>
-      </section>
+   {/* Hero */}
+<section
+  className="relative min-h-[58vh] sm:min-h-[60vh] flex items-center justify-center overflow-hidden pt-32 pb-20 md:pt-36 md:pb-24 bg-gradient-to-br from-white via-slate-50 to-blue-50/40"
+>
+  <div
+    className="absolute inset-0 opacity-[0.28] pointer-events-none"
+    style={{
+      backgroundImage:
+        'linear-gradient(120deg, rgba(255,255,255,0.94), rgba(248,250,252,0.88)), url("https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1800&q=85")',
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+    }}
+  />
+
+  <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(30,58,120,0.12)_0%,transparent_65%)] pointer-events-none" />
+
+  <div
+    className="absolute inset-0 opacity-[0.05] pointer-events-none"
+    style={{
+      backgroundImage:
+        "radial-gradient(rgba(15,23,42,0.7) 1px, transparent 1px)",
+      backgroundSize: "34px 34px",
+    }}
+  />
+
+  <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
+  <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
+
+  <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden">
+    <span className="text-[15vw] sm:text-[13vw] lg:text-[11vw] font-serif font-black text-primary/[0.035] leading-none tracking-[-0.08em] whitespace-nowrap">
+      ORGANISATIONS
+    </span>
+  </div>
+
+  <div className="container relative z-10 mx-auto px-6 md:px-12 text-center">
+    <motion.div
+      variants={fadeInUp}
+      initial="hidden"
+      animate="visible"
+      className="flex items-center justify-center gap-3 mb-6"
+    >
+      <div className="w-10 h-px bg-primary/30 rounded-full" />
+      <span className="text-primary tracking-[0.28em] text-xs sm:text-sm uppercase font-bold">
+        Impact in Action
+      </span>
+      <div className="w-10 h-px bg-primary/30 rounded-full" />
+    </motion.div>
+
+    <motion.h1
+      variants={clipReveal}
+      initial="hidden"
+      animate="visible"
+      className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-serif text-slate-950 tracking-[-0.06em] leading-[0.92] mb-6"
+    >
+      ORGANISATIONS
+    </motion.h1>
+
+    <motion.p
+      variants={fadeInUp}
+      initial="hidden"
+      animate="visible"
+      className="text-base sm:text-lg md:text-xl text-slate-600 max-w-2xl mx-auto font-medium leading-relaxed"
+    >
+      Four Ventures. One Vision. Transformational Impact.
+    </motion.p>
+
+    <motion.div
+      initial={{ scaleX: 0 }}
+      animate={{ scaleX: 1 }}
+      transition={{ delay: 0.45, duration: 0.8, ease: "easeOut" }}
+      className="h-px w-24 bg-primary/50 mx-auto mt-10 origin-center"
+    />
+  </div>
+</section>
 
       {/* Orgs List */}
-      <div className="flex flex-col">
-        {organisationsData.map((org, i) => (
-          <section id={org.slug} key={org.slug} className={`py-24 md:py-32 relative scroll-mt-28 ${i % 2 !== 0 ? 'bg-secondary' : 'bg-background'}`}>
-            {/* Background watermark */}
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden opacity-5">
-              <span className="text-[30vw] font-serif font-black leading-none">{org.shortName}</span>
-            </div>
+      {/* Orgs List */}
+<div className="flex flex-col">
+  {organisationsData.map((org, i) => (
+    <section
+      id={org.slug}
+      key={org.slug}
+      className={`relative scroll-mt-28 overflow-hidden py-20 md:py-28 ${
+        i % 2 !== 0 ? "bg-slate-50" : "bg-white"
+      }`}
+    >
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(30,58,120,0.07),transparent_45%)] pointer-events-none" />
+      <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
 
-            <div className="container mx-auto px-6 md:px-12 relative z-10">
-              <div className={`flex flex-col lg:flex-row gap-16 items-center ${i % 2 !== 0 ? 'lg:flex-row-reverse' : ''}`}>
-                
-                {/* Visual */}
-                <motion.div 
-                  initial={{ opacity: 0, x: i % 2 !== 0 ? 50 : -50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.8 }}
-                  className="w-full lg:w-5/12 aspect-square max-w-md mx-auto bg-card border border-white/5 rounded-3xl flex items-center justify-center relative overflow-hidden group shadow-2xl"
-                >
-                  <img
-                    src={orgImages[org.slug]}
-                    alt={org.name}
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-foreground/10 to-transparent" />
-                  <div className="absolute bottom-6 left-6 rounded-xl border border-white/25 bg-white/20 px-5 py-3 backdrop-blur-md">
-                    <span className="font-serif text-2xl tracking-widest text-white">{org.shortName}</span>
-                  </div>
-                </motion.div>
+      <div className="container mx-auto px-6 md:px-12 relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 34 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.55, ease: "easeOut" }}
+          className={`grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center ${
+            i % 2 !== 0 ? "lg:[&>*:first-child]:order-2" : ""
+          }`}
+        >
+          {/* Visual */}
+          <motion.div
+            whileHover={{
+              y: -8,
+              scale: 1.015,
+              transition: { duration: 0.22, ease: "easeOut" },
+            }}
+            className="lg:col-span-5"
+          >
+            <div className="relative aspect-[4/4.6] sm:aspect-square max-w-md mx-auto rounded-[2rem] overflow-hidden bg-white border border-slate-200 shadow-[0_30px_90px_rgba(15,23,42,0.14)] group">
+              <img
+                src={orgImages[org.slug]}
+                alt={org.name}
+                className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+              />
 
-                {/* Content */}
-                <motion.div 
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.8 }}
-                  className="w-full lg:w-7/12"
-                >
-                  <div className="inline-block px-3 py-1 bg-primary/10 text-primary border border-primary/20 text-xs font-semibold uppercase tracking-widest mb-6">
-                    {org.role}
-                  </div>
-                  <h2 className="text-3xl md:text-5xl font-serif text-white mb-4">{org.name}</h2>
-                  <p className="text-xl text-primary font-serif italic mb-8">{org.tagline}</p>
-                  <p className="text-muted-foreground text-lg leading-relaxed mb-10">{org.description}</p>
-                  
-                  <div className="mb-10">
-                    <h4 className="text-sm text-white/50 uppercase tracking-widest mb-4">What We Do</h4>
-                    <ul className="space-y-3">
-                      {org.whatWeDo.map((item, idx) => (
-                        <li key={idx} className="flex items-start gap-3">
-                          <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
-                          <span className="text-white/80">{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-950/10 to-transparent" />
 
-                  <div className="mb-10">
-                    <div className="flex flex-wrap gap-2">
-                      {org.sectors.map((sector, idx) => (
-                        <span key={idx} className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-xs text-white/60">
-                          {sector}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  {org.website && (
-                    <a href={`https://${org.website}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-primary hover:text-white transition-colors uppercase tracking-widest text-sm font-bold gap-2 group">
-                      Visit Website
-                      <span className="group-hover:translate-x-1 transition-transform">→</span>
-                    </a>
-                  )}
-                </motion.div>
+              <div className="absolute inset-x-0 bottom-0 p-6">
+                <div className="inline-flex rounded-2xl border border-white/25 bg-white/20 px-5 py-3 backdrop-blur-xl shadow-[0_14px_38px_rgba(0,0,0,0.20)]">
+                  <span className="font-serif text-2xl tracking-widest text-white">
+                    {org.shortName}
+                  </span>
+                </div>
               </div>
             </div>
-          </section>
-        ))}
+          </motion.div>
+
+          {/* Content */}
+          <motion.div
+            initial={{ opacity: 0, x: i % 2 !== 0 ? -24 : 24 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.55, ease: "easeOut", delay: 0.05 }}
+            className="relative lg:col-span-7"
+          >
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden">
+              <span className="text-[38vw] sm:text-[30vw] lg:text-[16vw] font-serif font-black leading-none text-primary/[0.03] whitespace-nowrap">
+                {org.shortName}
+              </span>
+            </div>
+
+            <div className="relative z-10 max-w-3xl">
+              <div className="inline-flex items-center rounded-full border border-primary/20 bg-primary/10 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.22em] text-primary mb-6 shadow-[0_8px_24px_rgba(30,58,120,0.08)]">
+                {org.role}
+              </div>
+
+              <h2 className="text-4xl sm:text-5xl md:text-6xl font-serif text-slate-950 mb-4 leading-[0.95] tracking-[-0.04em]">
+                {org.name}
+              </h2>
+
+              <p className="text-lg md:text-xl text-primary font-serif italic mb-8 leading-relaxed">
+                {org.tagline}
+              </p>
+
+              <p className="text-slate-600 text-base md:text-lg leading-8 mb-10 max-w-2xl">
+                {org.description}
+              </p>
+
+              <div className="mb-10 rounded-3xl border border-slate-200 bg-white/80 backdrop-blur-xl p-6 shadow-[0_18px_50px_rgba(15,23,42,0.06)]">
+                <h4 className="text-[11px] text-slate-500 uppercase tracking-[0.26em] font-bold mb-5">
+                  What We Do
+                </h4>
+
+                <ul className="space-y-3">
+                  {org.whatWeDo.map((item, idx) => (
+                    <motion.li
+                      key={idx}
+                      whileHover={{ x: 4 }}
+                      transition={{ duration: 0.18, ease: "easeOut" }}
+                      className="flex items-start gap-3 text-slate-700"
+                    >
+                      <span className="mt-2.5 h-1.5 w-1.5 rounded-full bg-primary shrink-0 shadow-[0_0_0_4px_rgba(30,58,120,0.10)]" />
+                      <span className="leading-relaxed">{item}</span>
+                    </motion.li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="mb-10 flex flex-wrap gap-2">
+                {org.sectors.map((sector, idx) => (
+                  <motion.span
+                    key={idx}
+                    whileHover={{ y: -3, scale: 1.04 }}
+                    transition={{ duration: 0.18, ease: "easeOut" }}
+                    className="rounded-full border border-slate-200 bg-white/90 px-3.5 py-1.5 text-xs font-medium text-slate-600 shadow-[0_8px_22px_rgba(15,23,42,0.05)] hover:border-primary/25 hover:text-primary"
+                  >
+                    {sector}
+                  </motion.span>
+                ))}
+              </div>
+
+             {org.website && (
+  <motion.a
+    href={`https://${org.website}`}
+    target="_blank"
+    rel="noopener noreferrer"
+    whileHover={{
+      y: -4,
+      scale: 1.02,
+    }}
+    whileTap={{ scale: 0.98 }}
+    transition={{
+      duration: 0.22,
+      ease: "easeOut",
+    }}
+    className="
+      inline-flex
+      items-center
+      justify-center
+      gap-3
+      rounded-full
+      bg-primary
+      px-8
+      py-4
+      shadow-[0_18px_45px_rgba(30,58,120,0.28)]
+      hover:shadow-[0_28px_70px_rgba(30,58,120,0.38)]
+      hover:bg-primary/95
+      transition-all
+      duration-300
+      no-underline
+      group
+    "
+  >
+    <span className="font-bold uppercase tracking-[0.22em] text-sm !text-white">
+      Visit Website
+    </span>
+
+    <svg
+      className="w-4 h-4 text-white transition-transform duration-300 group-hover:translate-x-1"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      strokeWidth={2}
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M5 12h14m-6-6 6 6-6 6"
+      />
+    </svg>
+  </motion.a>
+)}
+            </div>
+          </motion.div>
+        </motion.div>
       </div>
+    </section>
+  ))}
+</div>
 
       <Footer />
     </div>
