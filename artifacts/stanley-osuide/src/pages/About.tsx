@@ -49,14 +49,14 @@ export default function About() {
               transition={{ duration: 1, ease: "easeOut" }}
               className="relative w-full aspect-[3/4] max-w-md mx-auto lg:mx-0 lg:sticky lg:top-32"
             >
-              <div className="absolute inset-0 border border-primary/20 rounded-t-full translate-x-4 translate-y-4" />
-              <div className="absolute inset-0 bg-card rounded-t-full overflow-hidden flex flex-col justify-end items-center group">
+              <div className="absolute inset-0 border border-primary/20 rounded-2xl translate-x-4 translate-y-4" />
+              <div className="absolute inset-0 bg-card rounded-2xl overflow-hidden flex flex-col justify-end items-center group">
                 <img 
                   src="/images/client/stanley-client-03.jpeg" 
                   alt="Stanley Osuide" 
                   loading="lazy"
                   decoding="async"
-                  className="w-full h-full object-cover object-top rounded-t-full"
+                  className="w-full h-full object-cover object-center"
                 />
               </div>
             </motion.div>
