@@ -1,5 +1,11 @@
 {
   "installCommand": "pnpm install --frozen-lockfile",
   "buildCommand": "pnpm --filter @workspace/stanley-osuide run build",
-  "outputDirectory": "artifacts/stanley-osuide/dist/public"
+  "outputDirectory": "artifacts/stanley-osuide/dist/public",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
 }
