@@ -32,8 +32,8 @@ export default function FloatingContactWidget() {
           {contactMenuOpen && (
             <div className="mb-2 flex flex-col items-end gap-3">
               {[
-                { icon: <MessageSquare className="h-5 w-5 text-white" />, label: "WhatsApp", href: "https://wa.me/447752536750", bg: "bg-[#25D366]", shadow: "shadow-[0_4px_16px_rgba(37,211,102,0.35)]" },
-                { icon: <Phone className="h-5 w-5 text-white" />, label: "Call Us", href: "tel:+447752536750", bg: "bg-[#3b82f6]", shadow: "shadow-[0_4px_16px_rgba(59,130,246,0.35)]" },
+                { icon: <MessageSquare className="h-5 w-5 text-white" />, label: "WhatsApp", href: "https://wa.me/447956823267", bg: "bg-[#25D366]", shadow: "shadow-[0_4px_16px_rgba(37,211,102,0.35)]" },
+                { icon: <Phone className="h-5 w-5 text-white" />, label: "Call Us", href: "tel:+447956823267", bg: "bg-[#3b82f6]", shadow: "shadow-[0_4px_16px_rgba(59,130,246,0.35)]" },
                 { icon: <Mail className="h-5 w-5 text-white" />, label: "Email Us", href: "mailto:speaker@stanleyosuide.com", bg: "bg-primary", shadow: "shadow-[0_4px_16px_hsla(215,68%,28%,0.35)]" },
               ].map((act, i) => (
                 <motion.a

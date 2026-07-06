@@ -247,8 +247,8 @@ export default function Book() {
                       {errorsStep2.eventDate && <span className="text-red-500 text-xs mt-1">{errorsStep2.eventDate.message}</span>}
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-muted-foreground mb-2">Location *</label>
-                      <input {...registerStep2("location")} className="w-full bg-background border border-border rounded-lg px-4 py-3 text-foreground focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" placeholder="City, Country or Virtual" />
+                      <label className="block text-sm font-medium text-muted-foreground mb-2">Location (UK, International or Online) *</label>
+                      <input {...registerStep2("location")} className="w-full bg-background border border-border rounded-lg px-4 py-3 text-foreground focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" placeholder="UK, International or Online" />
                       {errorsStep2.location && <span className="text-red-500 text-xs mt-1">{errorsStep2.location.message}</span>}
                     </div>
                     
@@ -439,7 +439,7 @@ export default function Book() {
             >
               <MapPin className="w-8 h-8 text-primary mb-4" />
               <h4 className="text-foreground font-medium mb-2">Location</h4>
-              <span className="text-muted-foreground text-sm">London | Lagos | Global</span>
+              <span className="text-muted-foreground text-sm">{siteData.contact.location}</span>
             </motion.div>
           </div>
         </div>

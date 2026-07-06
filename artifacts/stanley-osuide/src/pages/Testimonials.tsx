@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { clipReveal, fadeInUp } from "@/lib/animations";
 import { Mail, Phone, MapPin, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { siteData } from "@/data/content";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -41,23 +42,23 @@ export default function Contact() {
     {
       icon: Mail,
       label: "Email",
-      value: "speaker@stanleyosuide.com",
-      href: "mailto:speaker@stanleyosuide.com",
+      value: siteData.contact.email,
+      href: `mailto:${siteData.contact.email}`,
       desc: "Enquiries & Bookings",
     },
     {
       icon: Phone,
       label: "Phone",
-      value: "+44 (0) 7752 536750",
-      href: "tel:+447752536750",
+      value: siteData.contact.phone,
+      href: `tel:${siteData.contact.phone.replace(/[^0-9+]/g, "")}`,
       desc: "Mon–Fri, 9am–6pm GMT",
     },
     {
       icon: MapPin,
       label: "Office",
-      value: "London, United Kingdom",
+      value: siteData.contact.location,
       href: null,
-      desc: "Serving UK, Africa & Global",
+      desc: "Available for UK and international engagements",
     },
   ];
 

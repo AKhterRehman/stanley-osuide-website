@@ -174,7 +174,7 @@ export function Booking() {
                         <FormItem>
                           <FormLabel>Phone Number *</FormLabel>
                           <FormControl>
-                            <Input placeholder="+44 (0) 7000 000000" {...field} />
+                            <Input placeholder={siteData.contact.phone} {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -216,9 +216,9 @@ export function Booking() {
                       name="eventLocation"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Location (City, Country) *</FormLabel>
+                          <FormLabel>Location (UK, International or Online) *</FormLabel>
                           <FormControl>
-                            <Input placeholder="London, UK" {...field} />
+                            <Input placeholder={siteData.contact.location} {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>

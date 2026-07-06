@@ -8,15 +8,18 @@ import { Camera, Play, Mic, Newspaper } from "lucide-react";
 import { SectionHeader } from "@/components/ui/section-header";
 
 const galleryItems = [
-  { id: 1, title: "Global Leadership Summit — London", category: "conference", image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&h=400&q=80&auto=format&fit=crop" },
-  { id: 2, title: "Africa Investment Forum — Lagos", category: "conference", image: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=600&h=400&q=80&auto=format&fit=crop" },
-  { id: 3, title: "BIILM Leadership Conference", category: "conference", image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&q=80&auto=format&fit=crop" },
-  { id: 4, title: "Executive Roundtable — Dubai", category: "corporate", image: "https://images.unsplash.com/photo-1556761175-4b46a572b786?w=600&h=400&q=80&auto=format&fit=crop" },
-  { id: 5, title: "Youth Leadership Workshop", category: "workshop", image: "https://images.unsplash.com/photo-1529070538774-1843cb3265df?w=600&h=400&q=80&auto=format&fit=crop" },
-  { id: 6, title: "Diaspora Investor Summit", category: "conference", image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&q=80&auto=format&fit=crop" },
-  { id: 7, title: "Faith & Marketplace Conference", category: "faith", image: "https://images.unsplash.com/photo-1438032005730-c779502df39b?w=600&h=400&q=80&auto=format&fit=crop" },
-  { id: 8, title: "Keynote — Abuja Leadership Forum", category: "conference", image: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=600&h=400&q=80&auto=format&fit=crop" },
-  { id: 9, title: "Panel — UK-Africa Investment Week", category: "corporate", image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&h=400&q=80&auto=format&fit=crop" },
+  { id: 1, title: "Speaker Address", category: "conference", image: "/images/client/stanley-client-14.jpeg" },
+  { id: 2, title: "Executive Keynote Room", category: "conference", image: "/images/client/stanley-client-06.jpeg" },
+  { id: 3, title: "Leadership Panel Event", category: "corporate", image: "/images/client/stanley-client-17.jpeg" },
+  { id: 4, title: "Workshop Facilitation", category: "workshop", image: "/images/client/stanley-client-18.jpeg" },
+  { id: 5, title: "Boardroom Workshop", category: "workshop", image: "/images/client/stanley-client-09.jpeg" },
+  { id: 6, title: "Faith Leadership Address", category: "faith", image: "/images/client/stanley-client-21.jpeg" },
+  { id: 7, title: "Faith & Marketplace Gathering", category: "faith", image: "/images/client/stanley-client-13.jpeg" },
+  { id: 8, title: "Corporate Networking", category: "corporate", image: "/images/client/stanley-client-05.jpeg" },
+  { id: 9, title: "International Panel", category: "conference", image: "/images/client/stanley-client-04.jpeg" },
+  { id: 10, title: "Training Session", category: "workshop", image: "/images/client/stanley-client-23.jpeg" },
+  { id: 11, title: "Keynote Moment", category: "conference", image: "/images/client/stanley-client-16.jpeg" },
+  { id: 12, title: "Leadership Conversation", category: "corporate", image: "/images/client/stanley-client-11.jpeg" },
 ];
 
 const videos = [
@@ -49,7 +52,7 @@ export default function Media() {
 
       {/* Hero */}
       <section className="relative min-h-[58vh] sm:min-h-[60vh] flex items-center justify-center overflow-hidden pt-32 pb-20 md:pt-36 md:pb-24 bg-gradient-to-br from-white via-slate-50 to-blue-50/40">
-        <div className="absolute inset-0 opacity-[0.28] pointer-events-none" style={{ backgroundImage: 'linear-gradient(120deg, rgba(255,255,255,0.94), rgba(248,250,252,0.88)), url("https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&w=1800&q=85")', backgroundSize: "cover", backgroundPosition: "center" }} />
+        <div className="absolute inset-0 opacity-[0.28] pointer-events-none" style={{ backgroundImage: 'linear-gradient(120deg, rgba(255,255,255,0.94), rgba(248,250,252,0.88)), url("/images/client/stanley-client-17.jpeg")', backgroundSize: "cover", backgroundPosition: "center" }} />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(30,58,120,0.12)_0%,transparent_65%)] pointer-events-none" />
         <div className="absolute inset-0 opacity-[0.05] pointer-events-none" style={{ backgroundImage: "radial-gradient(rgba(15,23,42,0.7) 1px, transparent 1px)", backgroundSize: "34px 34px" }} />
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
@@ -99,7 +102,7 @@ export default function Media() {
                   key={item.id}
                   className="group relative rounded-xl overflow-hidden aspect-[4/3] cursor-pointer"
                 >
-                  <img src={item.image} alt={item.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                  <img src={item.image} alt={item.title} loading="lazy" decoding="async" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-300" />
                   <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
                     <span className="text-xs text-primary uppercase tracking-widest">{item.category}</span>

@@ -3,7 +3,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { siteData } from "@/data/content";
 import { staggerContainer, fadeInUp } from "@/lib/animations";
 import { MagneticButton } from "@/components/ui/magnetic-button";
-import { ArrowRight, Download } from "lucide-react";
+import { ArrowRight, Download, Linkedin } from "lucide-react";
 import { useLocation } from "wouter";
 
 export function Hero() {
@@ -17,7 +17,7 @@ export function Hero() {
   };
 
   const pdfUrl = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/Stanley-Osuide-Speaker-Profile.pdf`;
-  const portraitUrl = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/images/stanley-osuide.jpg`;
+  const portraitUrl = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/images/client/stanley-client-03.jpeg`;
   const fallbackPortraitUrl = "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1000&q=85";
 
   return (
@@ -122,6 +122,8 @@ export function Hero() {
                   Speaker Profile
                 </MagneticButton>
               </a>
+
+              
             </motion.div>
 
             {/* Trust metrics strip */}
@@ -163,6 +165,8 @@ export function Hero() {
                   event.currentTarget.src = fallbackPortraitUrl;
                 }}
                 alt="Stanley Osuide — International Speaker"
+                loading="eager"
+                decoding="async"
                 className="w-full h-full object-cover object-top"
               />
 

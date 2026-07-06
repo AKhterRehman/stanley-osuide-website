@@ -90,7 +90,8 @@ export const siteData = {
   ],
   contact: {
     email: "speaker@stanleyosuide.com",
-    phone: "+44 (0) 7000 000000",
+    phone: "+44 7956 823267",
+    location: "UK and International",
     website: "www.stanleyosuide.com"
   }
 };

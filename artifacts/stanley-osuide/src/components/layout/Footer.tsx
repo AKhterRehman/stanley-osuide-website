@@ -6,7 +6,7 @@ import { Linkedin, Twitter, Instagram, Youtube, Facebook, Mail, Phone, MapPin } 
 
 export function Footer() {
   const socialLinks = [
-    { icon: Linkedin, href: "https://linkedin.com/in/stanleyosuide", label: "LinkedIn" },
+    { icon: Linkedin, href: "https://www.linkedin.com/in/stanleyosuide/", label: "LinkedIn" },
     { icon: Twitter, href: "https://twitter.com/stanleyosuide", label: "Twitter" },
     { icon: Instagram, href: "https://instagram.com/stanleyosuide", label: "Instagram" },
     { icon: Youtube, href: "https://youtube.com/@stanleyosuide", label: "YouTube" },
@@ -123,7 +123,7 @@ export function Footer() {
               <li className="flex items-center gap-3">
                 <MapPin className="w-4 h-4 text-primary flex-shrink-0" />
                 <span className="text-muted-foreground text-sm">
-                  London | Lagos | Global
+                  {siteData.contact.location}
                 </span>
               </li>
             </ul>

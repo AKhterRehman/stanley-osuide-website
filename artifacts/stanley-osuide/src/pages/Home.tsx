@@ -29,7 +29,7 @@ function AboutTeaser() {
             <div className="absolute inset-0 border border-primary/20 rounded-t-full translate-x-4 translate-y-4" />
             <div className="absolute inset-0 bg-card rounded-t-full overflow-hidden flex flex-col justify-end items-center group">
               <img 
-                src="/images/stanley-osuide.jpg" 
+                src="/images/client/stanley-client-03.jpeg" 
                 alt="Stanley Osuide" 
                 onError={(event) => {
                   event.currentTarget.src = "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1000&q=85";
