@@ -52,7 +52,7 @@ export default function About() {
               <div className="absolute inset-0 border border-primary/20 rounded-2xl translate-x-4 translate-y-4" />
               <div className="absolute inset-0 bg-card rounded-2xl overflow-hidden flex flex-col justify-end items-center group">
                 <img 
-                  src="/images/client/stanley-client-03.jpeg" 
+                  src="/images/stanley-osuide.jpg" 
                   alt="Stanley Osuide" 
                   loading="lazy"
                   decoding="async"
