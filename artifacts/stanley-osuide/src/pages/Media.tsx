@@ -85,13 +85,22 @@ export default function Media() {
       return;
     }
 
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion) {
+      return;
+    }
+
     const autoplay = window.setInterval(() => {
+      if (document.hidden) {
+        return;
+      }
+
       if (galleryApi.canScrollNext()) {
         galleryApi.scrollNext();
       } else {
         galleryApi.scrollTo(0);
       }
-    }, 4500);
+    }, 5200);
 
     return () => window.clearInterval(autoplay);
   }, [galleryApi, filteredGallery.length]);
@@ -127,11 +136,11 @@ export default function Media() {
       </section>
 
       {/* Gallery */}
-      <section className="relative overflow-hidden bg-[linear-gradient(135deg,#f8fafc_0%,#eef3f8_45%,#ffffff_100%)] py-20 md:py-28">
+      <section className="relative overflow-hidden bg-[linear-gradient(135deg,#f8fafc_0%,#eef3f8_45%,#ffffff_100%)] py-16 md:py-22">
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
         <div className="absolute inset-0 pointer-events-none opacity-70" style={{ backgroundImage: "radial-gradient(rgba(30,58,120,0.08) 1px, transparent 1px)", backgroundSize: "28px 28px" }} />
-        <div className="absolute left-0 top-24 h-80 w-80 -translate-x-1/2 rounded-full bg-primary/10 blur-3xl pointer-events-none" />
-        <div className="absolute right-0 bottom-16 h-96 w-96 translate-x-1/3 rounded-full bg-slate-300/30 blur-3xl pointer-events-none" />
+        <div className="absolute left-0 top-24 hidden h-72 w-72 -translate-x-1/2 rounded-full bg-primary/10 blur-3xl pointer-events-none md:block" />
+        <div className="absolute right-0 bottom-16 hidden h-80 w-80 translate-x-1/3 rounded-full bg-slate-300/30 blur-3xl pointer-events-none md:block" />
 
         <div className="container relative z-10 mx-auto px-4 sm:px-6 md:px-12">
           <div className="mx-auto max-w-3xl text-center">
@@ -172,7 +181,7 @@ export default function Media() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.4, ease: "easeOut" }}
-              className="relative mx-auto mt-12 max-w-6xl"
+              className="relative mx-auto mt-10 max-w-6xl"
             >
               <Carousel
                 opts={{
@@ -184,49 +193,49 @@ export default function Media() {
                 setApi={setGalleryApi}
                 className="group"
               >
-                <CarouselContent className="-ml-4 py-4 sm:-ml-6">
+                <CarouselContent className="-ml-4 py-3 sm:-ml-5">
                   {filteredGallery.map((item, index) => {
                     const isActive = selectedGalleryIndex === index;
 
                     return (
-                      <CarouselItem key={item.id} className="pl-4 sm:pl-6 basis-[86%] sm:basis-[68%] lg:basis-[54%]">
+                      <CarouselItem key={item.id} className="pl-4 sm:pl-5 basis-[88%] sm:basis-[70%] lg:basis-[52%]">
                         <motion.article
                           animate={{
                             opacity: isActive ? 1 : 0.58,
-                            scale: isActive ? 1 : 0.92,
-                            y: isActive ? 0 : 12,
+                            scale: isActive ? 1 : 0.96,
+                            y: isActive ? 0 : 6,
                           }}
-                          transition={{ duration: 0.45, ease: "easeOut" }}
+                          transition={{ duration: 0.32, ease: "easeOut" }}
                           className="relative"
                         >
-                          <div className="absolute -inset-3 rounded-[2rem] bg-white/45 blur-xl opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                          <div className="relative overflow-hidden rounded-[1.75rem] border border-white/70 bg-white/55 p-2 shadow-[0_28px_80px_rgba(15,23,42,0.16)] backdrop-blur-2xl transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_34px_90px_rgba(30,58,120,0.22)]">
-                            <div className="relative min-h-[390px] overflow-hidden rounded-[1.35rem] sm:min-h-[500px] lg:min-h-[560px]">
+                          <div className="absolute -inset-2 hidden rounded-[1.75rem] bg-white/45 blur-lg opacity-0 transition-opacity duration-500 group-hover:opacity-100 md:block" />
+                          <div className="relative overflow-hidden rounded-[1.4rem] border border-white/70 bg-white/65 p-1.5 shadow-[0_18px_48px_rgba(15,23,42,0.13)] backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_24px_60px_rgba(30,58,120,0.16)] sm:rounded-[1.75rem] sm:p-2 md:backdrop-blur-xl">
+                            <div className="relative h-[300px] overflow-hidden rounded-[1.05rem] sm:h-[380px] sm:rounded-[1.35rem] lg:h-[440px]">
                               <img
                                 src={item.image}
                                 alt={item.title}
                                 loading={index < 2 ? "eager" : "lazy"}
                                 decoding="async"
-                                className="absolute inset-0 h-full w-full object-cover transition-all duration-1000 ease-out group-hover:scale-[1.04]"
+                                className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 ease-out md:group-hover:scale-[1.025]"
                               />
                               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/88 via-slate-950/22 to-white/5" />
-                              <div className="absolute inset-0 opacity-0 transition-opacity duration-700 group-hover:opacity-100 bg-[radial-gradient(circle_at_50%_35%,rgba(255,255,255,0.16),transparent_42%)]" />
+                              <div className="absolute inset-0 hidden opacity-0 transition-opacity duration-500 group-hover:opacity-100 md:block bg-[radial-gradient(circle_at_50%_35%,rgba(255,255,255,0.14),transparent_42%)]" />
 
                               <div className="absolute left-4 right-4 top-4 flex items-center justify-between gap-3 sm:left-6 sm:right-6 sm:top-6">
-                                <span className="rounded-full border border-white/35 bg-white/18 px-4 py-2 text-[10px] font-bold uppercase tracking-[0.2em] text-white shadow-lg backdrop-blur-xl">
+                                <span className="rounded-full border border-white/35 bg-white/18 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.18em] text-white shadow-md backdrop-blur-md sm:px-4 sm:py-2">
                                   {item.category}
                                 </span>
-                                <span className="rounded-full border border-white/25 bg-slate-950/25 px-3 py-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-white/80 backdrop-blur-xl">
+                                <span className="rounded-full border border-white/25 bg-slate-950/25 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-white/80 backdrop-blur-md sm:py-2">
                                   {String(index + 1).padStart(2, "0")}
                                 </span>
                               </div>
 
-                              <div className="absolute inset-x-4 bottom-4 sm:inset-x-6 sm:bottom-6">
-                                <div className="rounded-2xl border border-white/20 bg-white/14 p-4 shadow-[0_18px_55px_rgba(0,0,0,0.25)] backdrop-blur-xl sm:p-6">
+                              <div className="absolute inset-x-3 bottom-3 sm:inset-x-5 sm:bottom-5">
+                                <div className="rounded-2xl border border-white/20 bg-white/14 p-3 shadow-[0_12px_32px_rgba(0,0,0,0.22)] backdrop-blur-md sm:p-5 md:backdrop-blur-xl">
                                   <p className="mb-2 text-[10px] font-bold uppercase tracking-[0.24em] text-white/65">
                                     Premium Gallery
                                   </p>
-                                  <h3 className="font-serif text-2xl leading-tight tracking-[-0.03em] text-white sm:text-4xl">
+                                  <h3 className="font-serif text-xl leading-tight tracking-[-0.03em] text-white sm:text-3xl">
                                     {item.title}
                                   </h3>
                                 </div>
@@ -239,11 +248,11 @@ export default function Media() {
                   })}
                 </CarouselContent>
 
-                <CarouselPrevious className="left-2 top-1/2 hidden h-12 w-12 -translate-y-1/2 border-white/70 bg-white/75 text-primary shadow-[0_14px_35px_rgba(15,23,42,0.16)] backdrop-blur-xl transition-all hover:bg-primary hover:text-white disabled:opacity-0 sm:flex lg:-left-6" />
-                <CarouselNext className="right-2 top-1/2 hidden h-12 w-12 -translate-y-1/2 border-white/70 bg-white/75 text-primary shadow-[0_14px_35px_rgba(15,23,42,0.16)] backdrop-blur-xl transition-all hover:bg-primary hover:text-white disabled:opacity-0 sm:flex lg:-right-6" />
+                <CarouselPrevious className="left-2 top-1/2 hidden h-11 w-11 -translate-y-1/2 border-white/70 bg-white/80 text-primary shadow-[0_10px_28px_rgba(15,23,42,0.14)] backdrop-blur-md transition-all hover:bg-primary hover:text-white disabled:opacity-0 sm:flex lg:-left-5" />
+                <CarouselNext className="right-2 top-1/2 hidden h-11 w-11 -translate-y-1/2 border-white/70 bg-white/80 text-primary shadow-[0_10px_28px_rgba(15,23,42,0.14)] backdrop-blur-md transition-all hover:bg-primary hover:text-white disabled:opacity-0 sm:flex lg:-right-5" />
               </Carousel>
 
-              <div className="mt-8 flex items-center justify-center gap-2">
+              <div className="mt-6 flex items-center justify-center gap-2">
                 {filteredGallery.map((item, index) => (
                   <button
                     key={item.id}
