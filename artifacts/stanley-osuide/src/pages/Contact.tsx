@@ -22,6 +22,7 @@ type ContactFormData = z.infer<typeof contactSchema>;
 
 export default function Contact() {
   const [isSuccess, setIsSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
   const {
     register,
@@ -33,9 +34,29 @@ export default function Contact() {
     mode: "onBlur",
   });
 
-  const onSubmit = async () => {
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    setIsSuccess(true);
+  const onSubmit = async (data: ContactFormData) => {
+    setSubmitError("");
+
+    try {
+      const response = await fetch("/contact.php", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json().catch(() => null);
+
+      if (!response.ok || !result?.success) {
+        throw new Error(result?.message || "We could not send your message. Please try again.");
+      }
+
+      setIsSuccess(true);
+    } catch (error) {
+      setSubmitError(error instanceof Error ? error.message : "We could not send your message. Please try again.");
+    }
   };
 
   const contactCards = [
@@ -244,7 +265,15 @@ export default function Contact() {
                   </Button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                <form
+                  onSubmit={handleSubmit(onSubmit, () => setSubmitError(""))}
+                  className="space-y-6"
+                >
+                  {submitError && (
+                    <div className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm font-medium text-red-700">
+                      {submitError}
+                    </div>
+                  )}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-sm font-semibold text-slate-700 mb-2">
@@ -328,6 +357,7 @@ export default function Contact() {
                   <Button
                     type="submit"
                     disabled={isSubmitting}
+                    onClick={() => setSubmitError("")}
                     className="w-full bg-primary !text-white hover:bg-primary/90 py-6 text-sm uppercase tracking-widest font-bold rounded-xl shadow-[0_18px_40px_rgba(30,58,120,0.22)] hover:shadow-[0_24px_60px_rgba(30,58,120,0.30)] transition-all duration-300"
                   >
                     {isSubmitting ? "Sending..." : "Send Message"}
