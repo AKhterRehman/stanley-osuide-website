@@ -6,6 +6,13 @@ import { mediaData } from "@/data/content";
 import { fadeInUp, clipReveal } from "@/lib/animations";
 import { Camera, Play, Mic, Newspaper } from "lucide-react";
 import { SectionHeader } from "@/components/ui/section-header";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 const galleryItems = [
   { id: 1, title: "Speaker Address", category: "conference", image: "/images/client/stanley-client-14.jpeg" },
@@ -90,28 +97,52 @@ export default function Media() {
             ))}
           </div>
 
-          <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <AnimatePresence>
-              {filteredGallery.map((item) => (
-                <motion.div
-                  layout
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
-                  transition={{ duration: 0.3 }}
-                  key={item.id}
-                  className="group relative rounded-xl overflow-hidden aspect-[4/3] cursor-pointer"
-                >
-                  <img src={item.image} alt={item.title} loading="lazy" decoding="async" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-300" />
-                  <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                    <span className="text-xs text-primary uppercase tracking-widest">{item.category}</span>
-                    <div className="text-white font-medium text-sm mt-1">{item.title}</div>
-                  </div>
-                </motion.div>
-              ))}
-            </AnimatePresence>
-          </motion.div>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeCategory}
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -18 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              className="relative"
+            >
+              <Carousel
+                opts={{ align: "start", loop: filteredGallery.length > 3 }}
+                className="w-full"
+              >
+                <CarouselContent className="-ml-5">
+                  {filteredGallery.map((item) => (
+                    <CarouselItem
+                      key={item.id}
+                      className="pl-5 md:basis-1/2 lg:basis-1/3"
+                    >
+                      <div className="group relative rounded-xl overflow-hidden aspect-[4/3] cursor-pointer">
+                        <img
+                          src={item.image}
+                          alt={item.title}
+                          loading="lazy"
+                          decoding="async"
+                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-300" />
+                        <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                          <span className="text-xs text-primary uppercase tracking-widest">
+                            {item.category}
+                          </span>
+                          <div className="text-white font-medium text-sm mt-1">
+                            {item.title}
+                          </div>
+                        </div>
+                      </div>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+
+                <CarouselPrevious className="left-3 sm:-left-4 lg:-left-6 h-11 w-11 border-white/20 bg-slate-950/75 text-white hover:bg-primary hover:text-black disabled:hidden" />
+                <CarouselNext className="right-3 sm:-right-4 lg:-right-6 h-11 w-11 border-white/20 bg-slate-950/75 text-white hover:bg-primary hover:text-black disabled:hidden" />
+              </Carousel>
+            </motion.div>
+          </AnimatePresence>
         </div>
       </section>
 
