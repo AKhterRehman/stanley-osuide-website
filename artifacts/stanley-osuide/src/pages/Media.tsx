@@ -1,11 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { motion, AnimatePresence } from "framer-motion";
 import { mediaData } from "@/data/content";
 import { fadeInUp, clipReveal } from "@/lib/animations";
-import { Camera, Play, Mic, Newspaper } from "lucide-react";
+import { Play, Mic } from "lucide-react";
 import { SectionHeader } from "@/components/ui/section-header";
+import {
+  Carousel,
+  type CarouselApi,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 const galleryItems = [
   { id: 1, title: "Speaker Address", category: "conference", image: "/images/client/stanley-client-14.jpeg" },
@@ -39,12 +47,54 @@ const tedxVideos = [
 export default function Media() {
   const [activeCategory, setActiveCategory] = useState("all");
   const [playingId, setPlayingId] = useState<number | null>(null);
+  const [galleryApi, setGalleryApi] = useState<CarouselApi>();
+  const [selectedGalleryIndex, setSelectedGalleryIndex] = useState(0);
   
   const categories = ["all", "conference", "corporate", "workshop", "faith"];
   
   const filteredGallery = activeCategory === "all" 
     ? galleryItems 
     : galleryItems.filter(item => item.category.toLowerCase() === activeCategory.toLowerCase());
+
+  useEffect(() => {
+    setSelectedGalleryIndex(0);
+    galleryApi?.scrollTo(0);
+  }, [activeCategory, galleryApi]);
+
+  useEffect(() => {
+    if (!galleryApi) {
+      return;
+    }
+
+    const updateSelectedSlide = () => {
+      setSelectedGalleryIndex(galleryApi.selectedScrollSnap());
+    };
+
+    updateSelectedSlide();
+    galleryApi.on("select", updateSelectedSlide);
+    galleryApi.on("reInit", updateSelectedSlide);
+
+    return () => {
+      galleryApi.off("select", updateSelectedSlide);
+      galleryApi.off("reInit", updateSelectedSlide);
+    };
+  }, [galleryApi]);
+
+  useEffect(() => {
+    if (!galleryApi || filteredGallery.length < 2) {
+      return;
+    }
+
+    const autoplay = window.setInterval(() => {
+      if (galleryApi.canScrollNext()) {
+        galleryApi.scrollNext();
+      } else {
+        galleryApi.scrollTo(0);
+      }
+    }, 4500);
+
+    return () => window.clearInterval(autoplay);
+  }, [galleryApi, filteredGallery.length]);
 
   return (
     <div className="bg-background min-h-screen text-foreground selection:bg-primary selection:text-black">
@@ -77,10 +127,11 @@ export default function Media() {
       </section>
 
       {/* Gallery */}
-      <section className="relative overflow-hidden bg-slate-50 py-20 md:py-28">
+      <section className="relative overflow-hidden bg-[linear-gradient(135deg,#f8fafc_0%,#eef3f8_45%,#ffffff_100%)] py-20 md:py-28">
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
         <div className="absolute inset-0 pointer-events-none opacity-70" style={{ backgroundImage: "radial-gradient(rgba(30,58,120,0.08) 1px, transparent 1px)", backgroundSize: "28px 28px" }} />
-        <div className="absolute -right-24 top-16 h-72 w-72 rounded-full bg-primary/10 blur-3xl pointer-events-none" />
+        <div className="absolute left-0 top-24 h-80 w-80 -translate-x-1/2 rounded-full bg-primary/10 blur-3xl pointer-events-none" />
+        <div className="absolute right-0 bottom-16 h-96 w-96 translate-x-1/3 rounded-full bg-slate-300/30 blur-3xl pointer-events-none" />
 
         <div className="container relative z-10 mx-auto px-4 sm:px-6 md:px-12">
           <div className="mx-auto max-w-3xl text-center">
@@ -93,11 +144,11 @@ export default function Media() {
               Speaking Gallery
             </h2>
             <p className="mx-auto mt-5 max-w-2xl text-sm sm:text-base leading-relaxed text-slate-600">
-              Moments from keynotes, workshops, corporate rooms, and faith-based leadership gatherings.
+              A cinematic look at Stanley in keynote rooms, workshops, corporate gatherings, and leadership forums.
             </p>
           </div>
 
-          <div className="mt-10 flex flex-wrap justify-center gap-2.5 rounded-2xl border border-slate-200 bg-white/80 p-2 shadow-[0_18px_55px_rgba(15,23,42,0.07)] backdrop-blur-xl sm:mx-auto sm:w-fit">
+          <div className="mt-10 flex flex-wrap justify-center gap-2.5 rounded-2xl border border-white/70 bg-white/70 p-2 shadow-[0_18px_55px_rgba(15,23,42,0.07)] backdrop-blur-xl sm:mx-auto sm:w-fit">
             {categories.map((cat) => (
               <button
                 key={cat}
@@ -117,43 +168,96 @@ export default function Media() {
           <AnimatePresence mode="wait">
             <motion.div
               key={activeCategory}
-              initial={{ opacity: 0, y: 18 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -18 }}
-              transition={{ duration: 0.35, ease: "easeOut" }}
-              className="mt-12 grid grid-cols-1 gap-5 lg:grid-cols-12"
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
+              className="relative mx-auto mt-12 max-w-6xl"
             >
-              {filteredGallery.map((item, index) => (
-                <motion.article
-                  key={item.id}
-                  initial={{ opacity: 0, y: 18 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-80px" }}
-                  transition={{ duration: 0.35, delay: Math.min(index * 0.035, 0.22), ease: "easeOut" }}
-                  className={`group relative overflow-hidden rounded-2xl border border-white bg-white shadow-[0_18px_50px_rgba(15,23,42,0.10)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_28px_70px_rgba(30,58,120,0.16)] ${
-                    index === 0 ? "lg:col-span-6 lg:row-span-2" : "sm:min-h-0 lg:col-span-3"
-                  }`}
-                >
-                  <div className={`relative overflow-hidden ${index === 0 ? "aspect-[16/13] lg:aspect-auto lg:h-full" : "aspect-[4/3]"}`}>
-                    <img
-                      src={item.image}
-                      alt={item.title}
-                      loading={index < 3 ? "eager" : "lazy"}
-                      decoding="async"
-                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/10 to-transparent opacity-90" />
-                    <div className="absolute left-4 top-4 rounded-full border border-white/30 bg-white/90 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-primary shadow-sm backdrop-blur">
-                      {item.category}
-                    </div>
-                    <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5">
-                      <h3 className={`${index === 0 ? "text-2xl sm:text-3xl" : "text-lg sm:text-xl"} font-serif leading-tight text-white`}>
-                        {item.title}
-                      </h3>
-                    </div>
-                  </div>
-                </motion.article>
-              ))}
+              <Carousel
+                opts={{
+                  align: "center",
+                  loop: filteredGallery.length > 1,
+                  skipSnaps: false,
+                  dragFree: false,
+                }}
+                setApi={setGalleryApi}
+                className="group"
+              >
+                <CarouselContent className="-ml-4 py-4 sm:-ml-6">
+                  {filteredGallery.map((item, index) => {
+                    const isActive = selectedGalleryIndex === index;
+
+                    return (
+                      <CarouselItem key={item.id} className="pl-4 sm:pl-6 basis-[86%] sm:basis-[68%] lg:basis-[54%]">
+                        <motion.article
+                          animate={{
+                            opacity: isActive ? 1 : 0.58,
+                            scale: isActive ? 1 : 0.92,
+                            y: isActive ? 0 : 12,
+                          }}
+                          transition={{ duration: 0.45, ease: "easeOut" }}
+                          className="relative"
+                        >
+                          <div className="absolute -inset-3 rounded-[2rem] bg-white/45 blur-xl opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                          <div className="relative overflow-hidden rounded-[1.75rem] border border-white/70 bg-white/55 p-2 shadow-[0_28px_80px_rgba(15,23,42,0.16)] backdrop-blur-2xl transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_34px_90px_rgba(30,58,120,0.22)]">
+                            <div className="relative min-h-[390px] overflow-hidden rounded-[1.35rem] sm:min-h-[500px] lg:min-h-[560px]">
+                              <img
+                                src={item.image}
+                                alt={item.title}
+                                loading={index < 2 ? "eager" : "lazy"}
+                                decoding="async"
+                                className="absolute inset-0 h-full w-full object-cover transition-all duration-1000 ease-out group-hover:scale-[1.04]"
+                              />
+                              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/88 via-slate-950/22 to-white/5" />
+                              <div className="absolute inset-0 opacity-0 transition-opacity duration-700 group-hover:opacity-100 bg-[radial-gradient(circle_at_50%_35%,rgba(255,255,255,0.16),transparent_42%)]" />
+
+                              <div className="absolute left-4 right-4 top-4 flex items-center justify-between gap-3 sm:left-6 sm:right-6 sm:top-6">
+                                <span className="rounded-full border border-white/35 bg-white/18 px-4 py-2 text-[10px] font-bold uppercase tracking-[0.2em] text-white shadow-lg backdrop-blur-xl">
+                                  {item.category}
+                                </span>
+                                <span className="rounded-full border border-white/25 bg-slate-950/25 px-3 py-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-white/80 backdrop-blur-xl">
+                                  {String(index + 1).padStart(2, "0")}
+                                </span>
+                              </div>
+
+                              <div className="absolute inset-x-4 bottom-4 sm:inset-x-6 sm:bottom-6">
+                                <div className="rounded-2xl border border-white/20 bg-white/14 p-4 shadow-[0_18px_55px_rgba(0,0,0,0.25)] backdrop-blur-xl sm:p-6">
+                                  <p className="mb-2 text-[10px] font-bold uppercase tracking-[0.24em] text-white/65">
+                                    Premium Gallery
+                                  </p>
+                                  <h3 className="font-serif text-2xl leading-tight tracking-[-0.03em] text-white sm:text-4xl">
+                                    {item.title}
+                                  </h3>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </motion.article>
+                      </CarouselItem>
+                    );
+                  })}
+                </CarouselContent>
+
+                <CarouselPrevious className="left-2 top-1/2 hidden h-12 w-12 -translate-y-1/2 border-white/70 bg-white/75 text-primary shadow-[0_14px_35px_rgba(15,23,42,0.16)] backdrop-blur-xl transition-all hover:bg-primary hover:text-white disabled:opacity-0 sm:flex lg:-left-6" />
+                <CarouselNext className="right-2 top-1/2 hidden h-12 w-12 -translate-y-1/2 border-white/70 bg-white/75 text-primary shadow-[0_14px_35px_rgba(15,23,42,0.16)] backdrop-blur-xl transition-all hover:bg-primary hover:text-white disabled:opacity-0 sm:flex lg:-right-6" />
+              </Carousel>
+
+              <div className="mt-8 flex items-center justify-center gap-2">
+                {filteredGallery.map((item, index) => (
+                  <button
+                    key={item.id}
+                    type="button"
+                    aria-label={`Show ${item.title}`}
+                    onClick={() => galleryApi?.scrollTo(index)}
+                    className={`h-2.5 rounded-full transition-all duration-300 ${
+                      selectedGalleryIndex === index
+                        ? "w-10 bg-primary shadow-[0_8px_22px_rgba(30,58,120,0.25)]"
+                        : "w-2.5 bg-slate-300 hover:bg-slate-500"
+                    }`}
+                  />
+                ))}
+              </div>
             </motion.div>
           </AnimatePresence>
         </div>
