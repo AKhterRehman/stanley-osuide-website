@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { motion, AnimatePresence } from "framer-motion";
@@ -8,6 +8,7 @@ import { Camera, Play, Mic, Newspaper } from "lucide-react";
 import { SectionHeader } from "@/components/ui/section-header";
 import {
   Carousel,
+  type CarouselApi,
   CarouselContent,
   CarouselItem,
   CarouselNext,
@@ -46,12 +47,37 @@ const tedxVideos = [
 export default function Media() {
   const [activeCategory, setActiveCategory] = useState("all");
   const [playingId, setPlayingId] = useState<number | null>(null);
+  const [galleryApi, setGalleryApi] = useState<CarouselApi>();
+  const [selectedGalleryIndex, setSelectedGalleryIndex] = useState(0);
   
   const categories = ["all", "conference", "corporate", "workshop", "faith"];
   
   const filteredGallery = activeCategory === "all" 
     ? galleryItems 
     : galleryItems.filter(item => item.category.toLowerCase() === activeCategory.toLowerCase());
+
+  useEffect(() => {
+    setSelectedGalleryIndex(0);
+  }, [activeCategory]);
+
+  useEffect(() => {
+    if (!galleryApi) {
+      return;
+    }
+
+    const updateSelectedSlide = () => {
+      setSelectedGalleryIndex(galleryApi.selectedScrollSnap());
+    };
+
+    updateSelectedSlide();
+    galleryApi.on("select", updateSelectedSlide);
+    galleryApi.on("reInit", updateSelectedSlide);
+
+    return () => {
+      galleryApi.off("select", updateSelectedSlide);
+      galleryApi.off("reInit", updateSelectedSlide);
+    };
+  }, [galleryApi]);
 
   return (
     <div className="bg-background min-h-screen text-foreground selection:bg-primary selection:text-black">
@@ -84,67 +110,101 @@ export default function Media() {
       </section>
 
       {/* Gallery */}
-      <section className="py-24 bg-secondary">
-        <div className="container mx-auto px-6 md:px-12">
-          <SectionHeader title="Speaking Gallery" subtitle="On Stage" />
-          
-          <div className="flex flex-wrap gap-3 mb-12 mt-12">
-            {categories.map(cat => (
-              <button key={cat} onClick={() => setActiveCategory(cat)}
-                className={`px-6 py-2 rounded-full text-xs uppercase tracking-widest transition-all duration-300 ${activeCategory === cat ? "bg-primary text-black font-bold" : "border border-white/20 text-white/60 hover:border-primary/50 hover:text-white"}`}>
-                {cat === "all" ? "All" : cat}
-              </button>
-            ))}
-          </div>
+    {/* Gallery */}
+<section className="relative py-20 md:py-28 overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
+  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(201,162,39,0.16),transparent_45%)]" />
 
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeCategory}
-              initial={{ opacity: 0, y: 18 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -18 }}
-              transition={{ duration: 0.3, ease: "easeOut" }}
-              className="relative"
-            >
-              <Carousel
-                opts={{ align: "start", loop: filteredGallery.length > 3 }}
-                className="w-full"
+  <div className="container relative z-10 mx-auto px-4 sm:px-6 md:px-12">
+    <SectionHeader title="Speaking Gallery" subtitle="On Stage" />
+
+    <div className="flex flex-wrap justify-center gap-3 mt-10 mb-12">
+      {categories.map((cat) => (
+        <button
+          key={cat}
+          onClick={() => setActiveCategory(cat)}
+          className={`px-5 py-2 rounded-full text-[11px] uppercase tracking-widest transition-all duration-300 ${
+            activeCategory === cat
+              ? "bg-primary text-black font-bold shadow-[0_0_25px_rgba(201,162,39,0.35)]"
+              : "bg-white/5 border border-white/10 text-white/60 hover:text-white hover:border-primary/40"
+          }`}
+        >
+          {cat === "all" ? "All" : cat}
+        </button>
+      ))}
+    </div>
+
+    <AnimatePresence mode="wait">
+      <motion.div
+        key={activeCategory}
+        initial={{ opacity: 0, y: 25 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -25 }}
+        transition={{ duration: 0.35, ease: "easeOut" }}
+        className="relative"
+      >
+        <Carousel
+          opts={{
+            align: "start",
+            loop: filteredGallery.length > 1,
+          }}
+          setApi={setGalleryApi}
+          className="w-full"
+        >
+          <CarouselContent className="-ml-4">
+            {filteredGallery.map((item) => (
+              <CarouselItem
+                key={item.id}
+                className="pl-4 basis-full sm:basis-1/2 lg:basis-1/3"
               >
-                <CarouselContent className="-ml-5">
-                  {filteredGallery.map((item) => (
-                    <CarouselItem
-                      key={item.id}
-                      className="pl-5 md:basis-1/2 lg:basis-1/3"
-                    >
-                      <div className="group relative rounded-xl overflow-hidden aspect-[4/3] cursor-pointer">
-                        <img
-                          src={item.image}
-                          alt={item.title}
-                          loading="lazy"
-                          decoding="async"
-                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-300" />
-                        <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                          <span className="text-xs text-primary uppercase tracking-widest">
-                            {item.category}
-                          </span>
-                          <div className="text-white font-medium text-sm mt-1">
-                            {item.title}
-                          </div>
-                        </div>
-                      </div>
-                    </CarouselItem>
-                  ))}
-                </CarouselContent>
+                <div className="group relative overflow-hidden rounded-[28px] aspect-[4/5] sm:aspect-[4/4] lg:aspect-[4/5] bg-white/5 border border-white/10 shadow-[0_25px_80px_rgba(0,0,0,0.35)]">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    loading="lazy"
+                    decoding="async"
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
 
-                <CarouselPrevious className="left-3 sm:-left-4 lg:-left-6 h-11 w-11 border-white/20 bg-slate-950/75 text-white hover:bg-primary hover:text-black disabled:hidden" />
-                <CarouselNext className="right-3 sm:-right-4 lg:-right-6 h-11 w-11 border-white/20 bg-slate-950/75 text-white hover:bg-primary hover:text-black disabled:hidden" />
-              </Carousel>
-            </motion.div>
-          </AnimatePresence>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent" />
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 bg-primary/10 transition-opacity duration-500" />
+
+                  <div className="absolute left-5 right-5 bottom-5">
+                    <span className="inline-flex mb-3 rounded-full border border-primary/40 bg-black/40 backdrop-blur-md px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-primary">
+                      {item.category}
+                    </span>
+
+                    <h3 className="text-white text-xl sm:text-2xl font-serif leading-tight">
+                      {item.title}
+                    </h3>
+                  </div>
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+
+          <CarouselPrevious className="hidden sm:flex -left-5 lg:-left-8 h-12 w-12 rounded-full border-white/20 bg-white/10 text-white backdrop-blur-md hover:bg-primary hover:text-black hover:border-primary" />
+          <CarouselNext className="hidden sm:flex -right-5 lg:-right-8 h-12 w-12 rounded-full border-white/20 bg-white/10 text-white backdrop-blur-md hover:bg-primary hover:text-black hover:border-primary" />
+        </Carousel>
+
+        <div className="mt-8 flex justify-center gap-2">
+          {filteredGallery.map((item, index) => (
+            <button
+              key={item.id}
+              type="button"
+              aria-label={`Go to ${item.title}`}
+              onClick={() => galleryApi?.scrollTo(index)}
+              className={`h-2 rounded-full transition-all duration-300 ${
+                selectedGalleryIndex === index
+                  ? "w-10 bg-primary"
+                  : "w-2 bg-white/25 hover:bg-white/50"
+              }`}
+            />
+          ))}
         </div>
-      </section>
+      </motion.div>
+    </AnimatePresence>
+  </div>
+</section>
 
       {/* Videos */}
       <section className="py-24 bg-background">

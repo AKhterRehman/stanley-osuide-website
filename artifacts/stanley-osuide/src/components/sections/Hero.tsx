@@ -17,7 +17,7 @@ export function Hero() {
   };
 
   const pdfUrl = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/Stanley-Osuide-Speaker-Profile.pdf`;
-  const portraitUrl = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/images/client/stanley-client-03.jpeg`;
+  const portraitUrl = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/images/stanley-osuide.jpg`;
   const fallbackPortraitUrl = "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1000&q=85";
 
   return (
