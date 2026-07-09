@@ -365,7 +365,9 @@
       -webkit-backdrop-filter: none;
       background: rgba(255, 255, 255, 0.96);
     }
+  }
 
+  @media (prefers-reduced-motion: reduce) {
     .bg-card,
     .rounded-xl.border,
     .rounded-2xl.border,
@@ -374,7 +376,9 @@
     button {
       transition-duration: 120ms !important;
     }
+  }
 
+  @media (pointer: coarse) {
     .group:hover img,
     button:hover,
     a.inline-flex:hover,
