@@ -208,7 +208,7 @@ export const organisationsData = [
       "Investment forums, summits and networking events",
     ],
     sectors: ["Infrastructure", "Real Estate", "Agriculture", "Energy", "Technology", "Healthcare", "Education"],
-    website: "africainvestmentgateway.com",
+    website: "aigg.org.uk",
   },
   {
     slug: "john-chamberlain-sports",
@@ -227,7 +227,7 @@ export const organisationsData = [
       "Sports investment and sponsorship facilitation",
     ],
     sectors: ["Football", "Athletics", "Basketball", "Boxing", "Cricket", "Esports"],
-    website: "johnchamberlainssports.com",
+    website: "jcsem.com",
   },
   {
     slug: "biilm",
@@ -246,7 +246,7 @@ export const organisationsData = [
       "Certification and professional development",
     ],
     sectors: ["Corporate", "Government", "Non-profit", "Faith-based", "Education", "Healthcare"],
-    website: "biilm.org",
+    website: null,
   },
   {
     slug: "leadership-impact",

@@ -2,15 +2,13 @@ import React from "react";
 import { siteData } from "@/data/content";
 import { Link } from "wouter";
 import { MagneticButton } from "@/components/ui/magnetic-button";
-import { Linkedin, Twitter, Instagram, Youtube, Facebook, Mail, Phone, MapPin } from "lucide-react";
+import { Linkedin, Mail, Phone, MapPin } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 
 export function Footer() {
   const socialLinks = [
     { icon: Linkedin, href: "https://www.linkedin.com/in/stanleyosuide/", label: "LinkedIn" },
-    { icon: Twitter, href: "https://twitter.com/stanleyosuide", label: "Twitter" },
-    { icon: Instagram, href: "https://instagram.com/stanleyosuide", label: "Instagram" },
-    { icon: Youtube, href: "https://youtube.com/@stanleyosuide", label: "YouTube" },
-    { icon: Facebook, href: "https://facebook.com/stanleyosuide", label: "Facebook" },
+    { icon: FaWhatsapp, href: "https://wa.me/447956823267", label: "WhatsApp" },
   ];
 
   return (
