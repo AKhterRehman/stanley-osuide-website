@@ -28,8 +28,8 @@ export default function About() {
             <span className="text-primary tracking-[0.28em] text-xs sm:text-sm uppercase font-bold">Stanley Osuide</span>
             <div className="w-10 h-px bg-primary/30 rounded-full" />
           </motion.div>
-          <motion.h1 variants={clipReveal} initial="hidden" animate="visible" className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-serif text-slate-950 tracking-[-0.06em] leading-[0.92] mb-6">
-            ABOUT
+          <motion.h1 variants={clipReveal} initial="hidden" animate="visible" className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif text-slate-950 tracking-[-0.06em] leading-[0.96] mb-6">
+            ABOUT STANLEY OSUIDE
           </motion.h1>
           <motion.p variants={fadeInUp} initial="hidden" animate="visible" className="text-base sm:text-lg md:text-xl text-slate-600 max-w-2xl mx-auto font-medium leading-relaxed">
             A Life Built on Leadership, Purpose and Legacy

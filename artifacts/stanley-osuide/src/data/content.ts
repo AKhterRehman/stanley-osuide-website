@@ -98,10 +98,15 @@ export const siteData = {
 
 export const aboutData = {
   fullStory: [
-    "Stanley Osuide is a British-Nigerian leader, speaker and entrepreneur whose life's work sits at the intersection of leadership, investment and legacy.",
-    "Born with a passion for people and purpose, Stanley began his leadership journey at an early age — developing a conviction that true leadership is not about position, but about impact. Over the years, that conviction has taken him across continents, into boardrooms, onto conference stages and into the lives of thousands of leaders, investors and change-makers.",
-    "From the UK to Nigeria, from Lagos to London, from corporate boardrooms to government chambers, Stanley has built three organisations designed to develop leaders, connect capital and champion talent: Africa Investment Gateway Group, John Chamberlain Sports and the British International Institute for Leadership and Management.",
-    "His speaking career spans international conferences, leadership summits, investment forums, faith gatherings and executive retreats across Africa, Europe and beyond. Whether addressing heads of state, global investors or emerging young leaders, Stanley brings the same energy, clarity and conviction — a message that challenges people to lead with character, build with vision and live for legacy.",
+    "Stanley Osuide is a UK-based international keynote speaker, entrepreneur, investor, and leadership strategist whose life's work sits at the intersection of leadership, investment, sport, and legacy.",
+    "A former international athlete, Stanley proudly represented England and Great Britain in the high jump, an experience that instilled the discipline, resilience, excellence, and determination that continue to define his approach to leadership and business today. His journey from elite sport to global leadership has given him a unique perspective on high performance, inspiring individuals and organisations to unlock their full potential.",
+    "Driven by a passion for people and purpose, Stanley believes that true leadership is not defined by position or title, but by service, integrity, and the ability to positively influence others. This conviction has taken him across continents, from corporate boardrooms and government chambers to international conferences and global investment forums, where he equips leaders to think bigger, lead better, and create lasting impact.",
+    "As the Founder and CEO of Africa Investment Gateway Group (AIGG), Stanley is committed to connecting global investors with transformational opportunities across Africa, facilitating strategic partnerships that stimulate economic growth, infrastructure development, entrepreneurship, and sustainable prosperity.",
+    "He is also the Founder and CEO of John Chamberlain Sports, where he is passionate about identifying, developing, and creating opportunities for talented athletes while using the power of sport to transform lives, inspire communities, and build international partnerships.",
+    "Through his role as Founder and Director of the British International Institute for Leadership and Management (BIILM), Stanley equips leaders from the public, private, and non-profit sectors with practical leadership and management skills rooted in timeless biblical values, ethical governance, and servant leadership principles.",
+    "An accomplished international speaker, Stanley has addressed audiences at leadership summits, investment conferences, business forums, faith gatherings, sports events, and executive retreats across Africa, Europe, and beyond. Whether speaking to government officials, business executives, investors, entrepreneurs, church leaders, or emerging young professionals, he delivers practical insights with authenticity, clarity, and passion.",
+    "His signature message challenges people to lead with character, build with vision, embrace excellence, and create a legacy that outlives them. Drawing on lessons from elite sport, entrepreneurship, and international leadership, Stanley inspires audiences to overcome obstacles, maximise opportunities, and pursue significance over success.",
+    "Above all, Stanley is a devoted follower of Jesus Christ, a loving husband, and a proud father of four. His faith remains the foundation of his leadership philosophy and the driving force behind his mission to develop the next generation of leaders, unlock Africa's potential, and leave a lasting legacy of transformation for future generations.",
   ],
   vision: "To raise a generation of transformational leaders who build with purpose, invest with wisdom and leave a legacy that outlasts them.",
   mission: "To develop, connect and inspire leaders, institutions and investors across Africa and the global marketplace.",
@@ -112,13 +117,11 @@ export const aboutData = {
     { principle: "Global Mindset, Local Heart", description: "Think at a global scale. Act with cultural depth. Never lose sight of where you came from." },
   ],
   timeline: [
-    { year: "Early Years", title: "Foundation", description: "Born in Nigeria, raised with a deep sense of purpose, faith and leadership calling." },
-    { year: "UK Move", title: "Global Perspective", description: "Relocated to the United Kingdom, gaining exposure to global business, leadership and institutions." },
-    { year: "2010s", title: "Entrepreneurial Launch", description: "Founded first ventures and began speaking at leadership events across the UK and Africa." },
-    { year: "2015", title: "Africa Investment Gateway Group", description: "Launched AIGG to bridge global capital with African investment opportunities." },
-    { year: "2018", title: "John Chamberlain Sports", description: "Founded JCS to champion sporting talent and the business of sports across Africa and the diaspora." },
-    { year: "2020", title: "BIILM", description: "Established the British International Institute for Leadership and Management to develop values-driven leaders." },
-    { year: "Present", title: "Global Speaker & Strategist", description: "Speaking across 3 continents, working with governments, investors, institutions and leaders worldwide." },
+    { year: "1990s", title: "International Athlete", description: "Competed internationally as a high jump athlete for England and Great Britain." },
+    { year: "2000", title: "UK Government & Employment Initiatives", description: "Worked for the UK Government in the Department for Education and managed several back-to-work government initiatives under Reed in Partnership." },
+    { year: "2010", title: "British International Institute for Leadership and Management", description: "Founded the British International Institute for Leadership and Management to develop values-driven leaders." },
+    { year: "2015", title: "Investment Gateway", description: "Founded Nigeria Investment Gateway and Africa Investment Gateway Group to bridge global capital with African investment opportunities." },
+    { year: "2024", title: "John Chamberlain Sports", description: "Founded JCS to champion sporting talent and the business of sports across Africa and the diaspora." },
   ],
 };
 
